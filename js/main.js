@@ -27,6 +27,7 @@ const PAYOUTS =[
 
 
 
+
 /*----- app's state (variables) -----*/
 let pBets; // Players bets - as an object with changing key:value pairs 
 let pCredit; // Players available credit for which to gamble or play the game
