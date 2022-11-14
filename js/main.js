@@ -24,8 +24,9 @@ const SIDEBETS = ['1-12','13-24','25-26',
 /*----- app's state (variables) -----*/
 let pBets; // Players bets - as an object with changing key:value pairs 
 let pCredit; // Players available credit for which to gamble or play the game
-let pResult; // $ amount player wins or looses at conclusion of spin
+let pWager; // $ amount player wagering on current bet
 
+let winnings; // $ amount player wins or looses at conclusion of spin
 let winningNum; // Random number generated to represent result of wheel spin
 
 
@@ -45,15 +46,21 @@ const chipSelect = addEventListener('click', selectChip);
 
 
 /*----- functions -----*/
+function availCredit() {
+    pCredit = pCredit - (pWager)
+}
+
+
 function placeBet(e) {
     const betSelectEl = e.target;
 
-
-
+    
 }
 
 
 function init() {
+    
+
 
 }
 
