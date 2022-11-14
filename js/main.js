@@ -10,9 +10,12 @@ const SIDEBETS = ['1-12','13-24','25-26',
                 '18-','19+', 'even', 'odd', 'red', 'black',
                 'col1', 'col2', 'col3'];
 
-const PAYOUTS =[{
+const PAYOUTS =[
+    {type: 'num', payout: 35},
+    {type: 'fiftyFifty', payout: 1},
+    {type: 'thirds', payout: 2}
+];
 
-}]
 
 
 
