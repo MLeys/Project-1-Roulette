@@ -31,19 +31,23 @@ const num1 = document.querySelector('#1');
 
 
 
-
-
-
-
-
 /*----- event listeners -----*/
-
-
-
-
-
-
+const betSelect = addEventListener('click', placeBet);
+const chipSelect = addEventListener('click', selectChip);
 
 
 
 /*----- functions -----*/
+function placeBet(e) {
+    const betSectionClicked = e.target;
+}
+
+
+function init() {
+
+}
+
+
+function render() {
+
+}
