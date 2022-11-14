@@ -82,7 +82,6 @@ function spinWheel() {
     return randNum;
 }
 
-
 function render() {
 
 }
