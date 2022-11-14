@@ -54,7 +54,7 @@ const secondHalf = document.querySelector('#bet-19-36');
 const num1 = document.querySelector('#bet-1');
 
 /*----- event listeners -----*/
-const betSelect = addEventListener('click', placeBet);
+
 // const chipSelect = addEventListener('click', selectChip);
 
 
@@ -67,13 +67,15 @@ function availCredit() {
 
 
 function placeBet(e) {
-    let betObject ={id: e.target.id, wager: CHIP[0]}
+    let betObject ={id: e.target.id, wager: CHIP[0]};    // ^^ change chip val
     (e.target.id != '' ? pBets.push(betObject) : null)
+    pCredit -= betObject['wager'];
+    console.log(pCredit + "<--pCREDIT")
 }
 
 function init() {
     pBets = [];
-
+    pCredit = 100;
 
 }
 
