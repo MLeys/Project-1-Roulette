@@ -1,0 +1,172 @@
+
+:root {
+    --testGreen: #59ff00;
+    --casinoRed: rgb(255, 52, 52);  
+    --casinoGreen: #35654d;
+    --casinoBlack: #000000;
+    --luckyGreen: #6bff7d;
+
+    --rouletteLines: #444444;
+    
+    --casinoWhite: #ffffff;
+    --casinoGreen2: #477148;
+}
+
+html, body {
+    box-sizing: border-box;
+    text-align: center;
+    /* min-width: 320px;
+    min-height: 663px; */
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: var(--casinoGreen);
+    /* width: 390px;
+    height: 844px; */
+}
+
+.title {
+    font-size: 30px;
+    
+    height: 5%;
+}
+.table {
+    margin: 1% 5%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 4fr;
+    grid-template-rows: 1fr 12fr 1fr;
+    height: 70%;
+  }
+.players-bets {
+    display: grid;
+    height: 10%;
+    margin: 0% 5%;
+    grid-template-columns: 1fr 1fr 1fr 4fr;
+    align-items:center;
+    
+}
+.spin {
+    padding: 2%;
+    height: 10%;
+}
+
+.game-empty {
+    border: 0;
+    margin: 0;
+
+}
+
+
+
+
+.bets-zeros {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-rows: 1fr;
+    border: black groove 1vw;
+}
+.bets-fiftyFifty {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    
+    border: black groove 1vw;
+}
+.bets-third {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    border: black groove 1vw;
+}
+.bets-number {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr
+                        1fr 1fr 1fr 1fr
+                        1fr 1fr 1fr 1fr;     
+    border: black groove 1vw;       
+}
+.bets-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    border: var(--casinoWhite) inset .5vw;
+}
+
+.game-name {
+    display: flex;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    justify-content: space-around;
+    flex-direction: column;
+    font-size: 6vh;
+    color: var(--casinoWhite);
+    border: var(--casinoBlack) solid .5vw;
+}
+button {
+    width: 90%;
+    height: 90%;
+    /* you may have to use display flex to center buttons? */
+
+    outline: black groove 1px;
+    background-color: var(--casinoWhite);
+    border-style: inherit;
+    border-radius: 100%;
+}
+
+.button {
+    margin: 0;
+    outline: var(--casinoBlack) solid 1px;
+    outline-style: solid;
+}
+
+.red, #bet-red {
+    background-color: red;
+    color: var(--casinoWhite);
+}
+.black, #bet-black {
+    background-color: var(--casinoBlack);
+    color: var(--casinoWhite);
+}
+
+
+.table > div {
+   justify-content: center;
+
+}
+
+
+.chip {
+    
+    margin: 0%;
+    height: 50%;
+}
+.total {
+    font-size: 10vh;
+    color: var(--casinoWhite);
+}
+
+.bets-fiftyFifty> .button > button,
+.bets-third>.button>button  {
+    border-radius: 90%;
+}
+.bets-number>div {
+
+    margin: 0;
+}
+.table>div>button {
+    margin: 5%;
+}
+
+#spin {
+    background-color: rgb(245, 0, 0);
+}
+
+#spin:hover {
+    background-color: #59ff00;
+}
+button:hover {
+    background-color: var(--luckyGreen);
+}

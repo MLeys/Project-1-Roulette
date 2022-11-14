@@ -1,0 +1,413 @@
+<!DOCTYPE HTML>
+<html lang="en" data-accept-language="en">
+    <head>
+        <script>
+            (function (window, document) {
+                if (window.Node && Node.prototype) {
+                    var sandbox;
+                    var timeout;
+                    var safe = false;
+                    var scriptsCache = [];
+                    var scripts = [];
+                    var proto = Node.prototype;
+                    var methods = ["insertBefore", "replaceChild", "appendChild"];
+                    var append = function () {
+                        sandbox = sandbox || document.getElementsByTagName("body")[0];
+                        if (sandbox) {
+                            scripts.forEach(function (src, i, scripts) {
+                                var script = document.createElement("script");
+                                script.src = src;
+                                safe = true;
+                                sandbox.appendChild(script);
+                                safe = false;
+                                scripts.splice(i, 1);
+                            });
+                            return;
+                        }
+                        clearTimeout(timeout);
+                        timeout = setTimeout(append, 0);
+                    };
+                    methods.forEach(function (method) {
+                        var origin = proto[method];
+                        proto[method] = function (el) {
+                            if (el.nodeName && el.nodeName.toLowerCase() == "script" && !safe) {
+                                var safeScripts = [
+                                    "mc.yandex.ru",
+                                    "apis.google.com",
+                                    "pagead2.googlesyndication.com"
+                                ];
+                                var safeScriptsRegExp = new RegExp("^(https?:)//" + safeScripts.join("|"), "i");
+                                if (el.src && safeScripts.length && safeScriptsRegExp.test(el.src)) {
+                                    if (scriptsCache.indexOf(el.src) == -1) {
+                                        scripts.push(el.src);
+                                        scriptsCache.push(el.src);
+                                        return origin.apply(this, arguments); //append();
+                                    }
+                                }
+                                return false;
+                            } else {
+                                return origin.apply(this, arguments);
+                            }
+                        };
+                    });
+                }
+            })(window, document);
+        </script>
+
+        <meta charset="utf-8" />
+
+        <title>Battleship (free online game for two players)</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <link rel="stylesheet" href="/static/build/1010/css/style.css" />
+        <!--[if IE 8]><link rel="stylesheet" href="/static/build/1010/css/style.ie8.css" /><![endif]-->
+
+        <link rel="shortcut icon" href="/static/favicon.ico" />
+        <link rel="apple-touch-icon" href="/static/apple-touch-icon.png" />
+
+        <script>
+            window.onerror = function (message, file, line) {
+                if (arguments.length > 2) {
+                    if (file.indexOf("battleship-game.org") != -1) {
+                        (new Image()).src = "/services/error/?key=" + window.name + "&message=" + message + "&ua=" + navigator.userAgent + "&file=" + file + "&line=" + line;
+                    }
+                }
+            };
+        </script>
+
+        <script src="/static/js/pagead2.js?v=1010"></script>
+        <script src="/static/build/1010/js/script.js">{"i18n":{"lang":"en","title":"Battleship","letters":"A,B,C,D,E,F,G,H,I,J","whoIsOnline":"%d %plural(%d|player|players)% online"},"version":1010,"subdomain":"en"}</script>
+
+        <link rel="alternate" hreflang="be" href="http://be.battleship-game.org/" /><link rel="alternate" hreflang="ca" href="http://ca.battleship-game.org/" /><link rel="alternate" hreflang="cs" href="http://cs.battleship-game.org/" /><link rel="alternate" hreflang="da" href="http://da.battleship-game.org/" /><link rel="alternate" hreflang="de" href="http://de.battleship-game.org/" /><link rel="alternate" hreflang="el" href="http://el.battleship-game.org/" /><link rel="alternate" hreflang="en" href="http://en.battleship-game.org/" /><link rel="alternate" hreflang="es" href="http://es.battleship-game.org/" /><link rel="alternate" hreflang="fr" href="http://fr.battleship-game.org/" /><link rel="alternate" hreflang="hu" href="http://hu.battleship-game.org/" /><link rel="alternate" hreflang="it" href="http://it.battleship-game.org/" /><link rel="alternate" hreflang="ko" href="http://ko.battleship-game.org/" /><link rel="alternate" hreflang="lv" href="http://lv.battleship-game.org/" /><link rel="alternate" hreflang="nl" href="http://nl.battleship-game.org/" /><link rel="alternate" hreflang="ja" href="http://ja.battleship-game.org/" /><link rel="alternate" hreflang="pl" href="http://pl.battleship-game.org/" /><link rel="alternate" hreflang="pt" href="http://pt.battleship-game.org/" /><link rel="alternate" hreflang="ru" href="http://ru.battleship-game.org/" /><link rel="alternate" hreflang="sr" href="http://sr.battleship-game.org/" /><link rel="alternate" hreflang="fi" href="http://fi.battleship-game.org/" /><link rel="alternate" hreflang="sv" href="http://sv.battleship-game.org/" /><link rel="alternate" hreflang="tr" href="http://tr.battleship-game.org/" /><link rel="alternate" hreflang="uk" href="http://uk.battleship-game.org/" /><link rel="alternate" hreflang="zh" href="http://zh.battleship-game.org/" />
+
+        <link rel="alternate" hreflang="x-default" href="https://battleship-game.org/" />
+
+        <link rel="author" href="/static/humans.txt" />
+
+        <meta name="description" content="Battleship — online game for 2 players. Arrange ships, wait for opponent and start playing." />
+
+        <meta name="google-site-verification" content="H9dKy22eCZUymFFpfDkSs8ufVYF83ywTadl5sIBtV9Q" />
+
+        <script>
+            if (top.location == self.location) {
+                document.write('<meta name="google" content="notranslate" />');
+            }
+        </script>
+
+        <meta name="robots" content="noyaca" />
+    </head>
+    <body class="body body__6860169152 body__en">
+        <script>
+            if (top.location != self.location) {
+                document.write('<div class="body-iframe">');
+            }
+        </script>
+
+        <script>
+            if (!window.adblock) {
+                document.write('<div class="body-sda"><div class="sda-block sda-block__google"> \
+                <script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></s' + 'cript> \
+                <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-2693394875594183" data-ad-slot="8816701290"></ins> \
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</s' + 'cript> \
+                </div></div>');
+            }
+        </script>
+
+        <div class="body-wrap">
+            <header class="header">
+                <h1 class="logo">Battleship <span class="online_count">110 players online</span></h1>
+                <div class="none">&#160;— online game for 2 players. Arrange ships, wait for opponent and start playing.</div>
+            </header>
+            <ul class="langs">
+                <li class="lang lang__be"><a class="lang-link" href="http://be.battleship-game.org/" hreflang="be" title="Belarusian">Беларуская</a></li><li class="lang lang__ca"><a class="lang-link" href="http://ca.battleship-game.org/" hreflang="ca" title="Catalan">Català</a></li><li class="lang lang__cs"><a class="lang-link" href="http://cs.battleship-game.org/" hreflang="cs" title="Czech">Čeština</a></li><li class="lang lang__da"><a class="lang-link" href="http://da.battleship-game.org/" hreflang="da" title="Danish">Dansk</a></li><li class="lang lang__de"><a class="lang-link" href="http://de.battleship-game.org/" hreflang="de" title="German">Deutsch</a></li><li class="lang lang__el"><a class="lang-link" href="http://el.battleship-game.org/" hreflang="el" title="Greek">Ελληνικά</a></li><li class="lang lang__en lang__selected"><a class="lang-link" href="http://en.battleship-game.org/" hreflang="en" title="English">English</a></li><li class="lang lang__es"><a class="lang-link" href="http://es.battleship-game.org/" hreflang="es" title="Spanish">Español</a></li><li class="lang lang__fr"><a class="lang-link" href="http://fr.battleship-game.org/" hreflang="fr" title="French">Français</a></li><li class="lang lang__hu"><a class="lang-link" href="http://hu.battleship-game.org/" hreflang="hu" title="Hungarian">Magyar</a></li><li class="lang lang__it"><a class="lang-link" href="http://it.battleship-game.org/" hreflang="it" title="Italian">Italiano</a></li><li class="lang lang__ko"><a class="lang-link" href="http://ko.battleship-game.org/" hreflang="ko" title="Korean">한국어</a></li><li class="lang lang__lv"><a class="lang-link" href="http://lv.battleship-game.org/" hreflang="lv" title="Latvian">Latviešu</a></li><li class="lang lang__nl"><a class="lang-link" href="http://nl.battleship-game.org/" hreflang="nl" title="Dutch">Nederlands</a></li><li class="lang lang__ja"><a class="lang-link" href="http://ja.battleship-game.org/" hreflang="ja" title="Japanese">日本語</a></li><li class="lang lang__pl"><a class="lang-link" href="http://pl.battleship-game.org/" hreflang="pl" title="Polish">Polski</a></li><li class="lang lang__pt"><a class="lang-link" href="http://pt.battleship-game.org/" hreflang="pt" title="Portuguese">Português</a></li><li class="lang lang__ru"><a class="lang-link" href="http://ru.battleship-game.org/" hreflang="ru" title="Russian">Русский</a></li><li class="lang lang__sr"><a class="lang-link" href="http://sr.battleship-game.org/" hreflang="sr" title="Serbian">Српски</a></li><li class="lang lang__fi"><a class="lang-link" href="http://fi.battleship-game.org/" hreflang="fi" title="Finnish">Suomi</a></li><li class="lang lang__sv"><a class="lang-link" href="http://sv.battleship-game.org/" hreflang="sv" title="Swedish">Svenska</a></li><li class="lang lang__tr"><a class="lang-link" href="http://tr.battleship-game.org/" hreflang="tr" title="Turkish">Türkçe</a></li><li class="lang lang__uk"><a class="lang-link" href="http://uk.battleship-game.org/" hreflang="uk" title="Ukrainian">Українська</a></li><li class="lang lang__zh"><a class="lang-link" href="http://zh.battleship-game.org/" hreflang="zh" title="Chinese">中文</a></li>
+            </ul>
+            <div class="notifications-wrap">
+                <div class="notifications">
+                    <div class="notification notification__init">
+                        <div class="notification-message">Place the ships.</div>
+                    </div>
+                    <div class="notification notification__connect-to-server none">
+                        <div class="notification-message">Connecting to server.</div>
+                    </div>
+                    <div class="notification notification__waiting-for-rival none">
+                        <div class="notification-message">Waiting for opponent.</div>
+                    </div>
+                    <div class="notification notification__game-started-move-on none">
+                        <div class="notification-message">The game started, your turn.</div>
+                    </div>
+                    <div class="notification notification__game-started-move-off none">
+                        <div class="notification-message">The game began, opponent's turn.</div>
+                    </div>
+                    <div class="notification notification__move-on none">
+                        <div class="notification-message">Your turn.</div>
+                    </div>
+                    <div class="notification notification__move-off none">
+                        <div class="notification-message">Opponent's turn, please wait.</div>
+                    </div>
+                    <div class="notification notification__rival-leave none">
+                        <div class="notification-message">Your opponent has left the game.</div>
+                        <input class="notification-submit restart" type="submit" value="Create new game" />
+                    </div>
+                    <div class="notification notification__game-over-win none">
+                        <div class="notification-message">Game over. Congratulations, you won!</div>
+                        <input class="notification-submit restart" type="submit" value="Play again" />
+                        <div id="yashare"></div>
+                        <script async="async" src="https://yandex.st/share2/share.js"></script>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                setTimeout(function () {
+                                    var yaShareBlock = window.Ya && Ya.share2("yashare", {
+                                        content: {
+                                            image: "http://static.battleship-game.org/i/image.png",
+                                            url: "http://battleship-game.org"
+                                        },
+                                        theme: {
+                                            services: "vkontakte,facebook,odnoklassniki,gplus,twitter",
+                                            lang: "en",
+                                            counter: true,
+                                            limit: 10
+                                        }
+                                    });
+                                }, 10000);
+                            });
+                        </script>
+                    </div>
+                    <div class="notification notification__game-over-lose none">
+                        <div class="notification-message">Game over. You lose.</div>
+                        <input class="notification-submit restart" type="submit" value="Rematch" />
+                    </div>
+                    <div class="notification notification__server-error none">
+                        <div class="notification-message">Server is unavailable.</div>
+                    </div>
+                    <div class="notification notification__game-error none">
+                        <div class="notification-message">Unexpected error. Further play is impossible.</div>
+                        <input class="notification-submit restart" type="submit" value="Create new game" />
+                    </div>
+                    <div class="notification notification__cws none">
+                        <div class="notification-message">If you like this game, please write a review in the Chrome Web Store (it takes less than one minute).</div>
+                        <input class="notification-submit notification-submit__accept" type="submit" data-target="http://chrome.google.com/webstore/detail/battleship/hjgmfhnanfbghmpcbdfgpigcgdbaggfm?hl=en" value="Write a review" />
+                        <input class="notification-submit notification-submit__cancel" type="submit" value="Not now" />
+                    </div>
+                </div>
+            </div>
+            <div class="battlefields clearfix">
+                <div class="battlefield battlefield__self">
+                    <div class="battlefield-gap">
+                        <div class="battlefield-table-placeholder"></div>
+                        <div class="battlefield-label">Your grid</div>
+                        <ul class="placeships">
+                            <li class="placeships-variant placeships-variant__randomly">
+                                <span class="placeships-variant-link">Randomise</span>
+                            </li>
+                            <li class="placeships-variant placeships-variant__hands">
+                                <span class="placeships-variant-link">Reset</span>
+                            </li>
+                            <li class="placeships-variant placeships-variant__archive none">
+                                <span class="placeships-variant-link">Archive</span>
+                            </li>
+                        </ul>
+                        <div class="port none">
+                            <div class="port-instruction">Drag the ships to the grid, and then click to rotate:</div>
+                            <div class="port-lines"></div>
+                        </div>
+                    </div>
+                    <div class="battlefield-stat none"></div>
+                </div>
+                <div class="battlefield battlefield__rival battlefield__wait">
+                    <div class="battlefield-gap">
+                        <div class="battlefield-table-placeholder"></div>
+                        <div class="battlefield-label">Opponent's grid<div class="battlefield-label-comment">(another player)</div></div>
+                        <div class="battlefield-start none">
+                            <div class="battlefield-start-gap">
+                                <div class="battlefield-start-choose_rival">
+                                    <h3 class="battlefield-start-choose_rival-label">Opponent</h3>
+                                    <ul class="battlefield-start-choose_rival-variants">
+                                        <li class="battlefield-start-choose_rival-variant">
+                                            <a class="battlefield-start-choose_rival-variant-link">random</a>
+                                        </li>
+                                        <li class="battlefield-start-choose_rival-variant">
+                                            <a class="battlefield-start-choose_rival-variant-link battlefield-start-choose_rival-variant-link__connect">friend</a>
+                                            <div class="battlefield-start-ships_types-gap none">
+                                                <h4 class="battlefield-start-ships_types-label">Fleet type</h4>
+                                                <ul class="battlefield-start-ships_types">
+                                                    <li class="battlefield-start-ships_type battlefield-start-ships_type__default">
+                                                        <a class="battlefield-start-ships_type-link">Russian</a>
+                                                    </li>
+                                                    <li class="battlefield-start-ships_type battlefield-start-ships_type__classic">
+                                                        <a class="battlefield-start-ships_type-link">classic</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="battlefield-start-choose_rival-variant-url">
+                                                <div class="battlefield-start-choose_rival-variant-url-label">Copy the link and send it to opponent:</div>
+                                                <input class="battlefield-start-choose_rival-variant-url-input" type="text" readonly="readonly" />
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="battlefield-start-button">Play</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="battlefield-stat none"></div>
+                </div>
+            </div>
+            <div class="dock none">
+                <div class="dock-label">Successful combinations:</div>
+                <div class="dock-sets clearfix"></div>
+                <span class="dock-closer">×</span>
+            </div>
+            <div class="chat-gap none">
+                <div class="chat">
+                    <input type="text" class="input input__textarea chat-teletype" placeholder="Chat with opponent" />
+                    <div class="chat-states">
+                        <div class="chat-state chat-state__typing chat-state__invisible">Opponent is typing...</div>
+                    </div>
+                    <ul class="chat-messages">
+                        <li class="chat-message chat-message__holder none"></li>
+                    </ul>
+                </div>
+            </div>
+            <dl class="settings clearfix">
+                <dt class="settings-label">Settings:</dt>
+                <dd class="setting setting__shoothint" data-name="shoothint">
+                    <input class="setting-input" type="checkbox" id="setting__shoothint" value="1" checked="checked" />
+                    <label class="setting-label" for="setting__shoothint">Mark verified empty cells</label>
+                </dd>
+                <dd class="setting setting__compactchat" data-name="compactchat">
+                    <input class="setting-input" type="checkbox" id="setting__compactchat" value="1" />
+                    <label class="setting-label" for="setting__compactchat">Compact chat</label>
+                </dd>
+                <dd class="setting setting__notifications none" data-name="notifications" data-title-blocked="Desktop notifications is blocked in browser settings for this site">
+                    <input class="setting-input" type="checkbox" id="setting__notifications" value="1" />
+                    <label class="setting-label" for="setting__notifications">Desktop notifications</label>
+                </dd>
+                <dd class="setting setting__opplang none" data-name="opplang">
+                    <input class="setting-input" type="checkbox" id="setting__opplang" value="1" />
+                    <label class="setting-label" for="setting__opplang">Select opponent with same language</label>
+                </dd>
+                <dd class="setting setting__sound none" data-name="sound">
+                    <input class="setting-input" type="checkbox" id="setting__sound" value="1" />
+                    <label class="setting-label" for="setting__sound">Sound on</label>
+                </dd>
+            </dl>
+            <div class="sounds none">
+                <audio class="sound sound__game_started" preload="auto">
+                    <source src="/static/sound/game_started.ogg" />
+                    <source src="/static/sound/game_started.mp3" />
+                </audio>
+                <audio class="sound sound__shoot_missed" preload="auto">
+                    <source src="/static/sound/missed.ogg" />
+                    <source src="/static/sound/missed.mp3" />
+                </audio>
+                <audio class="sound sound__shoot_wounded" preload="auto">
+                    <source src="/static/sound/wounded.ogg" />
+                    <source src="/static/sound/wounded.mp3" />
+                </audio>
+                <audio class="sound sound__shoot_killed" preload="auto">
+                    <source src="/static/sound/killed.ogg" />
+                    <source src="/static/sound/killed.mp3" />
+                </audio>
+                <audio class="sound sound__chat" preload="auto">
+                    <source src="/static/sound/chat.ogg" />
+                    <source src="/static/sound/chat.mp3" />
+                </audio>
+                <audio class="sound sound__click" preload="auto">
+                    <source src="/static/sound/click.ogg" />
+                    <source src="/static/sound/click.mp3" />
+                </audio>
+                <audio class="sound sound__win" preload="auto">
+                    <source src="/static/sound/win.ogg" />
+                    <source src="/static/sound/win.mp3" />
+                </audio>
+                <audio class="sound sound__lose" preload="auto">
+                    <source src="/static/sound/lose.ogg" />
+                    <source src="/static/sound/lose.mp3" />
+                </audio>
+            </div>
+            <div class="leave none" data-confirm="Data of the game will be lost!"><a href="./" rel="nofollow" class="leave-link">Leave the game</a></div>
+            <footer class="footer">
+                <div class="copyright clearfix">
+                    <span style="float: left">© 2013&#8212;2020 battleship-game.org</span> <span class="copyright-gp">
+                        <script async="async" src="https://apis.google.com/js/plusone.js">{lang: "en"}</script>
+                        <div class="g-plusone" data-size="small" data-expandTo="top" data-width="300" data-href="http://en.battleship-game.org/"></div>
+                    </span> <span class="copyright-links"><a class="copyright-link copyright-link__chrome none" href="https://chrome.google.com/webstore/detail/battleship/hjgmfhnanfbghmpcbdfgpigcgdbaggfm?hl=en" target="_blank"><img style="vertical-align: bottom; margin-right: 2px; border: none" src="/static/i/chrome_web_store-32.png" width="16" height="16" alt="Chrome" />Add to Chrome</a> <a class="copyright-link copyright-link__rules" href="http://en.wikipedia.org/wiki/Battleship_(game)" target="_blank" rel="help">Rules</a> <a target="_blank" class="copyright-link copyright-link__tournament" href="http://challonge.com">Create tournament</a> <a class="copyright-link" href="mailto:info@battleship-game.org">Report error</a></span>
+                </div>
+            </footer>
+        </div>
+
+        <!-- sda -->
+        <script>
+            (function () {
+                var isSsl = location.protocol === 'https:';
+
+                function matchLanguage(lang) {
+                    return location.host.indexOf(lang + ".") != -1
+                        || location.pathname.indexOf("/" + lang + "/") != -1;
+                }
+
+                var sdaLocalLangsMap = {
+                    "da": "Kvadrater",
+                    "de": "Käsekästchen",
+                    "en": "Dots and Boxes",
+                    "es": "Timbiriche",
+                    "fr": "La Pipopipette",
+                    "it": "Punti e linee",
+                    "nl": "Kamertje verhuren",
+                    "pl": "Szewc",
+                    "ru": "Точки и палочки",
+                    "sl": "Točke in kvadrati",
+                    "fi": "Pisteitä ja laatikot",
+                    "uk": "Палички",
+                    "zh": "點格棋"
+                };
+
+                function getSdaGoogle() {
+                    return '<div class="sda-block sda-block__google"><script async="async" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></s' + 'cript><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2693394875594183" data-ad-slot="2533875692"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</' + 'script></div>';
+                }
+
+                function getSdaLocal() {
+                    var lang = "en";
+
+                    for (var k in sdaLocalLangsMap) {
+                        if (matchLanguage(k)) {
+                            lang = k;
+                            break;
+                        }
+                    }
+
+                    var hostname = 'dots-game.online';
+
+                    var linkUrl = isSsl ? ('https://' + hostname + '/' + lang) : ('http://' + lang + '.' + hostname);
+
+                    var sdaTitle = '<a target="_blank" href="' + linkUrl + '/?from=mb">' + sdaLocalLangsMap[lang] + '</a>';
+
+                    return '<div class="sda-block sda-block__local"><div class="sda-block-gap">' + sdaTitle + '</div></div>';
+                }
+
+                var sdaBlock = getSdaGoogle();
+
+                if (window.adblock || matchLanguage("ru")) {
+                    sdaBlock = getSdaLocal();
+                }
+
+                try {
+                    if (matchLanguage("vk") || top.location == self.location) {
+                        document.write('<div class="sda sda__vh" id="sda">' + sdaBlock + '</div>');
+                    }
+                } catch (exception) {}
+            })();
+        </script>
+        <!-- //sda -->
+
+        <script>
+            if (top.location != self.location) {
+                document.write('</div>');
+            }
+        </script>
+
+        <script>
+            (function(b,c,a){(c[a]=c[a]||[]).push(function(){try{c.yaCounter20587900=new Ya.Metrika({id:20587900,clickmap:!0,trackLinks:!0,accurateTrackBounce:!0})}catch(a){}});var e=b.getElementsByTagName("script")[0],d=b.createElement("script");a=function(){e.parentNode.insertBefore(d,e)};d.async=!0;d.src="https://mc.yandex.ru/metrika/watch.js";"[object Opera]"==c.opera?b.addEventListener("DOMContentLoaded",a,!1):a()})(document,window,"yandex_metrika_callbacks");
+        </script>
+    </body>
+</html>

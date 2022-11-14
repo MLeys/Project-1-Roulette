@@ -1,0 +1,43 @@
+Roulette Wireframe	
+
+
+Start Page:
+
+-Shows history for the user of last spins
+	-(shown in first view pre-populated)
+
+-Numbers start with light background color on the board
+
+-Displays for players credit, current bet, denomination per click for bets,
+	probability of the player winning at least one bet
+
+-Other buttons for buying more and help for gambling addition
+	-Placeholders for future state
+	-$100 automatically loaded on start
+
+
+Placing Bets: 
+-Player selects denomination
+-Player clicks on tiles to place bets
+-When ready, player spins
+
+-Credit, current bet, and probability change as player makes bets
+
+-List of bets and amount per added to right in a column list
+
+-Tiles where bets have been placed (by clicking) are made 
+	bold with dark backgrounds- signaling 'active'
+(Wireframe image slightly different, but will match others in final state)
+
+Outcome:
+
+-All numbers updated and any winning credits added
+
+-All losing tiles de-activated
+	-winners stay
+
+-Message alerting player they win and how much
+
+-Game resets after 10 seconds back to main page 
+
+
