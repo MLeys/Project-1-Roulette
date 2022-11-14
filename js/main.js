@@ -35,9 +35,15 @@ let winningNum; // Random number generated to represent result of wheel spin
 /*----- cached element references -----*/
 const chipEl = document.querySelectorAll('.chip');
 const spinEl = document.querySelector('#spin');
+
+const even = document.querySelector('#bet-even');
+const odd = document.querySelector('#bet-odd');
+const black = document.querySelector('#bet-black');
+const red = document.querySelector('#bet-red');
+const firstHalf = document.querySelector('#bet-1-18');
+const secondHalf = document.querySelector('#bet-19-36');
+
 const num1 = document.querySelector('#bet-1');
-
-
 
 /*----- event listeners -----*/
 const betSelect = addEventListener('click', placeBet);
@@ -52,9 +58,8 @@ function availCredit() {
 
 
 function placeBet(e) {
-    const betSelectEl = e.target;
-
-    
+    const activeEl = e.target;
+   
 }
 
 
