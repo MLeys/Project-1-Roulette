@@ -1,7 +1,8 @@
 /*----- constants -----*/
 
 const CHIP = [1, 5, 10]; // Chip amount (1, 5, or 10) per bet;
-const NUMBERS = ['1','2','3','4','5','6','7','8','9','10',
+const NUMBERS = ['0','00',
+                '1','2','3','4','5','6','7','8','9','10',
                 '11','12','13','14','15','16','17','18','19','20',
                 '21','22','23','24','25','26','27','28','29','30',
                 '31','32','33','34','35','36']
@@ -57,7 +58,8 @@ const betSelect = addEventListener('click', placeBet);
 // const chipSelect = addEventListener('click', selectChip);
 
 
-
+init();
+console.log(spinWheel());
 /*----- functions -----*/
 function availCredit() {
     pCredit = pCredit - (pWager)
@@ -65,24 +67,19 @@ function availCredit() {
 
 
 function placeBet(e) {
-    let activeButtonEl = e.target;
-    console.log(activeButtonEl + "<---- active button");
-
-    let activeBetID = e.target.id;
-
-
-
-    if (e.target){
-
-    }
-   
+    let betObject ={id: e.target.id, wager: CHIP[0]}
+    (e.target.id != '' ? pBets.push(betObject) : null)
 }
 
-
 function init() {
-    
+    pBets = [];
 
 
+}
+
+function spinWheel() {
+    let randNum = Math.floor(Math.random() * NUMBERS.length);
+    return randNum;
 }
 
 
