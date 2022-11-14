@@ -116,7 +116,7 @@ button {
     border-radius: 100%;
 }
 
-.button {
+.num {
     margin: 0;
     outline: var(--casinoBlack) solid 1px;
     outline-style: solid;
