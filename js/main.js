@@ -20,7 +20,18 @@ const win1 = ['1', 'red', 'odd', 'col1', 'first12', 'first18',]
 const win2 = [];
 
 // OR do i create object-> key:values for the NUMBERS list?
-
+const BETS = [
+    {betType: ['0','00','1','2','3','4','5','6','7','8','9','10',
+                '11','12','13','14','15','16','17','18','19','20',
+                '21','22','23','24','25','26','27','28','29','30',
+                '31','32','33','34','35','36'],
+    payout: 35},
+    {betType: [ 'first18','second18', 'even', 'odd', 'red', 'black'],
+    payout: 1},
+    {betType: ['first12','second12','third12', 'col1', 'col2', 'col3'],
+    payout: 2}
+]
+ 
 
 
 
@@ -79,13 +90,14 @@ function availCredit() {
 function placeBet(e) {
     console.log("------placeBet------")
 
-    let targetId = e.target.id;
-    let betObject ={id: targetId, wager: CHIP[0]};
+    let betId = e.bet.id;
+    
+    let betObject ={id: betId, wager: CHIP[0]};
     console.log(betObject);    
 
 
-    NUMBERS.includes(targetId)
-        || SIDEBETS.includes(targetId)
+    NUMBERS.includes(betId)
+        || SIDEBETS.includes(betId)
     ? (pBets.push(betObject)) 
         && (pCredit -= betObject['wager']) 
         : null;
