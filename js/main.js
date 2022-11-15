@@ -95,11 +95,13 @@ let winningNum; // Random number generated to represent result of wheel spin
 // const redHalf = document.querySelector('#red');
 // const firstHalf = document.querySelector('#bet-1-18');
 // const secondHalf = document.querySelector('#bet-19-36');
-const tableAreaEl = document.querySelector('.table')
+const tableAreaEl = document.querySelector('.table');
+const spinBtnEl = document.querySelector('#spin');
 
 
 /*----- event listeners -----*/
 tableAreaEl.addEventListener('click', placeBet);
+spinBtnEl.addEventListener('click', spinWheel)
 // evenNums.addEventListener('click', placeBet);
 // oddEl.addEventListener('click', placeBet);
 // blackEl.addEventListener('click', placeBet);
@@ -122,7 +124,7 @@ function availCredit() {
 function placeBet(e) {
     console.log("------placeBet------")
 
-    let betId = e.bet.id;
+    let betId = e.target.id;
     
     let betObject ={id: betId, wager: CHIP[0]};
     console.log(betObject);    
@@ -141,11 +143,27 @@ function placeBet(e) {
 function init() {
     pBets = [];
     pCredit = 100;
+    winningNum = null;
 }
 
 function spinWheel() {
-    let randNum = Math.floor(Math.random() * NUMBERS.length);
-    return randNum;
+    let winningNum;
+    
+    winningNum = Math.floor(Math.random() * NUMBERS.length);
+    console.log(winningNum, '<-- Winning Number!')
+    // loop through bets against winning number
+
+    for (let i = 0; i < pBets.length; i++) {
+        let checkBet = pBets[i]['id'];
+        let checkBetWager = pBets[i]
+        console.log(checkBet, '<--- current bet checking in loop')
+
+        
+
+
+    }
+
+
 }
 
 function render() {
