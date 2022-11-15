@@ -16,6 +16,11 @@ const PAYOUTS =[
     {type: 'fiftyFifty', payout: 1},
     {type: 'thirds', payout: 2}];
 
+const win1 = ['1', 'red', 'odd', 'col1', 'first12', 'first18',]
+const win2 = [];
+
+// OR do i create object-> key:values for the NUMBERS list?
+
 
 
 
@@ -85,7 +90,8 @@ function placeBet(e) {
         && (pCredit -= betObject['wager']) 
         : null;
     
-    console.log(pCredit, "<--pCREDIT")
+    console.log(pBets, "<--pBets Array")
+    console.log(pCredit, "<--pCredit Available")
 }
 
 function init() {
