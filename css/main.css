@@ -1,7 +1,7 @@
 
 :root {
     --testGreen: #59ff00;
-    --casinoRed: rgb(255, 52, 52);  
+    --casinoRed: #ff3434;  
     --casinoGreen: #35654d;
     --casinoBlack: #000000;
     --luckyGreen: #6bff7d;
@@ -111,11 +111,16 @@ button {
     /* you may have to use display flex to center buttons? */
 
     outline: black groove 1px;
-    background-color: var(--casinoWhite);
+    background-color: inherit;
     border-style: inherit;
     border-radius: 100%;
 }
-
+.button {
+    outline: white solid 1px;;
+}
+.fiftyFifty, .thirds {
+    outline: white solid 2px;
+}
 .num {
     margin: 0;
     outline: var(--casinoBlack) solid 1px;
@@ -123,14 +128,16 @@ button {
 }
 
 .red {
-    background-color: red;
+    background-color: var(--casinoRed);
     color: var(--casinoWhite);
 }
-.black, #bet-black {
+.black {
     background-color: var(--casinoBlack);
     color: var(--casinoWhite);
 }
-
+.zero {
+    background-color: #3db54b;
+}
 
 .table > div {
    justify-content: center;
