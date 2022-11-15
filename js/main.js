@@ -11,16 +11,8 @@ const SIDEBETS = ['first12','second12','third12',
                 'first18','second18', 'even', 'odd', 'red', 'black',
                 'col1', 'col2', 'col3'];
 
-const PAYOUTS =[
-    {type: 'num', payout: 35},
-    {type: 'fiftyFifty', payout: 1},
-    {type: 'thirds', payout: 2}];
 
-const win1 = ['1', 'red', 'odd', 'col1', 'first12', 'first18',]
-const win2 = [];
-
-// OR do i create object-> key:values for the NUMBERS list?
-const BETS = [
+const PAYOUTS = [
     {betType: ['0','00','1','2','3','4','5','6','7','8','9','10',
                 '11','12','13','14','15','16','17','18','19','20',
                 '21','22','23','24','25','26','27','28','29','30',
@@ -30,8 +22,48 @@ const BETS = [
     payout: 1},
     {betType: ['first12','second12','third12', 'col1', 'col2', 'col3'],
     payout: 2}
-]
+];
  
+const WINNERS = [
+    {num: '0', payout: ['0']},
+    {num: '00', payout: ['00']},
+    {num: '1', payout: ['1', 'red', 'odd', 'first12', 'col1', 'first18']},
+    {num: '2', payout: ['2', 'black', 'even', 'first12', 'col2', 'first18']},
+    {num: '3', payout: ['3', 'red', 'odd', 'first12', 'col3', 'first18']},
+    {num: '4', payout: ['4', 'black', 'even', 'first12', 'col1', 'first18']},
+    {num: '5', payout: ['5', 'red', 'odd', 'first12', 'col2', 'first18']},
+    {num: '6', payout: ['6', 'black', 'even', 'first12', 'col3', 'first18']},
+    {num: '7', payout: ['7', 'red', 'odd', 'first12', 'col1', 'first18']},
+    {num: '8', payout: ['8', 'black', 'even', 'first12', 'col2', 'first18']},
+    {num: '9', payout: ['9', 'red', 'odd', 'first12', 'col3', 'first18']},
+    {num: '10', payout: ['10', 'black', 'even', 'first12', 'col1', 'first18']},
+    {num: '11', payout: ['11', 'black', 'odd', 'first12', 'col2', 'first18']},
+    {num: '12', payout: ['12', 'red', 'even', 'first12', 'col3', 'first18']},
+    {num: '13', payout: ['13', 'black', 'odd', 'second12', 'col1', 'first18']},
+    {num: '14', payout: ['14', 'red', 'even', 'second12', 'col2', 'first18']},
+    {num: '15', payout: ['15', 'black', 'odd', 'second12', 'col3', 'first18']},
+    {num: '16', payout: ['16', 'red', 'even', 'second12', 'col1', 'first18']},
+    {num: '17', payout: ['17', 'black', 'odd', 'second12', 'col2', 'first18']},
+    {num: '18', payout: ['18', 'red', 'even', 'second12', 'col3', 'first18']},    {num: '9', payout: ['9', 'red', 'odd', 'first12', 'col3', 'first18']},
+    {num: '19', payout: ['19', 'black', 'even', 'second12', 'col1', 'second18']},
+    {num: '20', payout: ['20', 'black', 'odd', 'second12', 'col2', 'second18']},
+    {num: '21', payout: ['21', 'red', 'even', 'second12', 'col3', 'second18']},
+    {num: '22', payout: ['22', 'black', 'odd', 'second12', 'col1', 'second18']},
+    {num: '23', payout: ['23', 'red', 'even', 'second12', 'col2', 'second18']},
+    {num: '24', payout: ['24', 'black', 'odd', 'second12', 'col3', 'second18']},
+    {num: '25', payout: ['25', 'red', 'even', 'third12', 'col1', 'second18']},
+    {num: '26', payout: ['26', 'black', 'odd', 'third12', 'col2', 'second18']},
+    {num: '27', payout: ['27', 'red', 'even', 'third12', 'col3', 'second18']},
+    {num: '28', payout: ['28', 'black', 'odd', 'third12', 'col3', 'second18']},
+    {num: '29', payout: ['29', 'black', 'even', 'third12', 'col1', 'second18']},
+    {num: '30', payout: ['30', 'red', 'odd', 'third12', 'col2', 'second18']},
+    {num: '31', payout: ['31', 'black', 'even', 'third12', 'col3', 'second18']},
+    {num: '32', payout: ['32', 'red', 'odd', 'third12', 'col1', 'second18']},
+    {num: '33', payout: ['33', 'black', 'even', 'third12', 'col2', 'second18']},
+    {num: '34', payout: ['34', 'red', 'odd', 'third12', 'col3', 'second18']},
+    {num: '35', payout: ['35', 'black', 'even', 'third12', 'col1', 'second18']},
+    {num: '36', payout: ['36', 'red', 'odd', 'third12', 'col2', 'second18']},
+]
 
 
 
