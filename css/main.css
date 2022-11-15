@@ -108,6 +108,7 @@ html, body {
 button {
     width: 90%;
     height: 90%;
+    color: var(--casinoWhite);
     /* you may have to use display flex to center buttons? */
 
     outline: black groove 1px;
@@ -129,11 +130,11 @@ button {
 
 .red {
     background-color: var(--casinoRed);
-    color: var(--casinoWhite);
+    
 }
 .black {
     background-color: var(--casinoBlack);
-    color: var(--casinoWhite);
+    
 }
 .zero {
     background-color: #3db54b;
