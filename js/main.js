@@ -40,48 +40,15 @@ let winningNum; // Random number generated to represent result of wheel spin
 
 
 /*----- cached element references -----*/
-
-// const chipEl = document.querySelectorAll('.chip');
-const spinEl = document.querySelector('#spin');
-
-//testing borrowed code
-const evenBtn = document.querySelectorAll('.even');
-evenBtn.forEach(bet => {
-    bet.addEventListener('click', function placeBet(){
-        
-
-    })
-});
+// const spinEl = document.querySelector('#spin');
+// const evenNums = document.querySelectorAll('.even');
+// const oddNums = document.querySelector('#odd');
+// const blackHalf = document.querySelector('#black');
+// const redHalf = document.querySelector('#red');
+// const firstHalf = document.querySelector('#bet-1-18');
+// const secondHalf = document.querySelector('#bet-19-36');
 
 
-const numsEl = document.querySelectorAll(".num");
-numsEl.addEventListener('click', function(e){
-    console.log(e.target.id);
-    placeBet;
-
-});
-
-
-
-
-
-
-
-
-
-// evenBtn.addEventListener('click', placeBet);
-const evenNums = document.querySelectorAll('.even');
-console.log(evenNums.length)
-
-
-const oddNums = document.querySelector('#odd');
-const blackHalf = document.querySelector('#black');
-const redHalf = document.querySelector('#red');
-const firstHalf = document.querySelector('#bet-1-18');
-const secondHalf = document.querySelector('#bet-19-36');
-
-
-const num1 = document.querySelector('#bet-1');
 
 /*----- event listeners -----*/
 
