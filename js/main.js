@@ -83,7 +83,7 @@ let pWager; // $ amount player wagering on current bet
 
 let winnings; // $ amount player wins or looses at conclusion of spin
 let winningNum; // Random number generated to represent result of wheel spin
-let winningPayouts = []; // Array of all categoies to payout based on winning number spun.
+let winningPayouts; // Array of all categoies to payout based on winning number spun.
 
 
 
@@ -115,8 +115,18 @@ spinBtnEl.addEventListener('click', spinWheel)
 
 
 init();
-console.log(spinWheel());
+
 /*----- functions -----*/
+
+function init() {
+    pBets = [];
+    pCredit = 100;
+    winningNum = null;
+}
+
+
+
+
 function availCredit() {
     pCredit = pCredit - (pWager)
 }
@@ -141,40 +151,41 @@ function placeBet(e) {
     console.log(pCredit, "<--pCredit Available")
 }
 
-function init() {
-    pBets = [];
-    pCredit = 100;
-    winningNum = null;
-}
+
+
 function findWinner() {
-    for (let i = 0; i < WINNERS; i++) {
-        WINNERS[i]['num'] = winningNum
+    for (let i = 0; i < WINNERS.length; i++) {
+        console.log((WINNERS[i]['num'] === winningNum.toString()));
+
+        // if (WINNERS[i]['num'] === winningNum.toString()) {
+        //     winningPayouts = WINNERS[i]['payout'];
+        // }
+        
+
+        WINNERS[i]['num'] === winningNum.toString()
         ? winningPayouts = WINNERS[i]['payout']
-        : '';
+        : console.log('NOT FOUND');
     }
 }
 
+
+
+
 function spinWheel() {
-    let winningNum;
     
-    winningNum = '20';
-    // winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
+    
+    
+    winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
     console.log(winningNum, '<-- Winning Number!')
     // loop through bets against winning number
+    findWinner(winningNum);
 
     for (let i = 0; i < pBets.length; i++) {
         let checkBet = pBets[i]['id'];
-        let checkBetWager = pBets[i]['wager'];
-
-         
-
-        checkBet === winningNum
-
-        console.log(checkBet, '<--- current bet checking in loop')
-
         
+        if (winningPayouts.includes(checkBet)){
 
-
+        }
     }
 
 
