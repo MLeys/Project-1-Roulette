@@ -121,7 +121,7 @@ init();
 function init() {
     pBets = [];
     pCredit = 100;
-    winningNum = null;
+    winningNum = 20;
 }
 
 
@@ -155,7 +155,7 @@ function placeBet(e) {
 
 function findWinner() {
     for (let i = 0; i < WINNERS.length; i++) {
-        console.log((WINNERS[i]['num'] === winningNum.toString()));
+        // console.log((WINNERS[i]['num'] === winningNum.toString()));
 
         // if (WINNERS[i]['num'] === winningNum.toString()) {
         //     winningPayouts = WINNERS[i]['payout'];
@@ -164,7 +164,7 @@ function findWinner() {
 
         WINNERS[i]['num'] === winningNum.toString()
         ? winningPayouts = WINNERS[i]['payout']
-        : console.log('NOT FOUND');
+        : null;
     }
 }
 
@@ -175,19 +175,39 @@ function spinWheel() {
     
     
     
-    winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
+    // winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
     console.log(winningNum, '<-- Winning Number!')
     // loop through bets against winning number
     findWinner(winningNum);
+    let multiplyer;
 
     for (let i = 0; i < pBets.length; i++) {
         let checkBet = pBets[i]['id'];
         
         if (winningPayouts.includes(checkBet)){
+            let betWager = pBets[i]['wager'];
+            
+            for (let j = 0; j < PAYOUTS.length; j++) {
+                
+                PAYOUTS[j]['betType'].includes(checkBet) 
+                ? multiplyer = PAYOUTS[i]['payout']
+                    && (winnings += betWager * multiplyer)
+                : console.log('bettype NOT FOUND!');
+            }
 
+
+            // for (let i = 0; i < PAYOUTS.length; i++) {
+            //     if (PAYOUTS[i]['betType'].includes(checkBet)){
+            //         winnings += (betWager * (PAYOUTS[i]['payout']))
+            //     }
+            // }
+
+        } else {
+            winnings = 0;
+            console.log("---   Player Loses :(    ---")
         }
     }
-
+    console.log(winnings, '<--WINNINGS!')
 
 }
 
