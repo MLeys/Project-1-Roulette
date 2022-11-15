@@ -84,8 +84,9 @@ let pWager; // $ amount player wagering on current bet
 let winnings; // $ amount player wins or looses at conclusion of spin
 let winningNum; // Random number generated to represent result of wheel spin
 let winningPayouts; // Array of all categoies to payout based on winning number spun.
-
-
+let betMultiplyer;
+let betWager;
+let checkBet;
 
 
 /*----- cached element references -----*/
@@ -122,6 +123,7 @@ function init() {
     pBets = [];
     pCredit = 100;
     winningNum = 20;
+    winnings = 0;
 }
 
 
@@ -160,11 +162,9 @@ function findWinner() {
         // if (WINNERS[i]['num'] === winningNum.toString()) {
         //     winningPayouts = WINNERS[i]['payout'];
         // }
-        
-
         WINNERS[i]['num'] === winningNum.toString()
         ? winningPayouts = WINNERS[i]['payout']
-        : null;
+        : '';
     }
 }
 
@@ -182,17 +182,32 @@ function spinWheel() {
     let multiplyer;
 
     for (let i = 0; i < pBets.length; i++) {
-        let checkBet = pBets[i]['id'];
+        checkBet = pBets[i]['id'];
+        console.log('CHECKING BET#: ', i, 'num = ', checkBet)
+        
         
         if (winningPayouts.includes(checkBet)){
-            let betWager = pBets[i]['wager'];
+            betWager = pBets[i]['wager'];
+            console.log('-----BET in winningPayouts-------WAGER: ', betWager)
+
             
             for (let j = 0; j < PAYOUTS.length; j++) {
-                
                 PAYOUTS[j]['betType'].includes(checkBet) 
-                ? multiplyer = PAYOUTS[i]['payout']
-                    && (winnings += betWager * multiplyer)
-                : console.log('bettype NOT FOUND!');
+                    ? betMultiplyer = PAYOUTS[j]['payout']
+                        && console.log(`Wager: ${betWager} * ${betMultiplyer} multiplyer`)
+                        && console.log(`Result: ${betWager*betMultiplyer}`)
+                        && (winnings += betWager*betMultiplyer)
+                        && console.log('WINNINGS: ',winnings)
+                    : '';
+          
+
+
+
+                // PAYOUTS[j]['betType'].includes(checkBet) 
+                // ? multiplyer = PAYOUTS[j]['payout']
+                //     && (winnings += betWager * multiplyer)
+                //     && (console.log('winnings: ', betWager, '*', multiplyer))
+                // : console.log('bettype: ',checkBet, '  --N\LD NEVER HAPPEN');
             }
 
 
@@ -203,8 +218,8 @@ function spinWheel() {
             // }
 
         } else {
-            winnings = 0;
-            console.log("---   Player Loses :(    ---")
+            winnings += 0;
+            
         }
     }
     console.log(winnings, '<--WINNINGS!')
