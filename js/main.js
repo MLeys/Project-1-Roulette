@@ -83,6 +83,7 @@ let pWager; // $ amount player wagering on current bet
 
 let winnings; // $ amount player wins or looses at conclusion of spin
 let winningNum; // Random number generated to represent result of wheel spin
+let winningPayouts = []; // Array of all categoies to payout based on winning number spun.
 
 
 
@@ -145,17 +146,30 @@ function init() {
     pCredit = 100;
     winningNum = null;
 }
+function findWinner() {
+    for (let i = 0; i < WINNERS; i++) {
+        WINNERS[i]['num'] = winningNum
+        ? winningPayouts = WINNERS[i]['payout']
+        : '';
+    }
+}
 
 function spinWheel() {
     let winningNum;
     
-    winningNum = Math.floor(Math.random() * NUMBERS.length);
+    winningNum = '20';
+    // winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
     console.log(winningNum, '<-- Winning Number!')
     // loop through bets against winning number
 
     for (let i = 0; i < pBets.length; i++) {
         let checkBet = pBets[i]['id'];
-        let checkBetWager = pBets[i]
+        let checkBetWager = pBets[i]['wager'];
+
+         
+
+        checkBet === winningNum
+
         console.log(checkBet, '<--- current bet checking in loop')
 
         
