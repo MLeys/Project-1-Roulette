@@ -122,7 +122,7 @@ button {
     outline-style: solid;
 }
 
-.red, #bet-red {
+.red {
     background-color: red;
     color: var(--casinoWhite);
 }
