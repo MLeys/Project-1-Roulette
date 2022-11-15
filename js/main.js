@@ -7,8 +7,8 @@ const NUMBERS = ['0','00',
                 '21','22','23','24','25','26','27','28','29','30',
                 '31','32','33','34','35','36'];
 
-const SIDEBETS = ['1-12','13-24','25-26',
-                '18-','19+', 'even', 'odd', 'red', 'black',
+const SIDEBETS = ['first12','second12','third12',
+                'first18','second18', 'even', 'odd', 'red', 'black',
                 'col1', 'col2', 'col3'];
 
 const PAYOUTS =[
@@ -47,11 +47,11 @@ let winningNum; // Random number generated to represent result of wheel spin
 // const redHalf = document.querySelector('#red');
 // const firstHalf = document.querySelector('#bet-1-18');
 // const secondHalf = document.querySelector('#bet-19-36');
-
+const tableAreaEl = document.querySelector('.table')
 
 
 /*----- event listeners -----*/
-
+tableAreaEl.addEventListener('click', placeBet);
 // evenNums.addEventListener('click', placeBet);
 // oddEl.addEventListener('click', placeBet);
 // blackEl.addEventListener('click', placeBet);
@@ -72,11 +72,20 @@ function availCredit() {
 
 
 function placeBet(e) {
+    console.log("------placeBet------")
 
-    let betObject ={id: e.target.id, wager: CHIP[0]};    // ^^ change chip val
-    (e.target.id != '' ? pBets.push(betObject) && (pCredit -= betObject['wager']) : null)
-    pCredit -= betObject['wager'];
-    console.log(pCredit + "<--pCREDIT")
+    let targetId = e.target.id;
+    let betObject ={id: targetId, wager: CHIP[0]};
+    console.log(betObject);    
+
+
+    NUMBERS.includes(targetId)
+        || SIDEBETS.includes(targetId)
+    ? (pBets.push(betObject)) 
+        && (pCredit -= betObject['wager']) 
+        : null;
+    
+    console.log(pCredit, "<--pCREDIT")
 }
 
 function init() {
