@@ -86,6 +86,11 @@ const spinBtnEl = document.querySelector('#spin');
 const totalEl = document.querySelector('.total');
 const chipBtn = document.querySelector('.players-bets');
 const totalBetEl = document.querySelector('#bet-total');
+const allChipButtons = document.querySelectorAll('.chip');
+const allNumButtons = document.querySelectorAll('.num');
+const allFiftyFiftyButtons = document.querySelectorAll('.fiftyFifty');
+const allThirdsButtons = document.querySelectorAll('.thirds');
+
 
 
 
@@ -111,12 +116,37 @@ function init() {
 
 
 function selectChip(e) {
+    rmAllClassActive();
+    e.target.className ='active';
     let chipId = e.target.id
+
+    // let ifActiveClass;
+    // ifActiveClass = e.target.classList.contains('active');
+
+    // ifActiveClass 
+    //     ? e.target.classList.remove('active');
+    //     showingSubMenu = false;
+    //     subMenuEl.style.top = 0;
+    //     return;
+    // }; 
+
+
+
+    // REMOVE ALL active CLASS
     if (e.target.id.includes('chip')) {
         console.log(`-- CHIP SELECTED: ${e.target.id.replace('chip', '')}`);
         pWager = e.target.id.replace('chip', '');
     } 
 
+    const chipEl = document.getElementById(chipId);
+
+    chipEl.addEventListener('click', function onClick(event) {
+        const activeChip = chipEl.style.backgroundColor;
+
+        
+    })
+
+    
     console.log(`***** CHIP SELECTED: $${pWager}-----*****`);
     render();
 }
@@ -144,6 +174,18 @@ function placeBet(e) {
 
     
     render();
+}
+
+function rmAllClassActive() {
+    allChipButtons.forEach((element) => {
+        element.classList.remove('active');
+        element.className = 'inactive';
+    })
+        
+}
+
+function deactiveAllButtons () {
+
 }
 
 function addBetToTotal(e) {
