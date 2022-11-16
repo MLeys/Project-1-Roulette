@@ -103,7 +103,7 @@ function init() {
     clearTable();
     pCredit = 100;
     pTotalBet = 0;
-    winningNum = 20;  // TEMP VALUE FOR TESTING
+    winningNum = +'';  // TEMP VALUE FOR TESTING
 
     
     render();
@@ -125,7 +125,7 @@ function selectChip(e) {
 function placeBet(e) {
     console.log("------placeBet------")
     console.log(`-----$${pWager} per click-----`)
-    console.log(`---$${pTotalBet} THIS BET-----`)
+    console.log(`---$${pTotalBet} Total ALL bets-----`)
 
     let betId = e.target.id;
     
@@ -133,15 +133,13 @@ function placeBet(e) {
     console.log(betObject);    
 
 
-    NUMBERS.includes(betId)
-        || SIDEBETS.includes(betId)
+    NUMBERS.includes(betId) || SIDEBETS.includes(betId)
     ? (pBets.push(betObject)) 
-        && (pCredit -= betObject['wager'])
-        
-        : null;
+        && (pCredit -= betObject['wager'])      
+    : null;
     
     console.log(pBets, "<--pBets Array");
-    console.log(pCredit, "<--pCredit Available");
+    console.log(pCredit, "<-------pCredit Available");
 
     addBetToTotal(pWager);
     console.log(pTotalBet, "<---- Total Bet")
@@ -150,9 +148,9 @@ function placeBet(e) {
 }
 
 function addBetToTotal(e) {
-    console.log(pTotalBet, "<--previous Bet");
+    console.log(pTotalBet, "<--previous total");
     pTotalBet = (pTotalBet*1) + (e*1);
-    console.log(pTotalBet, "<--- NEW Bet")
+    console.log(pTotalBet, "<--- NEW total")
 
 }
 
@@ -176,7 +174,7 @@ function findWinner() {
 
 function spinWheel() {
 
-    // winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
+    winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
     console.log(winningNum, '<-- Winning Number!')
 
     findWinner(winningNum);
