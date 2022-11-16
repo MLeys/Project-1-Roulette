@@ -2,8 +2,10 @@
 :root {
     --testGreen: #59ff00;
     --casinoRed: #ff3434;  
+    --casinoRed-lite: #fc7272;
     --casinoGreen: #35654d;
     --casinoBlack: #000000;
+    --casinoBlack-lite: #343434;
     --luckyGreen: #6bff7d;
 
     --rouletteLines: #444444;
@@ -30,7 +32,6 @@ html, body {
 
 .title {
     font-size: 30px;
-    
     height: 5%;
 }
 .table {
@@ -39,7 +40,7 @@ html, body {
     grid-template-columns: 2fr 1fr 1fr 4fr;
     grid-template-rows: 1fr 12fr 1fr;
     height: 70%;
-  }
+}
 .players-bets {
     display: grid;
     height: 10%;
@@ -52,16 +53,10 @@ html, body {
     padding: 2%;
     height: 10%;
 }
-
 .game-empty {
     border: 0;
     margin: 0;
-
 }
-
-
-
-
 .bets-zeros {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 1fr;
@@ -72,7 +67,6 @@ html, body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    
     border: black groove 1vw;
 }
 .bets-third {
@@ -95,7 +89,6 @@ html, body {
     grid-template-rows: 1fr;
     border: var(--casinoWhite) inset .5vw;
 }
-
 .game-name {
     display: flex;
     writing-mode: vertical-rl;
@@ -107,17 +100,22 @@ html, body {
     border: var(--casinoBlack) solid .5vw;
 }
 button {
+    font-size: 2vh;
     width: 90%;
     height: 90%;
-    opacity: .65;
-    color: var(--casinoWhite);
-    /* you may have to use display flex to center buttons? */
-
+    
     outline: black groove 1px;
-    background-color: inherit;
-    border-style: inherit;
+    color: var(--casinoWhite);
     border-radius: 100%;
 }
+.fiftyFifty, .thirds {
+    color: var(--casinoBlack);
+}
+.red, .black {
+    color: var(--casinoWhite);
+}
+
+
 .button {
     outline: white solid 1px;;
 }
@@ -125,6 +123,7 @@ button {
     outline: white solid 2px;
 }
 .num {
+    opacity: 1;
     margin: 0;
     outline: var(--casinoBlack) solid 1px;
     outline-style: solid;
@@ -133,11 +132,11 @@ button {
 }
 
 .red {
-    background-color: var(--casinoRed);
+    background-color: var(--casinoRed-lite);
     
 }
 .black {
-    background-color: var(--casinoBlack);
+    background-color: var(--casinoBlack-lite);
     
 }
 .zero {
@@ -146,14 +145,13 @@ button {
 
 .table > div {
    justify-content: center;
-
 }
-
-
 .chip {
+    background-color: var(--casinoGray);
     margin: 0%;
     height: 50%;
 }
+
 .total {
     font-size: 10vh;
     color: var(--casinoWhite);
@@ -161,6 +159,8 @@ button {
 
 div.players-bets button.active {
     background-color: chartreuse;
+    color: var(--casinoBlack);
+    font-size: 3vh;
     margin: 0%;
     height: 50%;
 }
@@ -168,10 +168,7 @@ div.players-bets button.active {
 div.button button.active {
     opacity: 1;
     font-size: 3vh;
-    
 }
-
-
 
 .bets-fiftyFifty> .button > button,
 .bets-third>.button>button  {

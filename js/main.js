@@ -107,10 +107,13 @@ console.log(`^^^^^ WAGER START: $${pWager} ^^^^^`)
 
 function init() {
     clearTable();
+    rmActiveClassAllBtns();
+
     
     pCredit = 100;
     pTotalBet = 0;
     winningNum = +'';  // TEMP VALUE FOR TESTING
+
 
     
     render();
@@ -140,15 +143,6 @@ function selectChip(e) {
         pWager = e.target.id.replace('chip', '');
     } 
 
-    const chipEl = document.getElementById(chipId);
-
-    chipEl.addEventListener('click', function onClick(event) {
-        const activeChip = chipEl.style.backgroundColor;
-
-        
-    })
-
-    
     console.log(`***** CHIP SELECTED: $${pWager}-----*****`);
     render();
 }
@@ -190,7 +184,7 @@ function rmAllClassActive() {
         
 }
 
-function deactiveAllButtons () {
+function rmActiveClassAllBtns () {
     allChipButtons.forEach((element)=> {
         element.classList.remove('active');
     })
@@ -217,7 +211,7 @@ function clearTable() {
     pBets = [];
     winnings = 0;
     pTotalBet = 0;
-    deactiveAllButtons();
+    rmActiveClassAllBtns();
 }
 
 function findWinner() {
@@ -268,7 +262,7 @@ function spinWheel() {
     console.log(`++++++ Player Credit:   $${pCredit}   +++++++`)
     console.log(`\\\\\\\\\\ END LOOPS //////////`)
     clearTable();
-    deactiveAllButtons();
+    rmActiveClassAllBtns();
     render();
 
 }
