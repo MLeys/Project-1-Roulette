@@ -102,8 +102,6 @@ function init() {
 }
 
 
-
-
 function availCredit() {
     pCredit = pCredit - (pWager)
 }
@@ -128,7 +126,10 @@ function placeBet(e) {
     console.log(pCredit, "<--pCredit Available")
 }
 
-
+function clearTable() {
+    pBets = [];
+    winnings = 0;
+}
 
 function findWinner() {
     for (let i = 0; i < WINNERS.length; i++) {
@@ -175,6 +176,7 @@ function spinWheel() {
     pCredit += winnings;
     console.log(`++++++ Player Credit:   $${pCredit}   +++++++`)
     console.log(`\\\\\\\\\\ END LOOPS //////////`)
+    clearTable();
 
 }
 
