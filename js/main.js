@@ -77,14 +77,15 @@ let pWager = 1; // $ amount player wagering on current bet
 let winnings; // $ amount player wins or looses at conclusion of spin
 let winningNum; // Random number generated to represent result of wheel spin
 let winningPayouts; // Array of all categoies to payout based on winning number spun.
-let betMultiplyer;
-let betWager;
+let betWager; // Amount player wagers on current bet ??? maybe redundant ^^check later^^
+let pTotalBet; // How much $ the player has accumulated based on pWager and pBets
 
 
 const tableAreaEl = document.querySelector('.table');
 const spinBtnEl = document.querySelector('#spin');
 const totalEl = document.querySelector('.total');
 const chipBtn = document.querySelector('.players-bets');
+const totalBetEl = document.querySelector('#bet-total');
 
 
 
@@ -99,11 +100,13 @@ console.log(`^^^^^ WAGER START: $${pWager} ^^^^^`)
 /*----- functions -----*/
 
 function init() {
-    pBets = [];
+    clearTable();
     pCredit = 100;
-    winningNum = 20;
-    winnings = 0;
-    totalEl.innerHTML = (`$ ${pCredit}`)
+    pTotalBet = 0;
+    winningNum = 20;  // TEMP VALUE FOR TESTING
+
+    
+    render();
 }
 
 
@@ -124,6 +127,9 @@ function placeBet(e) {
     console.log("------placeBet------")
     console.log(`---$${pWager} per click-----`)
     
+    
+    console.log(`---$${pTotalBet} THIS BET-----`)
+
     let betId = e.target.id;
     
     let betObject ={id: betId, wager: pWager};
@@ -133,17 +139,30 @@ function placeBet(e) {
     NUMBERS.includes(betId)
         || SIDEBETS.includes(betId)
     ? (pBets.push(betObject)) 
-        && (pCredit -= betObject['wager']) 
+        && (pCredit -= betObject['wager'])
+        
         : null;
     
     console.log(pBets, "<--pBets Array");
     console.log(pCredit, "<--pCredit Available");
+
+    addBetToTotal(pWager);
+    console.log(pTotalBet, "<---- Total Bet")
+
     render();
+}
+
+function addBetToTotal(e) {
+    console.log(pTotalBet, "<--previous Bet");
+    pTotalBet += e;
+    console.log(pTotalBet, "<--- NEW Bet")
+
 }
 
 function clearTable() {
     pBets = [];
     winnings = 0;
+    pTotalBet = 0;
 }
 
 function findWinner() {
@@ -197,5 +216,6 @@ function spinWheel() {
 }
 
 function render() {
-    totalEl.innerHTML = (`$ ${pCredit}`)
+    totalEl.innerHTML = (`$ ${pCredit}`);
+    totalBetEl.innerHTML = (`$ ${pTotalBet}`);
 }
