@@ -69,13 +69,6 @@ const WINNERS = [
 
 
 
-
-
-
-
-
-
-
 /*----- app's state (variables) -----*/
 let pBets; // Players bets - as an object with changing key:value pairs 
 let pCredit; // Players available credit for which to gamble or play the game
@@ -88,15 +81,6 @@ let betMultiplyer;
 let betWager;
 
 
-
-/*----- cached element references -----*/
-// const spinEl = document.querySelector('#spin');
-// const evenNums = document.querySelectorAll('.even');
-// const oddNums = document.querySelector('#odd');
-// const blackHalf = document.querySelector('#black');
-// const redHalf = document.querySelector('#red');
-// const firstHalf = document.querySelector('#bet-1-18');
-// const secondHalf = document.querySelector('#bet-19-36');
 const tableAreaEl = document.querySelector('.table');
 const spinBtnEl = document.querySelector('#spin');
 
@@ -104,15 +88,6 @@ const spinBtnEl = document.querySelector('#spin');
 /*----- event listeners -----*/
 tableAreaEl.addEventListener('click', placeBet);
 spinBtnEl.addEventListener('click', spinWheel)
-// evenNums.addEventListener('click', placeBet);
-// oddEl.addEventListener('click', placeBet);
-// blackEl.addEventListener('click', placeBet);
-// redEl.addEventListener('click', placeBet);
-// firstHalfEl.addEventListener('click', placeBet);
-// secondHalfEl.addEventListener('click', placeBet);
-
-
-// const chipSelect = addEventListener('click', selectChip);
 
 
 init();
@@ -157,11 +132,7 @@ function placeBet(e) {
 
 function findWinner() {
     for (let i = 0; i < WINNERS.length; i++) {
-        // console.log((WINNERS[i]['num'] === winningNum.toString()));
 
-        // if (WINNERS[i]['num'] === winningNum.toString()) {
-        //     winningPayouts = WINNERS[i]['payout'];
-        // }
         WINNERS[i]['num'] === winningNum.toString()
         ? winningPayouts = WINNERS[i]['payout']
         : '';
@@ -172,9 +143,7 @@ function findWinner() {
 
 
 function spinWheel() {
-    
-    
-    
+
     // winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
     console.log(winningNum, '<-- Winning Number!')
     // loop through bets against winning number
@@ -185,47 +154,22 @@ function spinWheel() {
         checkBet = pBets[i]['id'];
         console.log('CHECKING BET#: ', i, 'num = ', checkBet)
         
-        
         if (winningPayouts.includes(checkBet)){
             betWager = pBets[i]['wager'];
             console.log('-----BET in winningPayouts-------WAGER: ', betWager)
 
-            
-            // for (let j = 0; j < PAYOUTS.length; j++) {
-            //     PAYOUTS[j]['betType'].includes(checkBet) 
-            //         // ? betMultiplyer = PAYOUTS[j]['payout']
-            //         ? betMultiplyer = PAYOUTS[j]['payout']
-            //             && console.log(`Wager: ${betWager} * ${betMultiplyer} multiplyer`)
-            //             && console.log(`Result: ${betWager*betMultiplyer}`)
-            //             && (winnings += betWager*betMultiplyer)
-            //             && console.log('WINNINGS: ',winnings)
-            //         : '';
             for (let j = 0; j < PAYOUTS.length; j++) {
                 PAYOUTS[j]['betType'].includes(checkBet) 
                     // ? betMultiplyer = PAYOUTS[j]['payout']
                     ? console.log(`Wager: ${betWager} * ${PAYOUTS[j]['payout']} multiplyer`)
                         && console.log(`Result: ${betWager*PAYOUTS[j]['payout']}`)
-                        && (winnings += betWager*PAYOUTS[j]['payout'])
-                        && console.log('WINNINGS: ',winnings)
+                    
+                        
+                        && (winnings += (PAYOUTS[j]['payout'] * betWager))
+                        && console.log('---------WINNINGS------------')
+                        && console.log(`----------${winnings}----------`)
                     : '';
-          
-
-                
-
-                // PAYOUTS[j]['betType'].includes(checkBet) 
-                // ? multiplyer = PAYOUTS[j]['payout']
-                //     && (winnings += betWager * multiplyer)
-                //     && (console.log('winnings: ', betWager, '*', multiplyer))
-                // : console.log('bettype: ',checkBet, '  --N\LD NEVER HAPPEN');
             }
-
-
-            // for (let i = 0; i < PAYOUTS.length; i++) {
-            //     if (PAYOUTS[i]['betType'].includes(checkBet)){
-            //         winnings += (betWager * (PAYOUTS[i]['payout']))
-            //     }
-            // }
-
         } else {
             winnings += 0;
             
