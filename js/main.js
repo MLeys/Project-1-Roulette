@@ -72,7 +72,7 @@ const WINNERS = [
 /*----- app's state (variables) -----*/
 let pBets; // Players bets - as an object with changing key:value pairs 
 let pCredit; // Players available credit for which to gamble or play the game
-let pWager; // $ amount player wagering on current bet
+let pWager = 1; // $ amount player wagering on current bet
 
 let winnings; // $ amount player wins or looses at conclusion of spin
 let winningNum; // Random number generated to represent result of wheel spin
@@ -84,16 +84,18 @@ let betWager;
 const tableAreaEl = document.querySelector('.table');
 const spinBtnEl = document.querySelector('#spin');
 const totalEl = document.querySelector('.total');
+const chipBtn = document.querySelector('.players-bets');
 
 
 
 /*----- event listeners -----*/
 tableAreaEl.addEventListener('click', placeBet);
 spinBtnEl.addEventListener('click', spinWheel)
+chipBtn.addEventListener('click', selectChip)
 
 
 init();
-
+console.log(`^^^^^ WAGER START: $${pWager} ^^^^^`)
 /*----- functions -----*/
 
 function init() {
@@ -105,17 +107,26 @@ function init() {
 }
 
 
-function availCredit() {
-    pCredit = pCredit - (pWager)
+function selectChip(e) {
+    let chipId = e.target.id
+    if (e.target.id.includes('chip')) {
+        console.log(`-- CHIP SELECTED: ${e.target.id.replace('chip', '')}`);
+        pWager = e.target.id.replace('chip', '');
+    } 
+
+    
+    console.log(`***** CHIP SELECTED: $${pWager}-----*****`);
+    render();
 }
 
 
 function placeBet(e) {
     console.log("------placeBet------")
-
+    console.log(`---$${pWager} per click-----`)
+    
     let betId = e.target.id;
     
-    let betObject ={id: betId, wager: CHIP[0]};
+    let betObject ={id: betId, wager: pWager};
     console.log(betObject);    
 
 
@@ -125,8 +136,9 @@ function placeBet(e) {
         && (pCredit -= betObject['wager']) 
         : null;
     
-    console.log(pBets, "<--pBets Array")
-    console.log(pCredit, "<--pCredit Available")
+    console.log(pBets, "<--pBets Array");
+    console.log(pCredit, "<--pCredit Available");
+    render();
 }
 
 function clearTable() {
@@ -152,7 +164,7 @@ function spinWheel() {
     console.log(winningNum, '<-- Winning Number!')
 
     findWinner(winningNum);
-    let multiplyer;
+    
 
     for (let i = 0; i < pBets.length; i++) {
         checkBet = pBets[i]['id'];
