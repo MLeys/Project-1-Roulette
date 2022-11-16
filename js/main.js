@@ -83,6 +83,8 @@ let betWager;
 
 const tableAreaEl = document.querySelector('.table');
 const spinBtnEl = document.querySelector('#spin');
+const totalEl = document.querySelector('.total');
+
 
 
 /*----- event listeners -----*/
@@ -99,6 +101,7 @@ function init() {
     pCredit = 100;
     winningNum = 20;
     winnings = 0;
+    totalEl.innerHTML = (`$ ${pCredit}`)
 }
 
 
@@ -177,9 +180,10 @@ function spinWheel() {
     console.log(`++++++ Player Credit:   $${pCredit}   +++++++`)
     console.log(`\\\\\\\\\\ END LOOPS //////////`)
     clearTable();
+    render();
 
 }
 
 function render() {
-
+    totalEl.innerHTML = (`$ ${pCredit}`)
 }
