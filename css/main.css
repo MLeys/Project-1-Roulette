@@ -108,6 +108,7 @@ html, body {
 button {
     width: 90%;
     height: 90%;
+    opacity: .75;
     color: var(--casinoWhite);
     /* you may have to use display flex to center buttons? */
 
@@ -126,6 +127,7 @@ button {
     margin: 0;
     outline: var(--casinoBlack) solid 1px;
     outline-style: solid;
+    font-size: 3vh;
 }
 
 .red {
@@ -159,6 +161,11 @@ div.players-bets button.active {
     background-color: chartreuse;
     margin: 0%;
     height: 50%;
+}
+
+div.button button.active {
+    opacity: 1;
+    font-size: ;
 }
 
 

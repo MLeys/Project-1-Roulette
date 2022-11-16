@@ -106,7 +106,7 @@ console.log(`^^^^^ WAGER START: $${pWager} ^^^^^`)
 
 function init() {
     clearTable();
-    deactiveAllButtons();
+    
     pCredit = 100;
     pTotalBet = 0;
     winningNum = +'';  // TEMP VALUE FOR TESTING
@@ -147,6 +147,7 @@ function placeBet(e) {
     console.log("------placeBet------")
     console.log(`-----$${pWager} per click-----`)
     console.log(`---$${pTotalBet} Total ALL bets-----`)
+    e.target.classList.add('active');
 
     let betId = e.target.id;
     
@@ -166,6 +167,9 @@ function placeBet(e) {
     
     render();
 }
+
+
+
 
 function rmAllClassActive() {
     allChipButtons.forEach((element) => {
@@ -202,6 +206,7 @@ function clearTable() {
     pBets = [];
     winnings = 0;
     pTotalBet = 0;
+    deactiveAllButtons();
 }
 
 function findWinner() {
