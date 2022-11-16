@@ -117,7 +117,6 @@ function selectChip(e) {
         pWager = e.target.id.replace('chip', '');
     } 
 
-    
     console.log(`***** CHIP SELECTED: $${pWager}-----*****`);
     render();
 }
@@ -125,9 +124,7 @@ function selectChip(e) {
 
 function placeBet(e) {
     console.log("------placeBet------")
-    console.log(`---$${pWager} per click-----`)
-    
-    
+    console.log(`-----$${pWager} per click-----`)
     console.log(`---$${pTotalBet} THIS BET-----`)
 
     let betId = e.target.id;
@@ -154,7 +151,7 @@ function placeBet(e) {
 
 function addBetToTotal(e) {
     console.log(pTotalBet, "<--previous Bet");
-    pTotalBet += e;
+    pTotalBet = (pTotalBet*1) + (e*1);
     console.log(pTotalBet, "<--- NEW Bet")
 
 }
