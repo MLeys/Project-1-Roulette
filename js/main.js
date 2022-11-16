@@ -135,20 +135,20 @@ function placeBet(e) {
 
     NUMBERS.includes(betId) || SIDEBETS.includes(betId)
     ? (pBets.push(betObject)) 
-        && (pCredit -= betObject['wager'])      
+        && (pCredit -= betObject['wager'])
+        && addBetToTotal(pWager)      
     : null;
     
     console.log(pBets, "<--pBets Array");
     console.log(pCredit, "<-------pCredit Available");
 
-    addBetToTotal(pWager);
-    console.log(pTotalBet, "<---- Total Bet")
-
+    
     render();
 }
 
 function addBetToTotal(e) {
     console.log(pTotalBet, "<--previous total");
+
     pTotalBet = (pTotalBet*1) + (e*1);
     console.log(pTotalBet, "<--- NEW total")
 
