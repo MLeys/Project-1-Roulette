@@ -106,6 +106,7 @@ console.log(`^^^^^ WAGER START: $${pWager} ^^^^^`)
 
 function init() {
     clearTable();
+    deactiveAllButtons();
     pCredit = 100;
     pTotalBet = 0;
     winningNum = +'';  // TEMP VALUE FOR TESTING
@@ -117,20 +118,9 @@ function init() {
 
 function selectChip(e) {
     rmAllClassActive();
-    e.target.className ='active';
+
+    e.target.classList.add('active');
     let chipId = e.target.id
-
-    // let ifActiveClass;
-    // ifActiveClass = e.target.classList.contains('active');
-
-    // ifActiveClass 
-    //     ? e.target.classList.remove('active');
-    //     showingSubMenu = false;
-    //     subMenuEl.style.top = 0;
-    //     return;
-    // }; 
-
-
 
     // REMOVE ALL active CLASS
     if (e.target.id.includes('chip')) {
@@ -179,13 +169,24 @@ function placeBet(e) {
 function rmAllClassActive() {
     allChipButtons.forEach((element) => {
         element.classList.remove('active');
-        element.className = 'inactive';
+        
     })
         
 }
 
 function deactiveAllButtons () {
-
+    allChipButtons.forEach((element)=> {
+        element.classList.add('inactive');
+    })
+    allFiftyFiftyButtons.forEach((element)=> {
+        element.classList.add('inactive');
+    })
+    allThirdsButtons.forEach((element)=> {
+        element.classList.add('inactive');
+    })
+    allNumButtons.forEach((element)=> {
+        element.classList.add('inactive');
+    })
 }
 
 function addBetToTotal(e) {

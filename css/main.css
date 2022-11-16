@@ -157,6 +157,8 @@ button {
 
 div.players-bets button.active {
     background-color: chartreuse;
+    margin: 0%;
+    height: 50%;
 }
 
 
