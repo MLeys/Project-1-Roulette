@@ -9,6 +9,7 @@
     --rouletteLines: #444444;
     
     --casinoWhite: #ffffff;
+    --casinoGray: #575757;
     --casinoGreen2: #477148;
 }
 
@@ -108,7 +109,7 @@ html, body {
 button {
     width: 90%;
     height: 90%;
-    opacity: .75;
+    opacity: .65;
     color: var(--casinoWhite);
     /* you may have to use display flex to center buttons? */
 
@@ -127,7 +128,7 @@ button {
     margin: 0;
     outline: var(--casinoBlack) solid 1px;
     outline-style: solid;
-    font-size: 3vh;
+    font-size: 2vh;
     
 }
 
@@ -166,6 +167,7 @@ div.players-bets button.active {
 
 div.button button.active {
     opacity: 1;
+    font-size: 3vh;
     
 }
 
@@ -183,14 +185,22 @@ div.button button.active {
     margin: 5%;
 }
 #reset {
+    border-radius: 15%;
     font-size: 2vh;
-    background-color: var(--casinoWhite);
-    color: var(--casinoBlack);
+    background-color: var(--casinoGray);
+    
 }
 
 
 #spin {
     background-color: rgb(245, 0, 0);
+}
+
+#reset:hover {
+    background-color: var(--casinoWhite);
+    color: var(--casinoBlack);
+    
+    
 }
 
 #spin:hover {

@@ -117,6 +117,13 @@ function init() {
 }
 
 function resetBets(){
+    console.log(`------CLEARING BETS--------`);
+    console.log(pBets);
+    console.log(pTotalBet);
+    console.log(pCredit);
+    console.log(`^^^^^^^^ pBets ARRAY ^^^^^^^`);
+    pCredit += +pTotalBet;
+    console.log(`NEW CERDIT:   ${pCredit}`);
     clearTable();
 }
 
@@ -261,6 +268,7 @@ function spinWheel() {
     console.log(`++++++ Player Credit:   $${pCredit}   +++++++`)
     console.log(`\\\\\\\\\\ END LOOPS //////////`)
     clearTable();
+    deactiveAllButtons();
     render();
 
 }
