@@ -128,6 +128,7 @@ button {
     outline: var(--casinoBlack) solid 1px;
     outline-style: solid;
     font-size: 3vh;
+    
 }
 
 .red {
@@ -165,7 +166,7 @@ div.players-bets button.active {
 
 div.button button.active {
     opacity: 1;
-    font-size: ;
+    
 }
 
 
@@ -181,6 +182,12 @@ div.button button.active {
 .table>div>button {
     margin: 5%;
 }
+#reset {
+    font-size: 2vh;
+    background-color: var(--casinoWhite);
+    color: var(--casinoBlack);
+}
+
 
 #spin {
     background-color: rgb(245, 0, 0);

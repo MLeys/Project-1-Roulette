@@ -90,7 +90,7 @@ const allChipButtons = document.querySelectorAll('.chip');
 const allNumButtons = document.querySelectorAll('.num');
 const allFiftyFiftyButtons = document.querySelectorAll('.fiftyFifty');
 const allThirdsButtons = document.querySelectorAll('.thirds');
-
+const resetBtn = document.querySelector('#reset');
 
 
 
@@ -98,6 +98,7 @@ const allThirdsButtons = document.querySelectorAll('.thirds');
 tableAreaEl.addEventListener('click', placeBet);
 spinBtnEl.addEventListener('click', spinWheel)
 chipBtn.addEventListener('click', selectChip)
+resetBtn.addEventListener('click', resetBets);
 
 
 init();
@@ -115,6 +116,9 @@ function init() {
     render();
 }
 
+function resetBets(){
+    clearTable();
+}
 
 function selectChip(e) {
     rmAllClassActive();
