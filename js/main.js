@@ -118,6 +118,7 @@ function init() {
 
 function selectChip(e) {
     rmAllClassActive();
+    
 
     e.target.classList.add('active');
     let chipId = e.target.id
@@ -176,16 +177,16 @@ function rmAllClassActive() {
 
 function deactiveAllButtons () {
     allChipButtons.forEach((element)=> {
-        element.classList.add('inactive');
+        element.classList.remove('active');
     })
     allFiftyFiftyButtons.forEach((element)=> {
-        element.classList.add('inactive');
+        element.classList.remove('active');
     })
     allThirdsButtons.forEach((element)=> {
-        element.classList.add('inactive');
+        element.classList.remove('active');
     })
     allNumButtons.forEach((element)=> {
-        element.classList.add('inactive');
+        element.classList.remove('active');
     })
 }
 
