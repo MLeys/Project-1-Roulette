@@ -146,7 +146,7 @@ function spinWheel() {
 
     // winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
     console.log(winningNum, '<-- Winning Number!')
-    // loop through bets against winning number
+
     findWinner(winningNum);
     let multiplyer;
 
@@ -156,26 +156,25 @@ function spinWheel() {
         
         if (winningPayouts.includes(checkBet)){
             betWager = pBets[i]['wager'];
-            console.log('-----BET in winningPayouts-------WAGER: ', betWager)
+            console.log(`Bet in PAYOUT: ${checkBet}  with $${betWager} wager`);
 
             for (let j = 0; j < PAYOUTS.length; j++) {
-                PAYOUTS[j]['betType'].includes(checkBet) 
-                    // ? betMultiplyer = PAYOUTS[j]['payout']
-                    ? console.log(`Wager: ${betWager} * ${PAYOUTS[j]['payout']} multiplyer`)
-                        && console.log(`Result: ${betWager*PAYOUTS[j]['payout']}`)
-                    
-                        
-                        && (winnings += (PAYOUTS[j]['payout'] * betWager))
-                        && console.log('---------WINNINGS------------')
-                        && console.log(`----------${winnings}----------`)
-                    : '';
+                if (PAYOUTS[j]['betType'].includes(checkBet) ) { 
+                    console.log(`BET PAYS: $${betWager} * ${PAYOUTS[j]['payout']} = ${betWager*PAYOUTS[j]['payout']}`);
+                    (winnings += (PAYOUTS[j]['payout'] * betWager));
+                    console.log('---------WINNINGS------------');
+                    console.log(`----------${winnings}----------`);
+                    console.log(`-------------------------------`);                    
+                }
             }
         } else {
-            winnings += 0;
+            console.log(`\\\\\\\\\\ not paid //////////`)
             
         }
-    }
-    console.log(winnings, '<--WINNINGS!')
+            }
+    pCredit += winnings;
+    console.log(`++++++ Player Credit:   $${pCredit}   +++++++`)
+    console.log(`\\\\\\\\\\ END LOOPS //////////`)
 
 }
 
