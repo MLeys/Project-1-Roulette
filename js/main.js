@@ -86,7 +86,7 @@ let winningNum; // Random number generated to represent result of wheel spin
 let winningPayouts; // Array of all categoies to payout based on winning number spun.
 let betMultiplyer;
 let betWager;
-let checkBet;
+
 
 
 /*----- cached element references -----*/
@@ -191,17 +191,26 @@ function spinWheel() {
             console.log('-----BET in winningPayouts-------WAGER: ', betWager)
 
             
+            // for (let j = 0; j < PAYOUTS.length; j++) {
+            //     PAYOUTS[j]['betType'].includes(checkBet) 
+            //         // ? betMultiplyer = PAYOUTS[j]['payout']
+            //         ? betMultiplyer = PAYOUTS[j]['payout']
+            //             && console.log(`Wager: ${betWager} * ${betMultiplyer} multiplyer`)
+            //             && console.log(`Result: ${betWager*betMultiplyer}`)
+            //             && (winnings += betWager*betMultiplyer)
+            //             && console.log('WINNINGS: ',winnings)
+            //         : '';
             for (let j = 0; j < PAYOUTS.length; j++) {
                 PAYOUTS[j]['betType'].includes(checkBet) 
-                    ? betMultiplyer = PAYOUTS[j]['payout']
-                        && console.log(`Wager: ${betWager} * ${betMultiplyer} multiplyer`)
-                        && console.log(`Result: ${betWager*betMultiplyer}`)
-                        && (winnings += betWager*betMultiplyer)
+                    // ? betMultiplyer = PAYOUTS[j]['payout']
+                    ? console.log(`Wager: ${betWager} * ${PAYOUTS[j]['payout']} multiplyer`)
+                        && console.log(`Result: ${betWager*PAYOUTS[j]['payout']}`)
+                        && (winnings += betWager*PAYOUTS[j]['payout'])
                         && console.log('WINNINGS: ',winnings)
                     : '';
           
 
-
+                
 
                 // PAYOUTS[j]['betType'].includes(checkBet) 
                 // ? multiplyer = PAYOUTS[j]['payout']
