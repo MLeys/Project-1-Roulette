@@ -180,8 +180,6 @@ function spinWheel() {
     console.log(winningNum, '<-- Winning Number!')
 
     findWinner(winningNum);
-    
-
     for (let i = 0; i < pBets.length; i++) {
         checkBet = pBets[i]['id'];
         console.log('CHECKING BET#: ', i, 'num = ', checkBet)
@@ -193,18 +191,22 @@ function spinWheel() {
             for (let j = 0; j < PAYOUTS.length; j++) {
                 if (PAYOUTS[j]['betType'].includes(checkBet) ) { 
                     console.log(`BET PAYS: $${betWager} * ${PAYOUTS[j]['payout']} = ${betWager*PAYOUTS[j]['payout']}`);
-                    (winnings += (PAYOUTS[j]['payout'] * betWager));
+                    winnings = +winnings + ((PAYOUTS[j]['payout']) * (+betWager));
                     console.log('---------WINNINGS------------');
                     console.log(`----------${winnings}----------`);
-                    console.log(`-------------------------------`);                    
+                    console.log(`-------------------------------`);   
+                    pCredit = +pCredit +winnings + +betWager;
                 }
+
             }
+            winnings = 0;
         } else {
             console.log(`\\\\\\\\\\ not paid //////////`)
             
         }
+
             }
-    pCredit += winnings;
+    
     console.log(`++++++ Player Credit:   $${pCredit}   +++++++`)
     console.log(`\\\\\\\\\\ END LOOPS //////////`)
     clearTable();
