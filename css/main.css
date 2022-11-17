@@ -4,6 +4,7 @@
     --casinoGreen2: #477148;
     --casinoGreen-bright: #59ff00;
     --casinoGreen-lucky: #6bff7d;
+    --casinoGreen-lite: #34cd71;
 
     --casinoRed: #ff3434;  
     --casinoRed-lite: #fc7272;
@@ -160,9 +161,13 @@ html, body {
     background-color: #3db54b;
 }
 
+/* all three CHIP buttons */
 .chip {
-    margin: 0%;
+    color: var(--casinoWhite);
+    border-radius: 100%;
     height: 50%;
+    font-size: 2vh;
+    
 }
 
 .total {
@@ -170,14 +175,21 @@ html, body {
     color: var(--casinoWhite);
 }
 
-/* Chip selectors when active*/
-div.players-bets button.active {
-    background-color: chartreuse;
-    color: var(--casinoBlack);
-    font-size: 5vh;
-    margin: 0%;
-    height: 50%;
+
+.chip1 {
+    background-color: white;
+    color: var(--casinoBlack-lite)
 }
+.chip5 {
+    background-color: var(--casinoRed);
+    }
+.chip25 {
+    background-color: green;
+}
+
+
+/* ----------Chip selectors when active-------*/
+
 
 div.button button.active {
     opacity: 1;
@@ -195,23 +207,10 @@ button.zero.active {
 button.sidebet.active {
     background-color: var(--casinoWhite);
 }
-
-/* div.bets-third div.button {
-    padding-top: 30%;
-    padding-right: 0%;
-    padding-bottom: 0%;
-    padding-left: 0%;
-    border: 0;
-
+button.chip.active {
+    font-size: 4vh;
+    background-color: rgb(255, 0, 102);
 }
-div.bets-fiftyFifty div.button {
-    padding-top: 20%;
-    padding-right: 5%;
-    padding-bottom: 0%;
-    padding-left: 5%;
-    margin: 0;
-    border: 0;
-} */
 
 #reset {
     border-radius: 15%;
@@ -219,18 +218,11 @@ div.bets-fiftyFifty div.button {
     background-color: var(--casinoGray);
     
 }
-#chip1 {
-    background-color: white;
-    color: var(--casinoBlack-lite)
-}
-#chip5 {
-    background-color: var(--casinoRed);
-    }
-#chip25 {
-    background-color: green;
-}
+
 #spin {
-    background-color: rgb(245, 0, 0);
+    height: 100%;
+    width: 100%;
+    background-color: var(--casinoGreen-lucky);
 }
 
 #reset:hover {
@@ -240,9 +232,8 @@ div.bets-fiftyFifty div.button {
     
 }
 
-
 #spin:hover {
-    background-color: #59ff00;
+    background-color: var(--casinoRed);
 }
 button:hover {
     background-color: var(--casinoGreen-lucky);
