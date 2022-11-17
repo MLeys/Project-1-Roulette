@@ -1,19 +1,24 @@
 
 :root {
-    --zeroGreen-bright: #59ff00;
-    --zeroGreen: #59ff00;
+    --casinoGreen: #35654d;
+    --casinoGreen2: #477148;
+    --casinoGreen-bright: #59ff00;
+    --casinoGreen-lucky: #6bff7d;
+
     --casinoRed: #ff3434;  
     --casinoRed-lite: #fc7272;
-    --casinoGreen: #35654d;
+    
     --casinoBlack: #000000;
     --casinoBlack-lite: #343434;
-    --luckyGreen: #6bff7d;
 
-    --rouletteLines: #444444;
+    --casinoGray: #575757;
+
+    --casinoGray-lite: #7e7e7e;
     
     --casinoWhite: #ffffff;
-    --casinoGray: #575757;
-    --casinoGreen2: #477148;
+    --casinoWhite-half: #ffffff87;
+    
+    
 }
 
 html, body {
@@ -178,15 +183,15 @@ button.black.active {
     background-color: var(--casinoBlack);
 }
 button.zero.active {
-    background-color: var(--zeroGreen-bright);
+    background-color: var(--casinoGreen-bright);
 }
 
 .bets-fiftyFifty> .button > button,
 .bets-third>.button>button  {
     border-radius: 90%;
 }
-.bets-number>div {
-    padding-top: 8%;
+.table>div>div.button {
+    padding-top: 5%;
     padding-right: 1%;
     padding-bottom: 0%;
     padding-left: 1%;
@@ -227,5 +232,5 @@ button.zero.active {
     background-color: #59ff00;
 }
 button:hover {
-    background-color: var(--luckyGreen);
+    background-color: var(--casinoGreen-lucky);
 }
