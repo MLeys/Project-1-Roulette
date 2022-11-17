@@ -163,8 +163,8 @@ html, body {
 
 /* all three CHIP buttons */
 .chip {
-    color: var(--casinoWhite);
-    border-radius: 100%;
+    color: var(--casinoBlack-lite);
+    border-radius: 35%;
     height: 50%;
     font-size: 2vh;
     
@@ -177,14 +177,14 @@ html, body {
 
 
 .chip1 {
-    background-color: white;
-    color: var(--casinoBlack-lite)
+    background-color: var(--casinoGray-lite);
+    
 }
 .chip5 {
-    background-color: var(--casinoRed);
+    background-color: var(--casinoRed-lite);
     }
 .chip25 {
-    background-color: green;
+    background-color: var(--casinoGreen-lite);
 }
 
 
@@ -209,8 +209,20 @@ button.sidebet.active {
 }
 button.chip.active {
     font-size: 4vh;
-    background-color: rgb(255, 0, 102);
 }
+button.chip1.active {
+    background-color: var(--casinoWhite);
+}
+button.chip5.active {
+    background-color: var(--casinoRed);
+    color: white;
+}
+button#chip25.active {
+    background-color: green; 
+    color: white;
+}
+
+
 
 #reset {
     border-radius: 15%;
