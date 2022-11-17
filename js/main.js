@@ -92,6 +92,10 @@ const allFiftyFiftyButtons = document.querySelectorAll('.fiftyFifty');
 const allThirdsButtons = document.querySelectorAll('.thirds');
 const resetBtn = document.querySelector('#reset');
 
+const modal = document.getElementById("mySpinModal");
+const spinBtn = document.getElementById("spin");
+const closeBtn = document.getElementsByClassName("close")[0];
+
 
 
 /*----- event listeners -----*/
@@ -101,9 +105,14 @@ chipBtn.addEventListener('click', selectChip)
 resetBtn.addEventListener('click', resetBets);
 
 
+
+
 init();
 console.log(`^^^^^ WAGER START: $${pWager} ^^^^^`)
 /*----- functions -----*/
+
+
+
 
 function init() {
     clearTable();
@@ -267,7 +276,20 @@ function spinWheel() {
 
 }
 
+spinBtn.onclick = function() {
+    modal.style.display = "flex";
+  }
+closeBtn.onclick = function () {
+    modal.style.display = 'none';
+}
+tableAreaEl.onclick = function(e) {
+    e.target == spinBtnEl ? spinModal.style.display ="none" :null;
+}
 function render() {
     totalEl.innerHTML = (`$ ${pCredit}`);
     totalBetEl.innerHTML = (`$ ${pTotalBet}`);
 }
+
+// const modal = document.getElementById("mySpinModal");
+// const spinBtn = document.getElementById("spin");
+// const closeBtn = document.getElementsByClassName("close")[0];
