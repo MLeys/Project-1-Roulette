@@ -239,7 +239,6 @@ function findWinner() {
 
 
 
-
 function spinWheel() {
 
     winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
