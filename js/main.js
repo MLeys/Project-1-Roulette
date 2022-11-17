@@ -185,9 +185,9 @@ function rmAllClassActive() {
 }
 
 function rmActiveClassAllBtns () {
-    allChipButtons.forEach((element)=> {
-        element.classList.remove('active');
-    })
+    // allChipButtons.forEach((element)=> {
+    //     element.classList.remove('active');
+    // })
     allFiftyFiftyButtons.forEach((element)=> {
         element.classList.remove('active');
     })
