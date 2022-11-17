@@ -16,7 +16,7 @@
     --casinoGray-lite: #7e7e7e;
     
     --casinoWhite: #ffffff;
-    --casinoWhite-half: #ffffff87;
+    --casinoWhite-half: #f1fffce8;
     
     
 }
@@ -98,6 +98,7 @@ html, body {
     grid-template-rows: 1fr;
     /* border: var(--casinoWhite) inset .5vw; */
 }
+
 .game-name {
     display: flex;
     writing-mode: vertical-rl;
@@ -109,34 +110,42 @@ html, body {
     border: 0;
 }
 
-button {
-    font-size: 2vh;
-    width: 90%;
-    height: 90%;
-    color: var(--casinoWhite);
-    border-radius: 100%;
+/* All divs in table */
+.button {
+    outline: white solid 1px;
+    background-color: var(--casinoGreen2)
 }
-.sidebet {
-    outline: white solid 2px;
-    color: var(--casinoBlack-lite);
-    border: 0;
+
+/* sidebet divs */
+.sidediv {
+    padding: 5%;
     
 }
+
+/* All numbers buttons (and col)*/
+.num {
+    font-size: 2vh;
+    width: 95%;
+    height: 95%;
+    color: var(--casinoWhite);
+    border-radius: 50%; 
+    opacity: 1;
+
+}
+/* All sidebet buttons */
+.sidebet {
+    color: var(--casinoBlack-lite);
+    background-color: var(--casinoWhite-half);
+    height: 100%;
+    width: 100%;
+    border-radius: 30%;
+    
+    
+}
+
+/* button colors class */
 .red, .black {
     color: var(--casinoWhite);
-}
-
-.button {
-    outline: white solid 1px;;
-}
-
-.num {
-    opacity: 1;
-    margin: 0;
-    outline: var(--casinoBlack) solid 1px;
-    outline-style: solid;
-    font-size: 2vh;
-    
 }
 
 .red {
@@ -183,26 +192,17 @@ button.black.active {
 button.zero.active {
     background-color: var(--casinoGreen-bright);
 }
+button.sidebet.active {
+    background-color: var(--casinoWhite);
+}
 
-.bets-fiftyFifty> .button > button,
-.bets-third>.button>button  {
-    border-radius: 90%;
-}
-.table>div>div.button {
-    background-color: var(--casinoGreen2);
-    padding-top: 5%;
-    padding-right: 1%;
-    padding-bottom: 0%;
-    padding-left: 1%;
-    margin: 0;
-}
-div.bets-third div.button {
+/* div.bets-third div.button {
     padding-top: 30%;
-    padding-right: 5%;
+    padding-right: 0%;
     padding-bottom: 0%;
-    padding-left: 5%;
-    margin: 0;
+    padding-left: 0%;
     border: 0;
+
 }
 div.bets-fiftyFifty div.button {
     padding-top: 20%;
@@ -211,7 +211,7 @@ div.bets-fiftyFifty div.button {
     padding-left: 5%;
     margin: 0;
     border: 0;
-}
+} */
 
 #reset {
     border-radius: 15%;
