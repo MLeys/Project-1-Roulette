@@ -175,13 +175,14 @@ html, body {
     
 }
 .currentBet {
+    display:  inline-block;
     border-radius: 20%;
     background-color: var(--casinoWhite);
-    font-size: 5vh;
+    font-size: 4vh;
     
 }
 .total {
-    font-size: 10vh;
+    font-size: 8vh;
     color: var(--casinoWhite);
 }
 
@@ -200,6 +201,11 @@ html, body {
 button.thirds.num {
     color: var(--casinoBlack);
 }
+
+span.total {
+
+}
+
 
 /* ----------Chip selectors when active-------*/
 
