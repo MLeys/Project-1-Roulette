@@ -163,7 +163,9 @@ html, body {
 .zero {
     background-color: #3db54b;
 }
-
+.image {
+    width: 100%;
+}
 /* all three CHIP buttons */
 .chip {
     color: var(--casinoBlack-lite);
@@ -277,24 +279,34 @@ button:hover {
 }
 
 .spin-modal {
-    display: flex;
+    display: none;
+    
     position: fixed;
+    height: 100%;
+    width: 100%;
     overflow: auto;
     position: center;
 }
 
 .spin-content {
     background-color: #34cd71;
-    margin: 25% auto;
+    margin: 5% auto;
     border: .5vh solid var(--casinoBlack);
     width: auto;
+    font-size: 18vh;
 }
 .close {
     color: var(--casinoGray-lite);
     float: right;
-    font-size: 2vh;
-    
-  }
+    font-size: 6vh;
+    color: var(--casinoWhite)
+}
+  .spinResult {
+    font-size: vh;
+    color: var(--casinoWhite);
+}
+
+
 .close:hover {
-    color: #fc7272;
+    color: var(--casinoRed);
 }
