@@ -108,6 +108,7 @@ html, body {
     color: var(--casinoWhite);
     border: 0;
 }
+
 button {
     font-size: 2vh;
     width: 90%;
@@ -115,20 +116,20 @@ button {
     color: var(--casinoWhite);
     border-radius: 100%;
 }
-.fiftyFifty, .thirds {
-    color: var(--casinoBlack);
+.sidebet {
+    outline: white solid 2px;
+    color: var(--casinoBlack-lite);
+    border: 0;
+    
 }
 .red, .black {
     color: var(--casinoWhite);
 }
 
-
 .button {
     outline: white solid 1px;;
 }
-.fiftyFifty, .thirds {
-    outline: white solid 2px;
-}
+
 .num {
     opacity: 1;
     margin: 0;
@@ -150,9 +151,6 @@ button {
     background-color: #3db54b;
 }
 
-.table > div {
-   justify-content: center;
-}
 .chip {
     margin: 0%;
     height: 50%;
@@ -163,11 +161,11 @@ button {
     color: var(--casinoWhite);
 }
 
-
+/* Chip selectors when active*/
 div.players-bets button.active {
     background-color: chartreuse;
     color: var(--casinoBlack);
-    font-size: 3vh;
+    font-size: 5vh;
     margin: 0%;
     height: 50%;
 }
@@ -191,15 +189,30 @@ button.zero.active {
     border-radius: 90%;
 }
 .table>div>div.button {
+    background-color: var(--casinoGreen2);
     padding-top: 5%;
     padding-right: 1%;
     padding-bottom: 0%;
     padding-left: 1%;
     margin: 0;
 }
-.table>div>button {
-    margin: 5%;
+div.bets-third div.button {
+    padding-top: 30%;
+    padding-right: 5%;
+    padding-bottom: 0%;
+    padding-left: 5%;
+    margin: 0;
+    border: 0;
 }
+div.bets-fiftyFifty div.button {
+    padding-top: 20%;
+    padding-right: 5%;
+    padding-bottom: 0%;
+    padding-left: 5%;
+    margin: 0;
+    border: 0;
+}
+
 #reset {
     border-radius: 15%;
     font-size: 2vh;
