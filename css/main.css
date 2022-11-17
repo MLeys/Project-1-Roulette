@@ -125,6 +125,7 @@ html, body {
 
 /* All numbers buttons (and col)*/
 .num {
+    
     font-size: 2vh;
     width: 95%;
     height: 95%;
@@ -135,6 +136,7 @@ html, body {
 }
 /* All sidebet buttons */
 .sidebet {
+    background-color: var(--casinoWhite);
     color: var(--casinoBlack-lite);
     background-color: var(--casinoWhite-half);
     height: 100%;
@@ -169,7 +171,12 @@ html, body {
     font-size: 2vh;
     
 }
-
+.currentBet {
+    border-radius: 20%;
+    background-color: var(--casinoWhite);
+    font-size: 5vh;
+    
+}
 .total {
     font-size: 10vh;
     color: var(--casinoWhite);
@@ -187,6 +194,9 @@ html, body {
     background-color: var(--casinoGreen-lite);
 }
 
+button.thirds.num {
+    color: var(--casinoBlack);
+}
 
 /* ----------Chip selectors when active-------*/
 
@@ -197,15 +207,18 @@ div.button button.active {
 }
 button.red.active {
     background-color: var(--casinoRed);
+    font-weight: bold;
 }
 button.black.active {
     background-color: var(--casinoBlack);
+    font-weight: bold;
 }
 button.zero.active {
     background-color: var(--casinoGreen-bright);
 }
 button.sidebet.active {
     background-color: var(--casinoWhite);
+    font-weight: bold;
 }
 button.chip.active {
     font-size: 4vh;
@@ -220,6 +233,14 @@ button.chip5.active {
 button#chip25.active {
     background-color: green; 
     color: white;
+}
+button.sidebet.red.active {
+
+    background-color: var(--casinoRed);
+
+}
+button.sidebet.black.active {
+    background-color: var(--casinoBlack);
 }
 
 
@@ -243,6 +264,9 @@ button#chip25.active {
     
     
 }
+#spin:modal {
+    background-color: hotpink;
+}
 
 #spin:hover {
     background-color: var(--casinoRed);
@@ -250,3 +274,26 @@ button#chip25.active {
 button:hover {
     background-color: var(--casinoGreen-lucky);
 }
+
+.modal {
+    display: none;
+    position: fixed;
+    height: 75vh;
+    width: 75vw;
+    overflow: auto;
+    background-color: var(--casinoWhite);
+}
+
+.spin-content {
+    background-color: #34cd71;
+    margin: 25% auto;
+    border: .5vh solid var(--casinoBlack);
+    width: auto;
+}
+.close {
+    color: var(--casinoGray-lite);
+    float: right;
+    font-size: ;
+    
+  }
+  
