@@ -91,6 +91,11 @@ const allNumButtons = document.querySelectorAll('.num');
 const allFiftyFiftyButtons = document.querySelectorAll('.fiftyFifty');
 const allThirdsButtons = document.querySelectorAll('.thirds');
 const resetBtn = document.querySelector('#reset');
+const wheelSpinMessageEl = document.querySelector('.spinResult');
+
+const spinModal = document.getElementById("mySpinModal");
+const spinBtn = document.getElementById("spin");
+const closeBtn = document.getElementsByClassName("close")[0];
 
 
 
@@ -101,9 +106,14 @@ chipBtn.addEventListener('click', selectChip)
 resetBtn.addEventListener('click', resetBets);
 
 
+
+
 init();
 console.log(`^^^^^ WAGER START: $${pWager} ^^^^^`)
 /*----- functions -----*/
+wheelSpinMessageEl.innerHTML = winningNum;
+
+
 
 function init() {
     clearTable();
@@ -181,7 +191,7 @@ function rmAllClassActive() {
         element.classList.remove('active');
         
     })
-        
+    render();
 }
 
 function rmActiveClassAllBtns () {
@@ -197,6 +207,7 @@ function rmActiveClassAllBtns () {
     allNumButtons.forEach((element)=> {
         element.classList.remove('active');
     })
+    render()
 }
 
 function addBetToTotal(e) {
@@ -204,6 +215,7 @@ function addBetToTotal(e) {
 
     pTotalBet = (pTotalBet*1) + (e*1);
     console.log(pTotalBet, "<--- NEW total")
+    render()
 
 }
 
@@ -212,6 +224,7 @@ function clearTable() {
     winnings = 0;
     pTotalBet = 0;
     rmActiveClassAllBtns();
+    render();
 }
 
 function findWinner() {
@@ -221,6 +234,7 @@ function findWinner() {
         ? winningPayouts = WINNERS[i]['payout']
         : '';
     }
+    render();
 }
 
 
@@ -229,6 +243,7 @@ function findWinner() {
 function spinWheel() {
 
     winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
+    render();
     console.log(winningNum, '<-- Winning Number!')
 
     findWinner(winningNum);
@@ -267,7 +282,30 @@ function spinWheel() {
 
 }
 
+spinBtn.onclick = function() {
+    spinModal.style.display = "block";
+    
+
+    
+  }
+closeBtn.onclick = function () {
+    spinModal.style.display = 'none';
+}
+tableAreaEl.onclick = function(e) {
+    e.target == spinBtnEl ? spinModal.style.display ="none" :null;
+}
+
+
+
+
 function render() {
     totalEl.innerHTML = (`$ ${pCredit}`);
     totalBetEl.innerHTML = (`$ ${pTotalBet}`);
+    console.dir(wheelSpinMessageEl)
+    wheelSpinMessageEl.innerHTML = winningNum;
+    
 }
+
+// const spinModal = document.getElementById("mySpinModal");
+// const spinBtn = document.getElementById("spin");
+// const closeBtn = document.getElementsByClassName("close")[0];

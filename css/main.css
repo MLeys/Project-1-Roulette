@@ -1,19 +1,25 @@
 
 :root {
-    --zeroGreen-bright: #59ff00;
-    --zeroGreen: #59ff00;
+    --casinoGreen: #35654d;
+    --casinoGreen2: #477148;
+    --casinoGreen-bright: #59ff00;
+    --casinoGreen-lucky: #6bff7d;
+    --casinoGreen-lite: #34cd71;
+
     --casinoRed: #ff3434;  
     --casinoRed-lite: #fc7272;
-    --casinoGreen: #35654d;
+    
     --casinoBlack: #000000;
     --casinoBlack-lite: #343434;
-    --luckyGreen: #6bff7d;
 
-    --rouletteLines: #444444;
+    --casinoGray: #575757;
+
+    --casinoGray-lite: #7e7e7e;
     
     --casinoWhite: #ffffff;
-    --casinoGray: #575757;
-    --casinoGreen2: #477148;
+    --casinoWhite-half: #f1fffce8;
+    
+    
 }
 
 html, body {
@@ -29,6 +35,7 @@ html, body {
     background-color: var(--casinoGreen);
     /* width: 390px;
     height: 844px; */
+    cursor: pointer;
 }
 
 .title {
@@ -93,6 +100,7 @@ html, body {
     grid-template-rows: 1fr;
     /* border: var(--casinoWhite) inset .5vw; */
 }
+
 .game-name {
     display: flex;
     writing-mode: vertical-rl;
@@ -103,36 +111,45 @@ html, body {
     color: var(--casinoWhite);
     border: 0;
 }
-button {
-    font-size: 2vh;
-    width: 90%;
-    height: 90%;
+
+/* All divs in table */
+.button {
+    outline: white solid 1px;
+    background-color: var(--casinoGreen2)
+}
+
+/* sidebet divs */
+.sidediv {
+    padding: 5%;
     
-    outline: rgb(255, 0, 0) groove 1px;
+}
+
+/* All numbers buttons (and col)*/
+.num {
+    
+    font-size: 2vh;
+    width: 95%;
+    height: 95%;
     color: var(--casinoWhite);
-    border-radius: 100%;
+    border-radius: 50%; 
+    opacity: 1;
+
 }
-.fiftyFifty, .thirds {
-    color: var(--casinoBlack);
+/* All sidebet buttons */
+.sidebet {
+    background-color: var(--casinoWhite);
+    color: var(--casinoBlack-lite);
+    background-color: var(--casinoWhite-half);
+    height: 100%;
+    width: 100%;
+    border-radius: 30%;
+    
+    
 }
+
+/* button colors class */
 .red, .black {
     color: var(--casinoWhite);
-}
-
-
-.button {
-    outline: white solid 1px;;
-}
-.fiftyFifty, .thirds {
-    outline: white solid 2px;
-}
-.num {
-    opacity: 1;
-    margin: 0;
-    outline: var(--casinoBlack) solid 1px;
-    outline-style: solid;
-    font-size: 2vh;
-    
 }
 
 .red {
@@ -146,29 +163,46 @@ button {
 .zero {
     background-color: #3db54b;
 }
-
-.table > div {
-   justify-content: center;
+.image {
+    width: 100%;
 }
+/* all three CHIP buttons */
 .chip {
-    background-color: var(--casinoGray);
-    margin: 0%;
+    color: var(--casinoBlack-lite);
+    border-radius: 35%;
     height: 50%;
+    font-size: 2vh;
+    
 }
-
+.currentBet {
+    border-radius: 20%;
+    background-color: var(--casinoWhite);
+    font-size: 5vh;
+    
+}
 .total {
     font-size: 10vh;
     color: var(--casinoWhite);
 }
 
 
-div.players-bets button.active {
-    background-color: chartreuse;
-    color: var(--casinoBlack);
-    font-size: 3vh;
-    margin: 0%;
-    height: 50%;
+.chip1 {
+    background-color: var(--casinoGray-lite);
+    
 }
+.chip5 {
+    background-color: var(--casinoRed-lite);
+    }
+.chip25 {
+    background-color: var(--casinoGreen-lite);
+}
+
+button.thirds.num {
+    color: var(--casinoBlack);
+}
+
+/* ----------Chip selectors when active-------*/
+
 
 div.button button.active {
     opacity: 1;
@@ -176,25 +210,44 @@ div.button button.active {
 }
 button.red.active {
     background-color: var(--casinoRed);
+    font-weight: bold;
 }
 button.black.active {
     background-color: var(--casinoBlack);
+    font-weight: bold;
 }
 button.zero.active {
-    background-color: var(--zeroGreen-bright);
+    background-color: var(--casinoGreen-bright);
+}
+button.sidebet.active {
+    background-color: var(--casinoWhite);
+    font-weight: bold;
+}
+button.chip.active {
+    font-size: 4vh;
+}
+button.chip1.active {
+    background-color: var(--casinoWhite);
+}
+button.chip5.active {
+    background-color: var(--casinoRed);
+    color: white;
+}
+button#chip25.active {
+    background-color: green; 
+    color: white;
+}
+button.sidebet.red.active {
+
+    background-color: var(--casinoRed);
+
+}
+button.sidebet.black.active {
+    background-color: var(--casinoBlack);
 }
 
-.bets-fiftyFifty> .button > button,
-.bets-third>.button>button  {
-    border-radius: 90%;
-}
-.bets-number>div {
 
-    margin: 0;
-}
-.table>div>button {
-    margin: 5%;
-}
+
 #reset {
     border-radius: 15%;
     font-size: 2vh;
@@ -202,9 +255,10 @@ button.zero.active {
     
 }
 
-
 #spin {
-    background-color: rgb(245, 0, 0);
+    height: 100%;
+    width: 100%;
+    background-color: var(--casinoGreen-lucky);
 }
 
 #reset:hover {
@@ -213,10 +267,46 @@ button.zero.active {
     
     
 }
+#spin:modal {
+    background-color: hotpink;
+}
 
 #spin:hover {
-    background-color: #59ff00;
+    background-color: var(--casinoRed);
 }
 button:hover {
-    background-color: var(--luckyGreen);
+    background-color: var(--casinoGreen-lucky);
+}
+
+.spin-modal {
+    display: none;
+    
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    position: center;
+}
+
+.spin-content {
+    background-color: #34cd71;
+    margin: 5% auto;
+    border: .5vh solid var(--casinoBlack);
+    width: auto;
+    font-size: 18vh;
+}
+.close {
+    color: var(--casinoGray-lite);
+    float: right;
+    font-size: 6vh;
+    color: var(--casinoWhite)
+}
+  .spinResult {
+    font-size: vh;
+    color: var(--casinoWhite);
+}
+
+
+.close:hover {
+    color: var(--casinoRed);
 }
