@@ -179,7 +179,7 @@ function rmActiveClassAllBtns () {
 }
 
 function addBetToTotal(e) {
-    pTotalBet = (pTotalBet*1) + (e*1);
+    pTotalBet = (+pTotalBet) + (+e);
     render()
 }
 
@@ -202,25 +202,25 @@ function findWinningBets() {
 
 function spinWheel() {
     pWinnings = 0;
-    winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
+    winningNum = NUMBERS[Math.floor(Math.random() * NUMBERS.length)]; // TEMP DISABLED
     render();
     console.log(winningNum, '<-- Winning Number!')
+    let currentPayout;
 
     findWinningBets(winningNum);
-    for (let i = 0; i < pBets.length; i++) {
+    for (let i = 0; i < pBets.length; i++) { //loop through all players bets
         checkBet = pBets[i]['id'];
-        console.log('CHECKING BET#: ', i, 'num = ', checkBet)
         
-        if (winningPayouts.includes(checkBet)){
+        if (winningPayouts.includes(checkBet)){ // check if current bet in loop is a winner by matching win array
             betWager = pBets[i]['wager'];
-            console.log(`Bet in PAYOUT: ${checkBet}  with $${betWager} wager`);
 
-            for (let j = 0; j < PAYOUTS.length; j++) {
+            for (let j = 0; j < PAYOUTS.length; j++) {  // find the payout category 35 to 1, 2 to 1, ect. 
                 if (PAYOUTS[j]['betType'].includes(checkBet) ) { 
-                    pWinnings = +pWinnings + ((PAYOUTS[j]['payout']) * (+betWager));
-                    pCredit = +pCredit +pWinnings + +betWager;
+                    currentPayout = PAYOUTS[j]['payout'];   // the payout rate
                 }
             }
+            pWinnings = +pWinnings + ((+currentPayout) * (+betWager));
+            pCredit = +pCredit + ((+currentPayout) * (+betWager)) + +betWager;
         } 
     }
     clearTable();
