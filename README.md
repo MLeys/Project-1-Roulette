@@ -19,6 +19,9 @@ Roulette Bets & Payouts
 
 Created using HTML, CSS, and JavaScript
 
+<p align="center">
+    <img src="media/Roulette-01.png">
+</p>
 
 -Player starts with $100 balance. 
 -Select chip denomination you would like to bet.
