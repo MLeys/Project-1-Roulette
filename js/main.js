@@ -91,11 +91,16 @@ const allNumButtons = document.querySelectorAll('.num');
 const allFiftyFiftyButtons = document.querySelectorAll('.fiftyFifty');
 const allThirdsButtons = document.querySelectorAll('.thirds');
 const resetBtn = document.querySelector('#reset');
-const wheelSpinMessageEl = document.querySelector('.spinResult');
+const wheelSpinMessage = document.querySelector('.spinResult');
+const winningsAmountMessage = document.querySelector('.winngsResult')
 
 const spinModal = document.getElementById("mySpinModal");
 const spinBtn = document.getElementById("spin");
-const closeBtn = document.getElementsByClassName("close")[0];
+const closeBtnSpin = document.getElementsByClassName("spinExit")[0];
+
+const winningsModal = document.getElementById("myWinningsModal");
+const closeBtnWinnings = document.getElementsByClassName("winningsExit");
+
 
 
 
@@ -112,7 +117,8 @@ resetBtn.addEventListener('click', resetBets);
 init();
 console.log(`^^^^^ WAGER START: $${pWager} ^^^^^`)
 /*----- functions -----*/
-wheelSpinMessageEl.innerHTML = winningNum;
+wheelSpinMessage.innerHTML = (`Num: ${winningNum} WIN:${pWinnings}`);
+
 
 
 
@@ -266,7 +272,7 @@ function spinWheel() {
                 }
 
             }
-            pWinnings = 0;
+            
         } else {
             console.log(`\\\\\\\\\\ not paid //////////`)
             
@@ -283,13 +289,17 @@ function spinWheel() {
 }
 
 spinBtn.onclick = function() {
-    spinModal.style.display = "block";
+    spinModal.style.display = "block";   
+}
+
+closeBtnSpin.onclick = function () {
+    spinModal.style.display = 'none';
     
 
-    
-  }
-closeBtn.onclick = function () {
-    spinModal.style.display = 'none';
+}
+closeBtnWinnings.onclick = function () { 
+    winningsModal.style.display = 'none';
+
 }
 tableAreaEl.onclick = function(e) {
     e.target == spinBtnEl ? spinModal.style.display ="none" :null;
@@ -302,16 +312,16 @@ function render() {
     totalEl.innerHTML = (`$ ${pCredit}`);
     totalBetEl.innerHTML = (`$ ${pTotalBet}`);
     
-    wheelSpinMessageEl.innerHTML = winningNum;
+    wheelSpinMessage.innerHTML = winningNum;
     
 }
 
 // const spinModal = document.getElementById("mySpinModal");
 // const spinBtn = document.getElementById("spin");
-// const closeBtn = document.getElementsByClassName("close")[0];
+// const closeBtnSpin = document.getElementsByClassName("close")[0];
 
 // for (let j = 0; j < PAYOUTS.length; j++) {
-//     if (PAYOUTS[j]['betType'].includes(checkBet) ) { 
+//     if (PAYWinnings[j]['betType'].includes(checkBet) ) { 
 //         console.log(`BET PAYS: $${betWager} * ${PAYOUTS[j]['payout']} = ${betWager*PAYOUTS[j]['payout']}`);
 //         pWinnings = +pWinnings + ((PAYOUTS[j]['payout']) * (+betWager));
 //         console.log('---------WINNINGS------------');

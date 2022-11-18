@@ -284,7 +284,7 @@ button:hover {
     background-color: var(--casinoGreen-lucky);
 }
 
-.spin-modal {
+.spin-modal, .winnings-modal {
     display: none;
     
     position: fixed;
@@ -295,7 +295,7 @@ button:hover {
     position: center;
 }
 
-.spin-content {
+.spin-content, .winnings-content {
     background-color: #34cd71;
     margin: 5% auto;
     border: .5vh solid var(--casinoBlack);
@@ -309,10 +309,9 @@ button:hover {
     color: var(--casinoWhite)
 }
   .spinResult {
-    font-size: vh;
+    font-size: 18vh;
     color: var(--casinoWhite);
 }
-
 
 .close:hover {
     color: var(--casinoRed);
