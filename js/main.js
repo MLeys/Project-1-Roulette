@@ -74,12 +74,12 @@ let pBets; // Players bets - as an object with changing key:value pairs
 let pCredit; // Players available credit for which to gamble or play the game
 let pWager = 1; // $ amount player wagering on current bet
 
-let winnings; // $ amount player wins or looses at conclusion of spin
+let pWinnings; // $ amount player wins or loses at conclusion of spin
 let winningNum; // Random number generated to represent result of wheel spin
 let winningPayouts; // Array of all categoies to payout based on winning number spun.
 let betWager; // Amount player wagers on current bet ??? maybe redundant ^^check later^^
 let pTotalBet; // How much $ the player has accumulated based on pWager and pBets
-
+let pWinningBets = [];
 
 const tableAreaEl = document.querySelector('.table');
 const spinBtnEl = document.querySelector('#spin');
@@ -96,6 +96,7 @@ const wheelSpinMessageEl = document.querySelector('.spinResult');
 const spinModal = document.getElementById("mySpinModal");
 const spinBtn = document.getElementById("spin");
 const closeBtn = document.getElementsByClassName("close")[0];
+
 
 
 
@@ -169,19 +170,55 @@ function placeBet(e) {
     let betObject ={id: betId, wager: pWager};
     console.log(betObject);    
 
+//checking to make sure where clicked is a bet button
+    if (NUMBERS.includes(betId) || SIDEBETS.includes(betId) ) {
+        console.log(`VALID BET********* LENGTH: ${pBets.length} . -<----`);
 
-    NUMBERS.includes(betId) || SIDEBETS.includes(betId)
-    ? (pBets.push(betObject)) 
-        && (pCredit -= betObject['wager'])
-        && addBetToTotal(pWager)      
-    : null;
-    
+        if (pBets.length !== 0) {
+            for (let i = 0; i < pBets.length; i++) {
+                let checkBet = pBets[i];
+
+                for (let id in checkBet) {
+                    if (checkBet[id] === betObject['id']) {
+                        console.log(` TRUE-->  ${checkBet[id]} === ${betObject['id']}`);
+
+                    
+                    } else { 
+                        console.log(` FALSE-->  ${checkBet[id]} === ${betObject['id']}`)};
+                        pBets.push(betObject);
+
+                };
+
+                console.log(`CHECKING: ${i} index is ${checkBet}`);
+                console.log(`betOject is: --- ${betObject['id']}`);
+                console.log(`${pBets[i]['id'].includes(betId)} < ---- TRUE or FALSE`)
+                
+                // if (pBets[i]['id'].includes(betObject['id']) ) {
+                //     console.log(`WSDFDSAKJASDKJDSA:JFA:LFJDSL:FAS:KSD":KS`);
+
+
+
+                // //     console.log(`wager before: bet:${pBets[i]['id']} wager: ${pBets[i]['wager']}`);
+                // //     pBets[i]['wager'] += betObject['wager'];
+                // //     console.log(`wager after: bet:${pBets[i]['id']} wager: ${pBets[i]['wager']}`);
+                // // } else {
+                //     break;
+                // } else {
+                //     pBets.push(betObject);
+                // };
+            } 
+
+        } else {
+            console.log(`STRAIGHT PUSH NO CHECKY`);
+            pBets.push(betObject);
+        }
+        pCredit -= betObject['wager'];
+        addBetToTotal(pWager);
+    }        
     console.log(pBets, "<--pBets Array");
     console.log(pCredit, "<-------pCredit Available");
-
-    
     render();
-}
+} 
 
 
 
@@ -221,13 +258,13 @@ function addBetToTotal(e) {
 
 function clearTable() {
     pBets = [];
-    winnings = 0;
+    pWinnings = 0;
     pTotalBet = 0;
     rmActiveClassAllBtns();
     render();
 }
 
-function findWinner() {
+function findWinningBets() {
     for (let i = 0; i < WINNERS.length; i++) {
 
         WINNERS[i]['num'] === winningNum.toString()
@@ -237,7 +274,9 @@ function findWinner() {
     render();
 }
 
+function pBetWon() {
 
+}
 
 function spinWheel() {
 
@@ -245,7 +284,7 @@ function spinWheel() {
     render();
     console.log(winningNum, '<-- Winning Number!')
 
-    findWinner(winningNum);
+    findWinningBets(winningNum);
     for (let i = 0; i < pBets.length; i++) {
         checkBet = pBets[i]['id'];
         console.log('CHECKING BET#: ', i, 'num = ', checkBet)
@@ -256,16 +295,15 @@ function spinWheel() {
 
             for (let j = 0; j < PAYOUTS.length; j++) {
                 if (PAYOUTS[j]['betType'].includes(checkBet) ) { 
-                    console.log(`BET PAYS: $${betWager} * ${PAYOUTS[j]['payout']} = ${betWager*PAYOUTS[j]['payout']}`);
-                    winnings = +winnings + ((PAYOUTS[j]['payout']) * (+betWager));
-                    console.log('---------WINNINGS------------');
-                    console.log(`----------${winnings}----------`);
-                    console.log(`-------------------------------`);   
-                    pCredit = +pCredit +winnings + +betWager;
+                    // pWinningBets.push({bet: checkBet, betWager})
+
+                    pWinnings = +pWinnings + ((PAYOUTS[j]['payout']) * (+betWager));
+ 
+                    pCredit = +pCredit +pWinnings + +betWager;
                 }
 
             }
-            winnings = 0;
+            pWinnings = 0;
         } else {
             console.log(`\\\\\\\\\\ not paid //////////`)
             
@@ -300,7 +338,7 @@ tableAreaEl.onclick = function(e) {
 function render() {
     totalEl.innerHTML = (`$ ${pCredit}`);
     totalBetEl.innerHTML = (`$ ${pTotalBet}`);
-    console.dir(wheelSpinMessageEl)
+    
     wheelSpinMessageEl.innerHTML = winningNum;
     
 }
@@ -308,3 +346,13 @@ function render() {
 // const spinModal = document.getElementById("mySpinModal");
 // const spinBtn = document.getElementById("spin");
 // const closeBtn = document.getElementsByClassName("close")[0];
+
+// for (let j = 0; j < PAYOUTS.length; j++) {
+//     if (PAYOUTS[j]['betType'].includes(checkBet) ) { 
+//         console.log(`BET PAYS: $${betWager} * ${PAYOUTS[j]['payout']} = ${betWager*PAYOUTS[j]['payout']}`);
+//         pWinnings = +pWinnings + ((PAYOUTS[j]['payout']) * (+betWager));
+//         console.log('---------WINNINGS------------');
+//         console.log(`----------${pWinnings}----------`);
+//         console.log(`-------------------------------`);   
+//         pCredit = +pCredit +pWinnings + +betWager;
+//     }
