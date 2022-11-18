@@ -179,7 +179,7 @@ function rmActiveClassAllBtns () {
 }
 
 function addBetToTotal(e) {
-    pTotalBet = (pTotalBet*1) + (e*1);
+    pTotalBet = (+pTotalBet) + (+e);
     render()
 }
 
@@ -202,7 +202,7 @@ function findWinningBets() {
 
 function spinWheel() {
     pWinnings = 0;
-    winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
+    winningNum = NUMBERS[Math.floor(Math.random() * NUMBERS.length)]; // TEMP DISABLED
     render();
     console.log(winningNum, '<-- Winning Number!')
 
@@ -214,6 +214,8 @@ function spinWheel() {
         if (winningPayouts.includes(checkBet)){
             betWager = pBets[i]['wager'];
             console.log(`Bet in PAYOUT: ${checkBet}  with $${betWager} wager`);
+            pWinnings = +pWinnings + ((PAYOUTS[j]['payout']) * (+betWager));
+            pCredit = +pCredit +pWinnings + +betWager;
 
             for (let j = 0; j < PAYOUTS.length; j++) {
                 if (PAYOUTS[j]['betType'].includes(checkBet) ) { 
