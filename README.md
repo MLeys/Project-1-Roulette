@@ -24,7 +24,10 @@ Created using HTML, CSS, and JavaScript
 -Select chip denomination you would like to bet.
 -Click on respective bet buttons to place bets.
 -When finished, press SPIN to see what number is spun!
+-Click 'X' in top right corner to close and return to game.
+-Player can clear all current bets by pressing the 'reset' button.
 -Winnings (if any) are automatically added to players credits.
+
 
 Play here --> https://mleys.github.io/Project-1-Roulette/
 

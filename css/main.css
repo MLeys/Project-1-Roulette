@@ -69,22 +69,17 @@ html, body {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 1fr;
     grid-template-rows: 1fr;
-    /* border: .5vh groove var(--casinoRed); */
-    /* outline: black solid 1vw; */
+
 }
 .bets-fiftyFifty {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    /* border: .5vh groove var(--casinoWhite);
-    outline: black solid 1vw; */
 }
 .bets-third {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-    /* border: .5vh groove var(--casinoWhite);
-    outline: black solid 1vw; */
 }
 .bets-number {
     display: grid;
@@ -92,13 +87,12 @@ html, body {
     grid-template-rows: 1fr 1fr 1fr 1fr
                         1fr 1fr 1fr 1fr
                         1fr 1fr 1fr 1fr;     
-    /* border: black groove 1vw;        */
 }
 .bets-columns {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
-    /* border: var(--casinoWhite) inset .5vw; */
+
 }
 
 .game-name {
@@ -151,14 +145,11 @@ html, body {
 .red, .black {
     color: var(--casinoWhite);
 }
-
 .red {
-    background-color: var(--casinoRed-lite);
-    
+    background-color: var(--casinoRed-lite);  
 }
 .black {
     background-color: var(--casinoBlack-lite);
-    
 }
 .zero {
     background-color: #3db54b;
@@ -172,24 +163,19 @@ html, body {
     border-radius: 35%;
     height: 50%;
     font-size: 2vh;
-    
 }
 .currentBet {
     display:  inline-block;
     border-radius: 20%;
     background-color: var(--casinoWhite);
     font-size: 4vh;
-    
 }
 .total {
     font-size: 8vh;
     color: var(--casinoWhite);
 }
-
-
 .chip1 {
     background-color: var(--casinoGray-lite);
-    
 }
 .chip5 {
     background-color: var(--casinoRed-lite);
@@ -271,12 +257,10 @@ button.sidebet.black.active {
 #reset:hover {
     background-color: var(--casinoWhite);
     color: var(--casinoBlack);
-    
-    
 }
 
 #spin:hover {
-    background-color: hotpink;
+    background-color: rgb(255, 56, 156);
 }
 button:hover {
     background-color: var(--casinoGreen-lucky);
@@ -294,7 +278,6 @@ button:hover {
 }
 
 .spin-content{
-    
     margin: 5% auto;
     width: 25vh;
     font-size: 18vh;
@@ -303,7 +286,7 @@ button:hover {
     color: var(--casinoGray-lite);
     float: right;
     font-size: 6vh;
-    color: var(--casinoWhite)
+    color: var(--casinoBlack)
 }
 .spinResult {
     font-size: 18vh;
@@ -315,7 +298,6 @@ button:hover {
 .image {
     size: 50%;
 }
-
 .close:hover {
     color: var(--casinoRed);
 }
