@@ -74,12 +74,12 @@ let pBets; // Players bets - as an object with changing key:value pairs
 let pCredit; // Players available credit for which to gamble or play the game
 let pWager = 1; // $ amount player wagering on current bet
 
-let winnings; // $ amount player wins or looses at conclusion of spin
+let pWinnings; // $ amount player wins or loses at conclusion of spin
 let winningNum; // Random number generated to represent result of wheel spin
 let winningPayouts; // Array of all categoies to payout based on winning number spun.
 let betWager; // Amount player wagers on current bet ??? maybe redundant ^^check later^^
 let pTotalBet; // How much $ the player has accumulated based on pWager and pBets
-
+let pWinningBets = [];
 
 const tableAreaEl = document.querySelector('.table');
 const spinBtnEl = document.querySelector('#spin');
@@ -91,11 +91,15 @@ const allNumButtons = document.querySelectorAll('.num');
 const allFiftyFiftyButtons = document.querySelectorAll('.fiftyFifty');
 const allThirdsButtons = document.querySelectorAll('.thirds');
 const resetBtn = document.querySelector('#reset');
-const wheelSpinMessageEl = document.querySelector('.spinResult');
+const wheelSpinMessage = document.querySelector('.spinResult');
+const winningsAmountMessage = document.querySelector('.winngsResult')
 
 const spinModal = document.getElementById("mySpinModal");
 const spinBtn = document.getElementById("spin");
-const closeBtn = document.getElementsByClassName("close")[0];
+const closeBtnSpin = document.getElementsByClassName("spinExit")[0];
+
+const winningsModal = document.getElementById("myWinningsModal");
+const closeBtnWinnings = document.getElementsByClassName("winningsExit");
 
 
 
@@ -106,87 +110,54 @@ chipBtn.addEventListener('click', selectChip)
 resetBtn.addEventListener('click', resetBets);
 
 
-
-
 init();
-console.log(`^^^^^ WAGER START: $${pWager} ^^^^^`)
 /*----- functions -----*/
-wheelSpinMessageEl.innerHTML = winningNum;
-
-
+wheelSpinMessage.innerHTML = (`Num: ${winningNum} WIN:${pWinnings}`);
 
 function init() {
     clearTable();
     rmActiveClassAllBtns();
 
-    
     pCredit = 100;
     pTotalBet = 0;
     winningNum = +'';  // TEMP VALUE FOR TESTING
 
-
-    
     render();
 }
 
 function resetBets(){
-    console.log(`------CLEARING BETS--------`);
-    console.log(pBets);
-    console.log(pTotalBet);
-    console.log(pCredit);
-    console.log(`^^^^^^^^ pBets ARRAY ^^^^^^^`);
     pCredit += +pTotalBet;
-    console.log(`NEW CERDIT:   ${pCredit}`);
     clearTable();
 }
 
 function selectChip(e) {
-    rmAllClassActive();
-    
-
+    rmClassActiveChips();
     e.target.classList.add('active');
     let chipId = e.target.id
 
-    // REMOVE ALL active CLASS
     if (e.target.id.includes('chip')) {
-        console.log(`-- CHIP SELECTED: ${e.target.id.replace('chip', '')}`);
         pWager = e.target.id.replace('chip', '');
     } 
-
-    console.log(`***** CHIP SELECTED: $${pWager}-----*****`);
     render();
 }
 
-
 function placeBet(e) {
-    console.log("------placeBet------")
-    console.log(`-----$${pWager} per click-----`)
-    console.log(`---$${pTotalBet} Total ALL bets-----`)
     e.target.classList.add('active');
 
     let betId = e.target.id;
-    
     let betObject ={id: betId, wager: pWager};
     console.log(betObject);    
-
 
     NUMBERS.includes(betId) || SIDEBETS.includes(betId)
     ? (pBets.push(betObject)) 
         && (pCredit -= betObject['wager'])
         && addBetToTotal(pWager)      
     : null;
-    
-    console.log(pBets, "<--pBets Array");
-    console.log(pCredit, "<-------pCredit Available");
 
-    
     render();
 }
 
-
-
-
-function rmAllClassActive() {
+function rmClassActiveChips() {
     allChipButtons.forEach((element) => {
         element.classList.remove('active');
         
@@ -195,9 +166,6 @@ function rmAllClassActive() {
 }
 
 function rmActiveClassAllBtns () {
-    // allChipButtons.forEach((element)=> {
-    //     element.classList.remove('active');
-    // })
     allFiftyFiftyButtons.forEach((element)=> {
         element.classList.remove('active');
     })
@@ -211,23 +179,19 @@ function rmActiveClassAllBtns () {
 }
 
 function addBetToTotal(e) {
-    console.log(pTotalBet, "<--previous total");
-
     pTotalBet = (pTotalBet*1) + (e*1);
-    console.log(pTotalBet, "<--- NEW total")
     render()
-
 }
 
 function clearTable() {
     pBets = [];
-    winnings = 0;
+    pWinnings = 0;
     pTotalBet = 0;
     rmActiveClassAllBtns();
     render();
 }
 
-function findWinner() {
+function findWinningBets() {
     for (let i = 0; i < WINNERS.length; i++) {
 
         WINNERS[i]['num'] === winningNum.toString()
@@ -237,16 +201,12 @@ function findWinner() {
     render();
 }
 
-
-
-
 function spinWheel() {
-
     winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
     render();
     console.log(winningNum, '<-- Winning Number!')
 
-    findWinner(winningNum);
+    findWinningBets(winningNum);
     for (let i = 0; i < pBets.length; i++) {
         checkBet = pBets[i]['id'];
         console.log('CHECKING BET#: ', i, 'num = ', checkBet)
@@ -257,55 +217,30 @@ function spinWheel() {
 
             for (let j = 0; j < PAYOUTS.length; j++) {
                 if (PAYOUTS[j]['betType'].includes(checkBet) ) { 
-                    console.log(`BET PAYS: $${betWager} * ${PAYOUTS[j]['payout']} = ${betWager*PAYOUTS[j]['payout']}`);
-                    winnings = +winnings + ((PAYOUTS[j]['payout']) * (+betWager));
-                    console.log('---------WINNINGS------------');
-                    console.log(`----------${winnings}----------`);
-                    console.log(`-------------------------------`);   
-                    pCredit = +pCredit +winnings + +betWager;
+                    pWinnings = +pWinnings + ((PAYOUTS[j]['payout']) * (+betWager));
+                    pCredit = +pCredit +pWinnings + +betWager;
                 }
-
             }
-            winnings = 0;
-        } else {
-            console.log(`\\\\\\\\\\ not paid //////////`)
-            
-        }
-
-            }
-    
-    console.log(`++++++ Player Credit:   $${pCredit}   +++++++`)
-    console.log(`\\\\\\\\\\ END LOOPS //////////`)
+        } 
+    }
     clearTable();
     rmActiveClassAllBtns();
     render();
-
-}
+};
 
 spinBtn.onclick = function() {
-    spinModal.style.display = "block";
-    
-
-    
-  }
-closeBtn.onclick = function () {
+    spinModal.style.display = "block";   
+}
+closeBtnSpin.onclick = function () {
     spinModal.style.display = 'none';
 }
 tableAreaEl.onclick = function(e) {
     e.target == spinBtnEl ? spinModal.style.display ="none" :null;
 }
 
-
-
-
 function render() {
     totalEl.innerHTML = (`$ ${pCredit}`);
     totalBetEl.innerHTML = (`$ ${pTotalBet}`);
-    console.dir(wheelSpinMessageEl)
-    wheelSpinMessageEl.innerHTML = winningNum;
     
+    wheelSpinMessage.innerHTML = winningNum;
 }
-
-// const spinModal = document.getElementById("mySpinModal");
-// const spinBtn = document.getElementById("spin");
-// const closeBtn = document.getElementsByClassName("close")[0];
