@@ -1,19 +1,50 @@
 # Project-1-Roulette
-Roulette - browser based, DOM powered
+Roulette - Random game of chance!
+
+Roulette is a game that gives the player equal chances of spinning one of 38 spots (1-36, 0,00 ). Numbers are split beween black and red numbers and laid out in 3 columns and 12 rows. Players can bet on numbers 'straight up' on individual numbers or play the side bets on the outside of the table. 
+
 
 Roulette Bets & Payouts
--Single number bet pays 35 to 1. Also called “straight up.”
--Double number bet pays 17 to 1. Also called a “split.” 
--Three number bet pays 11 to 1. Also called a “street.”
--Four number bet pays 8 to 1. Also called a “corner bet.”
--Five number bet pays 6 to 1. Only one specific bet which includes the following numbers: 0-00-1-2-3.
--Six number bets pays 5 to 1. Example: 7, 8, 9, 10, 11, 12. Also called a “line.”
+-Single number bet pays 35 to 1.
 -Twelve numbers or dozens (first, second, third dozen) pays 2 to 1.
 -Column bet (12 numbers in a row) pays 2 to 1. 
 -18 numbers (1-18) pays even money. 
 -18 numbers (19-36) pays even money. 
 -Red or black pays even money. 
 -Odd or even bets pay even money.
-(borrowed from https://www.venetianlasvegas.com/casino/table-games/roulette-basic-rules.html)
+-0 and 00 ONLY pay if numbers played straight.
+-Play now, pay later! Honor system.
+
+
+
+Created using HTML, CSS, and JavaScript
+
+
+-Player starts with $100 balance.
+-Select chip denomination you would like to bet.
+-Click on respective bet buttons to place bets.
+-When finished, press SPIN to see what number is spun!
+-Winnings (if any) are automatically added to players credits.
+
+Play here --> https://mleys.github.io/Project-1-Roulette/
+
+
+
+
+
+
+
+
+
+
+Future Development:
+-More user interface with current bets
+-Ability to calculate chances of winning based on bets
+-Visual stacking of chips on bets
+-Increased bet options to play corners, rows, ect.
+-Live animation of wheel spin
+-and more!
+
+
 
 

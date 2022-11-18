@@ -92,7 +92,7 @@ const allFiftyFiftyButtons = document.querySelectorAll('.fiftyFifty');
 const allThirdsButtons = document.querySelectorAll('.thirds');
 const resetBtn = document.querySelector('#reset');
 const wheelSpinMessage = document.querySelector('.spinResult');
-const winningsAmountMessage = document.querySelector('.winngsResult')
+const winMessage = document.querySelector('.win')
 
 const spinModal = document.getElementById("mySpinModal");
 const spinBtn = document.getElementById("spin");
@@ -243,4 +243,5 @@ function render() {
     totalBetEl.innerHTML = (`$ ${pTotalBet}`);
     
     wheelSpinMessage.innerHTML = winningNum;
+    winMessage.innerHTML = (`WIN: $${pWinnings}`)
 }
