@@ -13,13 +13,10 @@
     --casinoBlack-lite: #343434;
 
     --casinoGray: #575757;
-
     --casinoGray-lite: #7e7e7e;
     
     --casinoWhite: #ffffff;
-    --casinoWhite-half: #f1fffce8;
-    
-    
+    --casinoWhite-half: #f1fffca5;   
 }
 
 html, body {
@@ -41,6 +38,7 @@ html, body {
 .title {
     font-size: 30px;
     height: 5%;
+    
 }
 .table {
     margin: 1% 5%;
@@ -48,6 +46,7 @@ html, body {
     grid-template-columns: 2fr 1fr 1fr 4fr;
     grid-template-rows: 1fr 12fr 1fr;
     height: 70%;
+    
 }
 .players-bets {
     display: grid;
@@ -230,15 +229,18 @@ button#chip25.active {
     color: white;
 }
 button.sidebet.red.active {
-
     background-color: var(--casinoRed);
-
 }
 button.sidebet.black.active {
     background-color: var(--casinoBlack);
 }
 
-
+#left0 {
+    border-top-left-radius: 25%;
+}
+#right00 {
+    border-top-right-radius: 25%;
+}
 
 #reset {
     border-radius: 15%;

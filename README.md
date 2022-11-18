@@ -20,7 +20,7 @@ Roulette Bets & Payouts
 Created using HTML, CSS, and JavaScript
 
 
--Player starts with $100 balance.
+-Player starts with $100 balance. 
 -Select chip denomination you would like to bet.
 -Click on respective bet buttons to place bets.
 -When finished, press SPIN to see what number is spun!
@@ -46,6 +46,8 @@ Future Development:
 -Visual stacking of chips on bets
 -Increased bet options to play corners, rows, ect.
 -Live animation of wheel spin
+-Winning number represented on board better against other bets
+-Table cleared after spin and payouts per bet listed to player
 -and more!
 
 
