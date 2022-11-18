@@ -185,7 +185,6 @@ function addBetToTotal(e) {
 
 function clearTable() {
     pBets = [];
-    pWinnings = 0;
     pTotalBet = 0;
     rmActiveClassAllBtns();
     render();
@@ -202,6 +201,7 @@ function findWinningBets() {
 }
 
 function spinWheel() {
+    pWinnings = 0;
     winningNum = Math.floor(Math.random() * NUMBERS.length); // TEMP DISABLED
     render();
     console.log(winningNum, '<-- Winning Number!')
