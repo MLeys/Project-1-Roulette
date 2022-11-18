@@ -158,7 +158,6 @@ function selectChip(e) {
     render();
 }
 
-
 function placeBet(e) {
     console.log("------placeBet------")
     console.log(`-----$${pWager} per click-----`)
@@ -170,55 +169,19 @@ function placeBet(e) {
     let betObject ={id: betId, wager: pWager};
     console.log(betObject);    
 
-//checking to make sure where clicked is a bet button
-    if (NUMBERS.includes(betId) || SIDEBETS.includes(betId) ) {
-        console.log(`VALID BET********* LENGTH: ${pBets.length} . -<----`);
 
-        if (pBets.length !== 0) {
-            for (let i = 0; i < pBets.length; i++) {
-                let checkBet = pBets[i];
-
-                for (let id in checkBet) {
-                    if (checkBet[id] === betObject['id']) {
-                        console.log(` TRUE-->  ${checkBet[id]} === ${betObject['id']}`);
-
-                    
-                    } else { 
-                        console.log(` FALSE-->  ${checkBet[id]} === ${betObject['id']}`)};
-                        pBets.push(betObject);
-
-                };
-
-                console.log(`CHECKING: ${i} index is ${checkBet}`);
-                console.log(`betOject is: --- ${betObject['id']}`);
-                console.log(`${pBets[i]['id'].includes(betId)} < ---- TRUE or FALSE`)
-                
-                // if (pBets[i]['id'].includes(betObject['id']) ) {
-                //     console.log(`WSDFDSAKJASDKJDSA:JFA:LFJDSL:FAS:KSD":KS`);
-
-
-
-                // //     console.log(`wager before: bet:${pBets[i]['id']} wager: ${pBets[i]['wager']}`);
-                // //     pBets[i]['wager'] += betObject['wager'];
-                // //     console.log(`wager after: bet:${pBets[i]['id']} wager: ${pBets[i]['wager']}`);
-                // // } else {
-                //     break;
-                // } else {
-                //     pBets.push(betObject);
-                // };
-            } 
-
-        } else {
-            console.log(`STRAIGHT PUSH NO CHECKY`);
-            pBets.push(betObject);
-        }
-        pCredit -= betObject['wager'];
-        addBetToTotal(pWager);
-    }        
+    NUMBERS.includes(betId) || SIDEBETS.includes(betId)
+    ? (pBets.push(betObject)) 
+        && (pCredit -= betObject['wager'])
+        && addBetToTotal(pWager)      
+    : null;
+    
     console.log(pBets, "<--pBets Array");
     console.log(pCredit, "<-------pCredit Available");
+
+    
     render();
-} 
+}
 
 
 
@@ -248,10 +211,10 @@ function rmActiveClassAllBtns () {
 }
 
 function addBetToTotal(e) {
-    console.log(pTotalBet, "<--previous total");
+    // console.log(pTotalBet, "<--previous total");
 
     pTotalBet = (pTotalBet*1) + (e*1);
-    console.log(pTotalBet, "<--- NEW total")
+    // console.log(pTotalBet, "<--- NEW total")
     render()
 
 }
@@ -356,3 +319,101 @@ function render() {
 //         console.log(`-------------------------------`);   
 //         pCredit = +pCredit +pWinnings + +betWager;
 //     }
+
+
+// function placeBet(e) {
+//     e.target.classList.add('active');
+//     let betId = e.target.id;
+//     let betObject;
+//     let betWager = pWager;
+       
+// //checking to make sure where clicked is a bet button
+//     if (NUMBERS.includes(betId) || SIDEBETS.includes(betId) ) {
+//         betObject ={id: betId, wager: betWager};
+//         console.log(betObject); 
+
+//         for (let k = 0; k < pBets.length ; k++) {
+//             let checkBetObject = pBets[k];
+//             console.log(`pBets[${k}] value <---of ${pBets.length} ------`);
+            
+            
+            
+//             if (checkBetObject['id'] === betObject['id']) {
+//                 console.log(checkBetObject['id'] === betObject['id'], '---????');
+//                 console.log(`ID: ${checkBetObject['id']}  BEFORE wager: ${checkBetObject['id']}`);
+//                 checkBetObject['wager'] = +checkBetObject['wager'] + +betWager;
+//                 console.log(`AFTER wager: ${checkBetObject['wager']}`);
+//                 console.log(`NEW pBets: ${pBets}) !!!!!!!!`); 
+//                 break;
+
+//             } else {
+                
+//                 (k === pBets.length -1 ? pBets.push(betObject)&& console.log(` ^^^^^^ ADDING OBJ TO LIST ^^^^^`) : console.log('nothing') );
+                
+//             }
+//         }
+
+//         (pBets.length === 0 ? pBets.push(betObject): null);
+
+        
+//         pCredit -= betObject['wager'];
+//         addBetToTotal(pWager);
+//     }
+
+            
+//     console.log(pBets, "<--pBets Array");
+//     console.log(pCredit, "<-------pCredit Available");
+//     render();
+// } 
+
+               
+        
+
+        // if (pBets.length !== 0) {
+        //     for (let i = 0; i <pBets.length; i++) {
+        //         let checkBet = pBets[i];
+
+        //         for (let id in checkBet) {
+        //             if (checkBet[id] === betObject['id']) {
+        //                 console.log(` TRUE-->  ${checkBet[id]} === ${betObject['id']}`);
+        //                 break;
+
+                    
+        //             } else { 
+        //                 console.log(` FALSE-->  ${checkBet[id]} === ${betObject['id']}`)};
+        //                 pBets.push(betObject)
+        //                 break;
+
+        //         };
+
+                // console.log(`CHECKING: ${i} index is ${checkBet}`);
+                // console.log(`betOject is: --- ${betObject['id']}`);
+                // console.log(`${pBets[i]['id'].includes(betId)} < ---- TRUE or FALSE`)
+                
+                // if (pBets[i]['id'].includes(betObject['id']) ) {
+                //     console.log(`WSDFDSAKJASDKJDSA:JFA:LFJDSL:FAS:KSD":KS`);
+
+
+
+                // //     console.log(`wager before: bet:${pBets[i]['id']} wager: ${pBets[i]['wager']}`);
+                // //     pBets[i]['wager'] += betObject['wager'];
+                // //     console.log(`wager after: bet:${pBets[i]['id']} wager: ${pBets[i]['wager']}`);
+                // // } else {
+                //     break;
+                // } else {
+                //     pBets.push(betObject);
+                // };
+            // }
+
+
+        
+
+//         pCredit -= betObject['wager'];
+//         addBetToTotal(pWager);
+//     }
+
+            
+//     console.log(pBets, "<--pBets Array");
+//     console.log(pCredit, "<-------pCredit Available");
+//     render();
+// } 
