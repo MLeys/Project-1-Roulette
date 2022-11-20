@@ -41,7 +41,7 @@ body {
     justify-content: flex-start;
     align-items: center;
 }
-
+/* ------------------------------------------- */
 
 /* ------------- Main Grid Setup---------------- */
 .title {
@@ -49,17 +49,17 @@ body {
 }
 .table {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 4fr;
+    grid-template-columns: 4fr 1fr 1fr 3fr;
     grid-template-rows: 1fr 12fr 1fr;
     height: 70vh;
     margin: 2%;
-    
 }
-.players-bets {
+.displays {
     display: grid;
-    height: 10vh;
+    height: 19vh;
     width: 98vw;
     grid-template-columns: 1fr 1fr 1fr 4fr;
+    grid-template-rows: 1fr 4fr 1fr;
     align-items:center;
     
 }
@@ -67,6 +67,8 @@ body {
     height: 10vh;
     width: 98vw;
 }
+/* ------------------------------------------- */
+
 /* ------------ Secondary Grid Setup ----------- */
 .bets-zeros {
     display: grid;
@@ -97,7 +99,9 @@ body {
     grid-template-rows: 1fr;
 
 }
+/* ------------------------------------------- */
 
+/* ------------ Inside Table Grid ------------ */
 .game-name {
     display: flex;
     writing-mode: vertical-rl;
