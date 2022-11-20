@@ -109,10 +109,24 @@ spinBtnEl.addEventListener('click', spinWheel)
 chipBtn.addEventListener('click', selectChip)
 resetBtn.addEventListener('click', resetBets);
 
+spinBtn.addEventListener('click', function() {
+    spinModal.style.display = "block"; 
+});
+
+closeBtnSpin.addEventListener('click', function () {
+    spinModal.style.display = 'none';
+});
+
+tableAreaEl.addEventListener('click', function(e) {
+    e.target == spinBtnEl ? spinModal.style.display ="none" :null;
+});
+
 
 init();
 /*----- functions -----*/
 wheelSpinMessage.innerHTML = (`Num: ${winningNum} WIN:${pWinnings}`);
+
+
 
 function init() {
     clearTable();
@@ -121,7 +135,6 @@ function init() {
     pCredit = 100;
     pTotalBet = 0;
     winningNum = +'';  // TEMP VALUE FOR TESTING
-
     render();
 }
 
@@ -202,7 +215,6 @@ function findWinningBetTypes() {
 
 function findWinningBets() {
     let currentPayout;
-
     for (let i = 0; i < pBets.length; i++) { //loop through all players bets
         checkBet = pBets[i]['id'];
         
@@ -235,16 +247,6 @@ function spinWheel() {
     rmActiveClassAllBtns();
     render();
 };
-
-spinBtn.onclick = function() {
-    spinModal.style.display = "block";   
-}
-closeBtnSpin.onclick = function () {
-    spinModal.style.display = 'none';
-}
-tableAreaEl.onclick = function(e) {
-    e.target == spinBtnEl ? spinModal.style.display ="none" :null;
-}
 
 function render() {
     totalEl.innerHTML = (`$ ${pCredit}`);
