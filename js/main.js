@@ -117,10 +117,6 @@ closeBtnSpin.addEventListener('click', function () {
     spinModal.style.display = 'none';
 });
 
-tableAreaEl.addEventListener('click', function(e) {
-    e.target == spinBtnEl ? spinModal.style.display ="none" :null;
-});
-
 
 init();
 /*----- functions -----*/

@@ -36,13 +36,6 @@ html, body {
 }
 
 /* -------------- Main elements ------------- */
-body {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: flex-start;
-    align-items: center;
-}
 
 button {
     display: flex;
@@ -52,16 +45,22 @@ button {
 }
 
 div {
-    margin: auto auto;
+    
 }
 
 
 /* ------------------------------------------- */
 
 /* ------------- Main Grid Setup---------------- */
+body {
+    display: grid;
+    grid-template-rows: 1fr 70fr 19fr 10fr;
+}
+
 .title {
     height: 1vh;
 }
+
 .main {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -74,7 +73,7 @@ div {
     width: 98vw;
     grid-template-columns: 1fr 1fr 1fr 4fr;
     grid-template-rows: 1fr 4fr 1fr;
-    align-items:center;
+    
     
 }
 .spin {
@@ -83,7 +82,14 @@ div {
 }
 /* ------------------------------------------- */
 
-/* ------------ Secondary Grid Setup ----------- */
+.table {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+
+
+/* ------------ Inside table Grid Setup ----------- */
 .bets-zeros {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 1fr;
@@ -213,10 +219,6 @@ div {
 
 button.thirds.num {
     color: var(--casinoBlack);
-}
-
-span.total {
-
 }
 
 

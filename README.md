@@ -19,7 +19,7 @@ Roulette Bets & Payouts
 
 Created using HTML, CSS, and JavaScript
 
-<p align="center">
+<p align-content="center">
     <img src="media/Roulette-01.png" width="50%" height="50%">
     <img src="media/Roulette-02.png" width="50%" height="50%">
     <img src="media/Roulette-03.png" width="50%" height="50%">
