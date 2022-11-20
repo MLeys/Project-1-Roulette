@@ -49,10 +49,9 @@ body {
 }
 .table {
     display: grid;
-    grid-template-columns: 4fr 1fr 1fr 3fr;
-    grid-template-rows: 1fr 12fr 1fr;
+    grid-template-columns: 8fr 2fr 2fr 6fr;
+    grid-template-rows: 1fr 13fr 1fr;
     height: 70vh;
-    margin: 2%;
 }
 .displays {
     display: grid;
@@ -91,7 +90,8 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr
                         1fr 1fr 1fr 1fr
-                        1fr 1fr 1fr 1fr;     
+                        1fr 1fr 1fr 1fr;
+                       
 }
 .bets-columns {
     display: grid;
@@ -101,7 +101,23 @@ body {
 }
 /* ------------------------------------------- */
 
-/* ------------ Inside Table Grid ------------ */
+/* -------------- Main elements ------------- */
+
+button {
+    display: flex;
+    outline: white solid 1px;
+    background-color: var(--casinoGreen2);
+    align-content: center;
+}
+
+
+
+
+
+
+/* ------------------------------------------- */
+
+/* ------------ Inside of Table Grid ------------ */
 .game-name {
     display: flex;
     writing-mode: vertical-rl;
@@ -112,24 +128,27 @@ body {
     color: var(--casinoWhite);
 }
 
+
+
+
 /* All divs in table */
-.button {
+.tableDiv {
     outline: white solid 1px;
     background-color: var(--casinoGreen2)
 }
 
-/* sidebet divs - inside table*/
-.sidediv {
+/* sidebet divs - inside tabl cell button from walle*/
+.sideDiv {
     padding: 5%;
     
 }
 
 /* All numbers buttons (and col)*/
 .num {
-    
+    align-content: space-around;
+    vertical-align: middle;
     font-size: 2vh;
-    width: 95%;
-    height: 95%;
+
     color: var(--casinoWhite);
     border-radius: 50%; 
     opacity: 1;
