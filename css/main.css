@@ -28,34 +28,42 @@ html, body {
     font-size: 4vh;
     /* min-width: 320px;
     min-height: 663px; */
-    height: 99vh;
-    width: 99vw;
-    max-height: 100vh;
-    max-width: 100vw;
-    min-height: 100vh;
-    min-width: 100vw;
-    margin: 0;
-    padding: 0;
+    height: 98vh;
+    width: 98vw;
+    max-height: 98vh;
+    max-width: 98vw;
+    min-height: 98vh;
+    min-width: 98vw;
+    margin: 1%;
+    padding: 0 1% 0 0;
     border: 0;
     background-color: var(--casinoGreen);
     /* width: 390px;
     height: 844px; */
     cursor: pointer;
+    
 }
 
 /* -------------- Main elements ------------- */
 
 button {
     
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
     outline: white solid 1px;
     background-color: var(--casinoGreen2);
-    align-content: center;
+    
+    
 }
 
 div {
     max-height: 100%;
     max-width: 100%;
+
+    
     
     
 }
@@ -74,11 +82,13 @@ div {
     display: grid;
     grid-template-columns: 1fr 2fr;
     height: 70vh;
+    margin-top: 1%;
 }
     .table {
         display: grid;
-        grid-template-columns: 1fr 2fr;
-        background-color: var(--warningPink);        
+        grid-template-columns: 4fr 5fr;
+        background-color: var(--warningPink);    
+           
     }
         .outsideBets {
             display: grid;
@@ -99,13 +109,29 @@ div {
         .insideBets {
             display: grid;
             grid-template-rows: 1fr 12fr 1fr;
+
+            justify-self: stretch;
+            height: 100%;
+            width: 100%;
             
         }
             .bets-zero {
+                width: 100%;
                 display: grid;
                 grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
+                justify-self: stretch;
 
             }
+                .divTableZeros {
+                    display: flex;
+                }
+                    /* #singleZero {
+
+
+                    }
+                    #doubleZero {
+
+                    } */
             .bets-number {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
@@ -113,6 +139,7 @@ div {
                                     1fr 1fr 1fr 1fr
                                     1fr 1fr 1fr 1fr;                     
             }
+
 
             .bets-columns {
                 display: grid;
@@ -127,7 +154,11 @@ div {
     grid-template-columns: 1fr 1fr 1fr 4fr;
 }
 .spin {
-    height: 10vh;
+    height: 8%;
+    
+    justify-content: stretch;
+    
+    
     
 }
 /* ------------------------------------------- */
@@ -159,11 +190,15 @@ div {
     padding: 5%;
 } */
 
+
+/* ------------ BUTTONS --------------- */
 /* All numbers buttons (and col)*/
 .num {
 
     font-size: 2vh;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--casinoWhite);
     border-radius: 50%; 
     opacity: 1
@@ -288,8 +323,6 @@ button.sidebet.black.active {
 
 
 #spin {
-    height: 100%;
-    width: 100%;
     background-color: var(--casinoGreen-lucky);
     font-size: 6vh;
 }
