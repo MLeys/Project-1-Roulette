@@ -62,10 +62,9 @@ div {
 .title {
     height: 1vh;
 }
-.table {
+.main {
     display: grid;
-    grid-template-columns: 8fr 2fr 2fr 6fr;
-    grid-template-rows: 1fr 13fr 1fr;
+    grid-template-columns: 1fr 1fr;
     height: 70vh;
     margin: 0;
 }
@@ -143,7 +142,7 @@ div {
     padding: 5%;
 }
 
-.table.tableDiv {
+.main.tableDiv.tableDiv {
     align-content: center;
 }
 

@@ -81,7 +81,7 @@ let betWager; // Amount player wagers on current bet ??? maybe redundant ^^check
 let pTotalBet; // How much $ the player has accumulated based on pWager and pBets
 let pWinningBets = [];
 
-const tableAreaEl = document.querySelector('.table');
+const tableAreaEl = document.querySelector('.main');
 const spinBtnEl = document.querySelector('#spin');
 const totalEl = document.querySelector('.total');
 const chipBtn = document.querySelector('.displays');     // CHANGE TO BE MORE SPECIFIC LATER
