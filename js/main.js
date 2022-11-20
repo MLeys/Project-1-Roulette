@@ -81,12 +81,12 @@ let betWager; // Amount player wagers on current bet ??? maybe redundant ^^check
 let pTotalBet; // How much $ the player has accumulated based on pWager and pBets
 let pWinningBets = [];
 
-const tableAreaEl = document.querySelector('.table');
+const tableAreaEl = document.querySelector('.main');
 const spinBtnEl = document.querySelector('#spin');
 const totalEl = document.querySelector('.total');
-const chipBtn = document.querySelector('.players-bets');
+const chipBtn = document.querySelector('.displays');     // CHANGE TO BE MORE SPECIFIC LATER
 const totalBetEl = document.querySelector('#bet-total');
-const allChipButtons = document.querySelectorAll('.chip');
+const allChipButtons = document.querySelectorAll('.chip'); 
 const allNumButtons = document.querySelectorAll('.num');
 const allFiftyFiftyButtons = document.querySelectorAll('.fiftyFifty');
 const allThirdsButtons = document.querySelectorAll('.thirds');
@@ -115,10 +115,6 @@ spinBtn.addEventListener('click', function() {
 
 closeBtnSpin.addEventListener('click', function () {
     spinModal.style.display = 'none';
-});
-
-tableAreaEl.addEventListener('click', function(e) {
-    e.target == spinBtnEl ? spinModal.style.display ="none" :null;
 });
 
 
@@ -170,7 +166,7 @@ function placeBet(e) {
     render();
 }
 
-function rmClassActiveChips() {
+function rmClassActiveChips() {               // MAY HAVE ISSUE? buttons reset when not supposed to
     allChipButtons.forEach((element) => {
         element.classList.remove('active');
         

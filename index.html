@@ -8,104 +8,122 @@
     <link rel="stylesheet" href="css/main.css">
     <script defer src="js/main.js"></script>
 </head>
+<div class="spin-modal" id="mySpinModal">
+    <span class="close spinExit">&times;</span>
+    <div class="spin-content">
+        <img class="image" id="wheelSpinning" src="media/rouletteWheelGif.webp">
+        
+        <a class="spinResult"></a>
+        <p class="win">Player winnings</p>
+        <div class="winnings"></div>
+        
+    </div>
+</div>
 <body>
-    <div class="spin-modal" id="mySpinModal">
-        <span class="close spinExit">&times;</span>
-        <div class="spin-content">
-            <img class="image" id="wheelSpinning" src="media/rouletteWheelGif.webp">
-            
-            <a class="spinResult"></a>
-            <p class="win">Player winnings</p>
-            <div class="winnings"></div>
-            
+  
+    <div class="title">
+        <button id="reset">RESET</button>
+    </div>
+
+    <div class="main">
+        <div class="game-name">ROULETTE
+
+        </div>
+        <div class="table">
+            <div class="outsideBets">
+                <div class="bets-fiftyFifty">
+                    <div class="tableDiv sideDiv"><button class='fiftyFifty sidebet' id="first18">18-</button></div>
+                    <div class="tableDiv sideDiv"><button class='fiftyFifty sidebet' id="even">E</button></div>
+                    <div class="tableDiv sideDiv"><button class='fiftyFifty sidebet red' id="red">R</button></div>
+                    <div class="tableDiv sideDiv"><button class='fiftyFifty sidebet black' id="black">B</button></div>
+                    <div class="tableDiv sideDiv"><button class='fiftyFifty sidebet' id="odd">O</button></div>
+                    <div class="tableDiv sideDiv"><button class='fiftyFifty sidebet' id="last18">19+</button></div>
+                </div>
+                <div class="bets-third">
+                    <div class="tableDiv sideDiv"><button class='thirds sidebet' id="first12">1st 12</button></div>
+                    <div class="tableDiv sideDiv"><button class='thirds sidebet' id="second12">2nd 12</button></div>
+                    <div class="tableDiv sideDiv"><button class='thirds sidebet' id="third12">3rd 12</button></div>
+                </div>
+            </div>
+            <div class="insideBets">
+
+                <div class="bets-zero">
+                    <div></div>
+                    <div class="tableDiv divTableZeros" id="singleZero"><button class='num zero' id="0">0</button></div>
+                    <div class="tableDiv divTableZeros" id="doubleZero"><button class='num zero' id="00">00</button></div>
+                    <div></div>
+                </div>
+                <!-- edit name to make plurality consistent -->
+                <div class="bets-number"> 
+                    <div class="tableDiv"><button class="num red odd" id="1">1</button></div>
+                    <div class="tableDiv"><button class="num black even" id="2">2</button></div>
+                    <div class="tableDiv"><button class="num red odd" id="3">3</button></div>
+                    <div class="tableDiv"><button class="num black even" id="4">4</button></div>
+                    <div class="tableDiv"><button class="num red odd" id="5">5</button></div>
+                    <div class="tableDiv"><button class="num black even" id="6">6</button></div>
+                    <div class="tableDiv"><button class="num red odd" id="7">7</button></div>
+                    <div class="tableDiv"><button class="num black even" id="8">8</button></div>
+                    <div class="tableDiv"><button class="num red odd" id="9">9</button></div>
+                    <div class="tableDiv"><button class="num black even" id="10">10</button></div>
+                    <div class="tableDiv"><button class="num black odd" id="11">11</button></div>
+                    <div class="tableDiv"><button class="num red even" id="12">12</button></div>
+                    <div class="tableDiv"><button class="num black odd" id="13">13</button></div>
+                    <div class="tableDiv"><button class="num red even" id="14">14</button></div>
+                    <div class="tableDiv"><button class="num black odd" id="15">15</button></div>
+                    <div class="tableDiv"><button class="num red even" id="16">16</button></div>
+                    <div class="tableDiv"><button class="num black odd" id="17">17</button></div>
+                    <div class="tableDiv"><button class="num red even" id="18">18</button></div>
+                    <div class="tableDiv"><button class="num black odd" id="19">19</button></div>
+                    <div class="tableDiv"><button class="num black even" id="20">20</button></div>
+                    <div class="tableDiv"><button class="num red odd" id="21">21</button></div>
+                    <div class="tableDiv"><button class="num black even" id="22">22</button></div>
+                    <div class="tableDiv"><button class="num red odd" id="23">23</button></div>
+                    <div class="tableDiv"><button class="num black even" id="24">24</button></div>
+                    <div class="tableDiv"><button class="num red odd" id="25">25</button></div>
+                    <div class="tableDiv"><button class="num black even" id="26">26</button></div>
+                    <div class="tableDiv"><button class="num red odd" id="27">27</button></div>
+                    <div class="tableDiv"><button class="num black even" id="28">28</button></div>
+                    <div class="tableDiv"><button class="num black odd" id="29">29</button></div>
+                    <div class="tableDiv"><button class="num red even" id="30">30</button></div>
+                    <div class="tableDiv"><button class="num black odd" id="31">31</button></div>
+                    <div class="tableDiv"><button class="num red even" id="32">32</button></div>
+                    <div class="tableDiv"><button class="num black odd" id="33">33</button></div>
+                    <div class="tableDiv"><button class="num red even" id="34">34</button></div>
+                    <div class="tableDiv"><button class="num black odd" id="35">35</button></div>
+                    <div class="tableDiv"><button class="num red even" id="36">36</button></div>
+                </div>
+                <div class="bets-columns">
+                    <div class="tableDiv"><button class='thirds num' id="col1">2/1</button></div>
+                    <div class="tableDiv"><button class='thirds num' id="col2">2/1</button></div>
+                    <div class="tableDiv"><button class='thirds num' id="col3">2/1</button></div>
+                </div>
             </div>
         </div>
     </div>
-    <div class="title"></div>
 
-    <div class="table">
-        <button id="reset">RESET</button>
-        <div class="blank"></div>
-        <div class="blank"></div>
-        <div class="bets-zeros">
-            <div></div>
-            <div class="button" id="left0"><button class='num zero' id="0">0</button></div>
-            <div class="button" id="right00"><button class='num zero' id="00">00</button></div>
-            <div></div>
-        </div>
-        <div class="game-name">ROULETTE</div>
-        <div class="bets-fiftyFifty">
-            <div class="button sidediv"><button class='fiftyFifty sidebet' id="first18">18-</button></div>
-            <div class="button sidediv"><button class='fiftyFifty sidebet' id="even">E</button></div>
-            <div class="button sidediv"><button class='fiftyFifty sidebet red' id="red">R</button></div>
-            <div class="button sidediv"><button class='fiftyFifty sidebet black' id="black">B</button></div>
-            <div class="button sidediv"><button class='fiftyFifty sidebet' id="odd">O</button></div>
-            <div class="button sidediv"><button class='fiftyFifty sidebet' id="last18">19+</button></div>
-        </div>
-        <div class="bets-third">
-            <div class="button sidediv"><button class='thirds sidebet' id="first12">1st 12</button></div>
-            <div class="button sidediv"><button class='thirds sidebet' id="second12">2nd 12</button></div>
-            <div class="button sidediv"><button class='thirds sidebet' id="third12">3rd 12</button></div>
-        </div>
-        <div class="bets-number">
-            <div class="button"><button class="num red odd" id="1">1</button></div>
-            <div class="button"><button class="num black even" id="2">2</button></div>
-            <div class="button"><button class="num red odd" id="3">3</button></div>
-            <div class="button"><button class="num black even" id="4">4</button></div>
-            <div class="button"><button class="num red odd" id="5">5</button></div>
-            <div class="button"><button class="num black even" id="6">6</button></div>
-            <div class="button"><button class="num red odd" id="7">7</button></div>
-            <div class="button"><button class="num black even" id="8">8</button></div>
-            <div class="button"><button class="num red odd" id="9">9</button></div>
-            <div class="button"><button class="num black even" id="10">10</button></div>
-            <div class="button"><button class="num black odd" id="11">11</button></div>
-            <div class="button"><button class="num red even" id="12">12</button></div>
-            <div class="button"><button class="num black odd" id="13">13</button></div>
-            <div class="button"><button class="num red even" id="14">14</button></div>
-            <div class="button"><button class="num black odd" id="15">15</button></div>
-            <div class="button"><button class="num red even" id="16">16</button></div>
-            <div class="button"><button class="num black odd" id="17">17</button></div>
-            <div class="button"><button class="num red even" id="18">18</button></div>
-            <div class="button"><button class="num black odd" id="19">19</button></div>
-            <div class="button"><button class="num black even" id="20">20</button></div>
-            <div class="button"><button class="num red odd" id="21">21</button></div>
-            <div class="button"><button class="num black even" id="22">22</button></div>
-            <div class="button"><button class="num red odd" id="23">23</button></div>
-            <div class="button"><button class="num black even" id="24">24</button></div>
-            <div class="button"><button class="num red odd" id="25">25</button></div>
-            <div class="button"><button class="num black even" id="26">26</button></div>
-            <div class="button"><button class="num red odd" id="27">27</button></div>
-            <div class="button"><button class="num black even" id="28">28</button></div>
-            <div class="button"><button class="num black odd" id="29">29</button></div>
-            <div class="button"><button class="num red even" id="30">30</button></div>
-            <div class="button"><button class="num black odd" id="31">31</button></div>
-            <div class="button"><button class="num red even" id="32">32</button></div>
-            <div class="button"><button class="num black odd" id="33">33</button></div>
-            <div class="button"><button class="num red even" id="34">34</button></div>
-            <div class="button"><button class="num black odd" id="35">35</button></div>
-            <div class="button"><button class="num red even" id="36">36</button></div>
-
-        </div>
-        <div class="blank currentBet" id="bet-total"></div>
-        <div class="blank"></div>
-        <div class="blank"></div>
-        <div class="bets-columns">
-            <div class="button"><button class='thirds num' id="col1">2/1</button></div>
-            <div class="button"><button class='thirds num' id="col2">2/1</button></div>
-            <div class="button"><button class='thirds num' id="col3">2/1</button></div>
-        </div>
-    </div>
-
-    <div class="players-bets">
+    <div class="displays">
         <button class="chip chip1" id="chip1">$1</button>
         <button class="chip chip5" id="chip5">$5</button>
         <button class="chip chip25" id="chip25">$25</button>
-        <span class="total">$---</span>
+        <div class="total" id="bet-total"> </div>
 
     </div>
-
+    
     <div class="spin"><button id="spin">--SPIN--</button></div>
 
 
+
 </body>
+<div class="spin-modal" id="mySpinModal">
+    <span class="close spinExit">&times;</span>
+    <div class="spin-content">
+        <img class="image" id="wheelSpinning" src="media/rouletteWheelGif.webp">
+        
+        <a class="spinResult"></a>
+        <p class="win">Player winnings</p>
+        <div class="winnings"></div>
+        
+        </div>
+</div>
+
 </html>

@@ -17,116 +17,191 @@
     
     --casinoWhite: #ffffff;
     --casinoWhite-half: #f1fffca5;   
+
+    --warningPink: #d400ff;
+    
 }
 
 html, body {
     box-sizing: border-box;
     text-align: center;
+    font-size: 4vh;
     /* min-width: 320px;
     min-height: 663px; */
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    height: 98vh;
+    width: 98vw;
+    max-height: 98vh;
+    max-width: 98vw;
+    min-height: 98vh;
+    min-width: 98vw;
+    margin: 1%;
+    padding: 0 1% 0 0;
     border: 0;
     background-color: var(--casinoGreen);
     /* width: 390px;
     height: 844px; */
     cursor: pointer;
+    
 }
+
+/* -------------- Main elements ------------- */
+
+button {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    outline: white solid 1px;
+    background-color: var(--casinoGreen2);
+    
+    
+}
+
+div {
+    max-height: 100%;
+    max-width: 100%;
+
+    
+    
+    
+}
+
+
+/* ------------------------------------------- */
+
+/* ------------- Main Grid Setup---------------- */
+
 
 .title {
-    font-size: 30px;
-    height: 5%;
-    
+    height: 1vh;
 }
-.table {
-    margin: 1% 5%;
+
+.main {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 4fr;
-    grid-template-rows: 1fr 12fr 1fr;
-    height: 70%;
-    
+    grid-template-columns: 1fr 2fr;
+    height: 70vh;
+    margin-top: 1%;
 }
-.players-bets {
+    .table {
+        display: grid;
+        grid-template-columns: 4fr 5fr;
+        background-color: var(--warningPink);    
+           
+    }
+        .outsideBets {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            
+        }
+            .bets-fiftyFifty {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+            }
+            .bets-third {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+            }
+
+        .insideBets {
+            display: grid;
+            grid-template-rows: 1fr 12fr 1fr;
+
+            justify-self: stretch;
+            height: 100%;
+            width: 100%;
+            
+        }
+            .bets-zero {
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
+                justify-self: stretch;
+
+            }
+                .divTableZeros {
+                    display: flex;
+                }
+                    /* #singleZero {
+
+
+                    }
+                    #doubleZero {
+
+                    } */
+            .bets-number {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr
+                                    1fr 1fr 1fr 1fr
+                                    1fr 1fr 1fr 1fr;                     
+            }
+
+
+            .bets-columns {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr;
+            }
+
+
+.displays {
     display: grid;
-    height: 10%;
-    margin: 0% 5%;
+    height: 19vh;
     grid-template-columns: 1fr 1fr 1fr 4fr;
-    align-items:center;
-    
 }
 .spin {
-    padding: 2%;
-    height: 10%;
+    height: 8%;
+    
+    justify-content: stretch;
+    
+    
+    
 }
-.game-empty {
-    border: 0;
-    margin: 0;
-}
-.bets-zeros {
-    display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
-    grid-template-rows: 1fr;
+/* ------------------------------------------- */
 
-}
-.bets-fiftyFifty {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-.bets-third {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-}
-.bets-number {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr
-                        1fr 1fr 1fr 1fr
-                        1fr 1fr 1fr 1fr;     
-}
-.bets-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-
-}
-
+/* ------------ Inside of Table Grid ------------ */
 .game-name {
     display: flex;
+    margin-top: 10%;
     writing-mode: vertical-rl;
     text-orientation: upright;
     justify-content: space-around;
     flex-direction: column;
-    font-size: 6vh;
+    font-size: 4vh;
     color: var(--casinoWhite);
-    border: 0;
 }
 
+
+
 /* All divs in table */
-.button {
+.tableDiv {
+    margin: 0;
     outline: white solid 1px;
     background-color: var(--casinoGreen2)
 }
 
-/* sidebet divs */
-.sidediv {
+/* sidebet divs - inside tabl cell button from walle*/
+/* POSSIBLYREDUNDANT */
+/* .sideDiv {
     padding: 5%;
-    
-}
+} */
 
+
+/* ------------ BUTTONS --------------- */
 /* All numbers buttons (and col)*/
 .num {
-    
+
     font-size: 2vh;
-    width: 95%;
-    height: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--casinoWhite);
     border-radius: 50%; 
-    opacity: 1;
-
+    opacity: 1
 }
 /* All sidebet buttons */
 .sidebet {
@@ -136,11 +211,11 @@ html, body {
     height: 100%;
     width: 100%;
     border-radius: 30%;
-    
-    
+
 }
 
-/* button colors class */
+
+/*  -- button colors class --*/
 .red, .black {
     color: var(--casinoWhite);
 }
@@ -187,15 +262,11 @@ button.thirds.num {
     color: var(--casinoBlack);
 }
 
-span.total {
-
-}
-
 
 /* ----------Chip selectors when active-------*/
 
 
-div.button button.active {
+div.tableDiv button.active {
     opacity: 1;
     font-size: 3vh;
 }
@@ -247,11 +318,11 @@ button.sidebet.black.active {
     font-size: 2vh;
     background-color: var(--casinoGray);
     
+    
 }
 
+
 #spin {
-    height: 100%;
-    width: 100%;
     background-color: var(--casinoGreen-lucky);
     font-size: 6vh;
 }
