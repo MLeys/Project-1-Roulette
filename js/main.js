@@ -231,37 +231,44 @@ function findPayoutRate() {
         if (PAYOUTS[i]['betType'].includes(currentId) ) { 
             currentPayoutRate = PAYOUTS[i]['payout'];   // the payout rate
         }
-
     }
 };
+function storeWinningBet() {
+    let currentBetObject = {
+        id: currentId, 
+        wager: currentWager, 
+        rate: currentPayoutRate, 
+        total: ((+currentWager)*(+currentPayoutRate))
+    };
+    let oID = currentBetObject['id]'];
+    let oWager = currentBetObject['wager'];
+    let oRate = currentBetObject['rate'];
 
-function addToWinBetsList() {
-    for (let i = 0; i < pWinningBets.length; i++) {
-        
+
+    for (let i = 0; i <= pWinningBets.length; i++) { 
+        if ((i === pWinningBets.length)) {  // FIRST object
+            pWinningBets.push(currentBetObject);
+                       
+        } else if (pWinningBets[i]['id'] === oID){
+             let 
+
+        };  
+    };       
 
 
-    }
-};
-
-
+}
 function findWinningBets() {
-
-
     for (let i = 0; i < pBets.length; i++) { //loop through all players bets
         currentBet = pBets[i];
         currentId = currentBet['id'];
         
         if (winningPayouts.includes(currentId)){ // check if current bet in loop is a winner by matching win array
             currentWager = pBets[i]['wager'];
+
             findPayoutRate();
-
-
-            // ************************* .  ADD reduce function here to add 
-
-
-            
+            storeWinningBet();
             addCreditWinnings();
-        } 
+        }
     }
     render();
 };
