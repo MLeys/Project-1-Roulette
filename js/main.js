@@ -133,6 +133,7 @@ wheelSpinMessage.innerHTML = (`Num: ${winningNum} WIN:${pWinnings}`);
 function init() {
     clearTable();
     rmActiveClassAllBtns();
+    pWinningBets = [];
 
     pCredit = 100;
     pTotalBet = 0;
@@ -236,27 +237,32 @@ function findPayoutRate() {
 function storeWinningBet() {
     let currentBetObject = {
         id: currentId, 
-        wager: currentWager, 
+        wager: [currentWager], 
         rate: currentPayoutRate, 
         total: ((+currentWager)*(+currentPayoutRate))
     };
-    let oID = currentBetObject['id]'];
+
+
+    let oID = currentBetObject['id'];
     let oWager = currentBetObject['wager'];
     let oRate = currentBetObject['rate'];
 
+    if (pWinningBets.length === 0){
+        pWinningBets.push(currentBetObject);
+    } else  {
+        
+        for (let i = 0; i < pWinningBets.length; i++) { 
+            console.log(`pWinBet: ${pWinningBets[i]['id']} === oID: ${oID} .  ------------`);
+            if (pWinningBets[i]['id'] === oID){
+                pWinningBets[i]['wager'].push(oWager);
+                
+   
+           };  
+        }
+   };    
+    render();
 
-    for (let i = 0; i <= pWinningBets.length; i++) { 
-        if ((i === pWinningBets.length)) {  // FIRST object
-            pWinningBets.push(currentBetObject);
-                       
-        } else if (pWinningBets[i]['id'] === oID){
-             let 
-
-        };  
-    };       
-
-
-}
+};
 function findWinningBets() {
     for (let i = 0; i < pBets.length; i++) { //loop through all players bets
         currentBet = pBets[i];
