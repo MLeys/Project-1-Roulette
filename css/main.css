@@ -344,19 +344,20 @@ button:hover {
     background-color: var(--casinoWhite-half);
     position: fixed;
     padding: 0;
-    width: 90%;
-    max-width: 90%;
-    min-width: 90%w;
-    height: auto;
+    height: 98vh;
+    max-height: 98vh;
+    width: 98vw;
     overflow: auto;
     position: center;
 }
 
 
 .spin-content{
-    margin: 5% auto;
-    width: 40%;
-    font-size: 18vh;
+    margin: 1%;
+    height: 98%;
+    max-height: 98%;
+    width: 98%;
+    font-size: 1rem;
 }
 .close {
     color: var(--casinoGray-lite);
@@ -364,18 +365,17 @@ button:hover {
     font-size: 6vh;
     color: var(--casinoBlack)
 }
-/* #wheelSpinning {
-    
-} */
+#wheelSpinning {
+    background-color: var(--warningPink);
+    max-height: 22vh;
+    width: auto;   
+}
 .spinResult {
     font-size: 18vh;
     color: #0021f6;
 }
 .win {
     font-size: 10vh;
-}
-.image {
-    size: 50%;
 }
 .close:hover {
     color: var(--casinoRed);

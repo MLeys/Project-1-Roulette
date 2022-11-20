@@ -97,9 +97,10 @@ const winMessage = document.querySelector('.win')
 const spinModal = document.getElementById("mySpinModal");
 const spinBtn = document.getElementById("spin");
 const closeBtnSpin = document.getElementsByClassName("spinExit")[0];
+const wheelSpinningImgEl = document.getElementById("wheelSpinning");
 
-const winningsModal = document.getElementById("myWinningsModal");
-const closeBtnWinnings = document.getElementsByClassName("winningsExit");
+// const winningsModal = document.getElementById("myWinningsModal");
+// const closeBtnWinnings = document.getElementsByClassName("winningsExit");
 
 
 
