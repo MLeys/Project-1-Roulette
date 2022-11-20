@@ -69,9 +69,7 @@ div {
     .table {
         display: grid;
         grid-template-columns: 1fr 2fr;
-        background-color: var(--warningPink);
-        height: 50%;
-        
+        background-color: var(--warningPink);        
     }
         .outsideBets {
             display: grid;
@@ -82,7 +80,6 @@ div {
                 display: grid;
                 grid-template-columns: 1fr;
                 grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-                height: 100%;
             }
             .bets-third {
                 display: grid;
@@ -95,6 +92,11 @@ div {
             grid-template-rows: 1fr 12fr 1fr;
             
         }
+            .bets-zero {
+                display: grid;
+                grid-template-columns: 1fr 1.5fr 1.5fr 1fr;
+
+            }
             .bets-number {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
@@ -120,49 +122,6 @@ div {
     
 }
 /* ------------------------------------------- */
-
-.table {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    background-color: var(--warningPink);
-    height: 50%;
-    
-}
-    .outsideBets {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        
-    }
-        .bets-fiftyFifty {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-            height: 100%;
-        }
-        .bets-third {
-            display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr 1fr 1fr;
-        }
-
-    .insideBets {
-        display: grid;
-        grid-template-rows: 1fr 12fr 1fr;
-        
-    }
-        .bets-number {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr 1fr 1fr
-                                1fr 1fr 1fr 1fr
-                                1fr 1fr 1fr 1fr;                     
-        }
-
-        .bets-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 1fr;
-        }
 
 /* ------------ Inside of Table Grid ------------ */
 .game-name {
