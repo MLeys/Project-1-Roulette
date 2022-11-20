@@ -220,15 +220,14 @@ function findWinningBets() {
     }
     render();
 }
+
 function generateWinningNumber() {
-    winningNum = NUMBERS[Math.floor(Math.random() * NUMBERS.length)];
+    return winningNum = NUMBERS[Math.floor(Math.random() * NUMBERS.length+1)];   
 }
 
 function spinWheel() {
     pWinnings = 0;
-    winningNum = NUMBERS[Math.floor(Math.random() * NUMBERS.length)];
-    
-    console.log(winningNum, '<-- Winning Number!');
+    generateWinningNumber();
     
     findWinningBetTypes(winningNum);
     findWinningBets();
