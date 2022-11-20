@@ -234,7 +234,7 @@ function findWinningBets() {
 }
 
 function generateWinningNumber() {
-    return winningNum = NUMBERS[Math.floor(Math.random() * NUMBERS.length+1)];   
+    return winningNum = NUMBERS[Math.floor(Math.random() * NUMBERS.length)];   
 }
 
 function spinWheel() {
