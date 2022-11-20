@@ -17,6 +17,9 @@
     
     --casinoWhite: #ffffff;
     --casinoWhite-half: #f1fffca5;   
+
+    --warningPink: #d400ff;
+    
 }
 
 html, body {
@@ -52,10 +55,7 @@ div {
 /* ------------------------------------------- */
 
 /* ------------- Main Grid Setup---------------- */
-body {
-    display: grid;
-    grid-template-rows: 1fr 70fr 19fr 10fr;
-}
+
 
 .title {
     height: 1vh;
@@ -65,73 +65,104 @@ body {
     display: grid;
     grid-template-columns: 1fr 2fr;
     height: 70vh;
-    margin: 0;
-    justify-items: center;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
 }
+    .table {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        background-color: var(--warningPink);
+        height: 50%;
+        
+    }
+        .outsideBets {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            
+        }
+            .bets-fiftyFifty {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+                height: 100%;
+            }
+            .bets-third {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+            }
+
+        .insideBets {
+            display: grid;
+            grid-template-rows: 1fr 12fr 1fr;
+            
+        }
+            .bets-number {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr
+                                    1fr 1fr 1fr 1fr
+                                    1fr 1fr 1fr 1fr;                     
+            }
+
+            .bets-columns {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr;
+            }
+
+
 .displays {
     display: grid;
     height: 19vh;
-    
     grid-template-columns: 1fr 1fr 1fr 4fr;
-    grid-template-rows: 1fr 4fr 1fr;
-    
-    
 }
 .spin {
     height: 10vh;
-    width: 100%;
+    
 }
 /* ------------------------------------------- */
 
 .table {
     display: grid;
     grid-template-columns: 1fr 2fr;
+    background-color: var(--warningPink);
+    height: 50%;
+    
 }
+    .outsideBets {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+    }
+        .bets-fiftyFifty {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+            height: 100%;
+        }
+        .bets-third {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
 
+    .insideBets {
+        display: grid;
+        grid-template-rows: 1fr 12fr 1fr;
+        
+    }
+        .bets-number {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr
+                                1fr 1fr 1fr 1fr
+                                1fr 1fr 1fr 1fr;                     
+        }
 
-.outsideBets {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-
-/* ------------ Inside table Grid Setup ----------- */
-
-.bets-zeros {
-    display: grid;
-    grid-template-columns: 1fr 2fr 2fr 1fr;
-    grid-template-rows: 1fr;
-
-}
-.bets-fiftyFifty {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-}
-.bets-third {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-}
-.bets-number {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr
-                        1fr 1fr 1fr 1fr
-                        1fr 1fr 1fr 1fr;
-                       
-}
-.bets-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-
-}
-/* ------------------------------------------- */
-
+        .bets-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+        }
 
 /* ------------ Inside of Table Grid ------------ */
 .game-name {
@@ -140,7 +171,7 @@ body {
     text-orientation: upright;
     justify-content: space-around;
     flex-direction: column;
-    font-size: 6vh;
+    font-size: 4vh;
     color: var(--casinoWhite);
 }
 
@@ -154,18 +185,14 @@ body {
 }
 
 /* sidebet divs - inside tabl cell button from walle*/
-.sideDiv {
+/* POSSIBLYREDUNDANT */
+/* .sideDiv {
     padding: 5%;
-}
-
-.main.tableDiv.tableDiv {
-    align-content: center;
-}
+} */
 
 /* All numbers buttons (and col)*/
 .num {
-    align-content: space-around;
-    vertical-align: middle;
+
     font-size: 2vh;
 
     color: var(--casinoWhite);
