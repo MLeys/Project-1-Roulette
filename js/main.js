@@ -77,9 +77,14 @@ let pWager = 1; // $ amount player wagering on current bet
 let pWinnings; // $ amount player wins or loses at conclusion of spin
 let winningNum; // Random number generated to represent result of wheel spin
 let winningPayouts; // Array of all categoies to payout based on winning number spun.
-let betWager; // Amount player wagers on current bet ??? maybe redundant ^^check later^^
+
 let pTotalBet; // How much $ the player has accumulated based on pWager and pBets
-let pWinningBets = [];  // Array of objects of all the winning bets on current spin
+let pWinningBets;  // Array of objects key:value pairs of all the winning bets on current spin
+
+let currentBet;
+let currentId;
+let currentWager;
+let currentPayout;
 
 const tableAreaEl = document.querySelector('.main');
 const spinBtnEl = document.querySelector('#spin');
@@ -210,21 +215,43 @@ function findWinningBetTypes() {
     render();
 }
 
-function findWinningBets() {
-    let currentPayout;
-    for (let i = 0; i < pBets.length; i++) { //loop through all players bets
-        checkBet = pBets[i]['id'];
-        
-        if (winningPayouts.includes(checkBet)){ // check if current bet in loop is a winner by matching win array
-            betWager = pBets[i]['wager'];
+function pBetWins(id, wager) {
+    this.id = id;
+    this.wager = wager;
+}
 
-            for (let j = 0; j < PAYOUTS.length; j++) {  // find the payout category 35 to 1, 2 to 1, ect. 
-                if (PAYOUTS[j]['betType'].includes(checkBet) ) { 
-                    currentPayout = PAYOUTS[j]['payout'];   // the payout rate
-                }
-            }
-            pWinnings = +pWinnings + ((+currentPayout) * (+betWager));  // Apply to main totals if winner
-            pCredit = +pCredit + ((+currentPayout) * (+betWager)) + +betWager;
+
+function addCreditWinnings() {
+    pWinnings = +pWinnings + ((+currentPayout) * (+currentWager));  // Apply to main totals if winner
+    pCredit = +pCredit + ((+currentPayout) * (+currentWager)) + +currentWager;
+}
+
+function findPayoutRate() {
+    for (let i = 0; i < PAYOUTS.length; i++) {  // find the payout category 35 to 1, 2 to 1, ect. 
+        if (PAYOUTS[i]['betType'].includes(currentId) ) { 
+            currentPayout = PAYOUTS[i]['payout'];   // the payout rate
+        }
+
+    }
+}
+
+function findWinningBets() {
+
+
+    for (let i = 0; i < pBets.length; i++) { //loop through all players bets
+        currentBet = pBets[i];
+        currentId = currentBet['id'];
+        
+        if (winningPayouts.includes(currentId)){ // check if current bet in loop is a winner by matching win array
+            currentWager = pBets[i]['wager'];
+            findPayoutRate();
+
+
+            // ************************* .  ADD reduce function here to add 
+
+
+            
+            addCreditWinnings();
         } 
     }
     render();

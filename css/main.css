@@ -79,14 +79,16 @@ div {
 
 .main {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 55fr 45fr;
     height: 70vh;
     margin-top: .5%;
 }
     .table {
         display: grid;
-        grid-template-columns: 4fr 5fr;
-        background-color: var(--warningPink);    
+        grid-template-columns: 45fr 55fr;
+        
+        margin-right: 1vw;
+
            
     }
         .outsideBets {
@@ -308,10 +310,10 @@ button.sidebet.black.active {
     background-color: var(--casinoBlack);
 }
 
-#left0 {
+#singleZero {
     border-top-left-radius: 25%;
 }
-#right00 {
+#doubleZero {
     border-top-right-radius: 25%;
 }
 
