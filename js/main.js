@@ -84,7 +84,7 @@ let pWinningBets;  // Array of objects key:value pairs of all the winning bets o
 let currentBet;
 let currentId;
 let currentWager;
-let currentPayout;
+let currentPayoutRate;
 
 const tableAreaEl = document.querySelector('.main');
 const spinBtnEl = document.querySelector('#spin');
@@ -138,12 +138,12 @@ function init() {
     pTotalBet = 0;
     winningNum = +'';  // TEMP VALUE FOR TESTING
     render();
-}
+};
 
 function resetBets(){
     pCredit += +pTotalBet;
     clearTable();
-}
+};
 
 function selectChip(e) {
     rmClassActiveChips();
@@ -154,7 +154,7 @@ function selectChip(e) {
         pWager = e.target.id.replace('chip', '');
     } 
     render();
-}
+};
 
 function placeBet(e) {
     e.target.classList.add('active');
@@ -170,7 +170,7 @@ function placeBet(e) {
     : null;
 
     render();
-}
+};
 
 function rmClassActiveChips() {               // MAY HAVE ISSUE? buttons reset when not supposed to
     allChipButtons.forEach((element) => {
@@ -178,7 +178,7 @@ function rmClassActiveChips() {               // MAY HAVE ISSUE? buttons reset w
         
     })
     render();
-}
+};
 
 function rmActiveClassAllBtns () {
     allFiftyFiftyButtons.forEach((element)=> {
@@ -191,19 +191,19 @@ function rmActiveClassAllBtns () {
         element.classList.remove('active');
     })
     render()
-}
+};
 
 function addBetToTotal(e) {
     pTotalBet = (+pTotalBet) + (+e);
     render()
-}
+};
 
 function clearTable() {
     pBets = [];
     pTotalBet = 0;
     rmActiveClassAllBtns();
     render();
-}
+};
 
 function findWinningBetTypes() {
     for (let i = 0; i < WINNERS.length; i++) {
@@ -213,27 +213,36 @@ function findWinningBetTypes() {
         : '';
     }
     render();
-}
+};
 
 function pBetWins(id, wager) {
     this.id = id;
     this.wager = wager;
-}
+};
 
 
 function addCreditWinnings() {
-    pWinnings = +pWinnings + ((+currentPayout) * (+currentWager));  // Apply to main totals if winner
-    pCredit = +pCredit + ((+currentPayout) * (+currentWager)) + +currentWager;
-}
+    pWinnings = +pWinnings + ((+currentPayoutRate) * (+currentWager));  // Apply to main totals if winner
+    pCredit = +pCredit + ((+currentPayoutRate) * (+currentWager)) + +currentWager;
+};
 
 function findPayoutRate() {
     for (let i = 0; i < PAYOUTS.length; i++) {  // find the payout category 35 to 1, 2 to 1, ect. 
         if (PAYOUTS[i]['betType'].includes(currentId) ) { 
-            currentPayout = PAYOUTS[i]['payout'];   // the payout rate
+            currentPayoutRate = PAYOUTS[i]['payout'];   // the payout rate
         }
 
     }
-}
+};
+
+function addToWinBetsList() {
+    for (let i = 0; i < pWinningBets.length; i++) {
+        
+
+
+    }
+};
+
 
 function findWinningBets() {
 
@@ -255,11 +264,11 @@ function findWinningBets() {
         } 
     }
     render();
-}
+};
 
 function generateWinningNumber() {
     return winningNum = NUMBERS[Math.floor(Math.random() * NUMBERS.length)];   
-}
+};
 
 function spinWheel() {
     pWinnings = 0;
@@ -278,4 +287,4 @@ function render() {
     
     wheelSpinMessage.innerHTML = winningNum;
     winMessage.innerHTML = (`WIN: $${pWinnings}`)
-}
+};
