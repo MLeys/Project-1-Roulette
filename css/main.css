@@ -35,35 +35,39 @@ html, body {
     cursor: pointer;
 }
 body {
-
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
 }
 
+
+/* ------------- Main Grid Setup---------------- */
 .title {
-    height: 5vh;
+    height: 1vh;
 }
 .table {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 4fr;
     grid-template-rows: 1fr 12fr 1fr;
-    height: 70%;
+    height: 70vh;
     margin: 2%;
-    
-    
     
 }
 .players-bets {
     display: grid;
     height: 10vh;
-    width: 95vw;
+    width: 98vw;
     grid-template-columns: 1fr 1fr 1fr 4fr;
     align-items:center;
     
 }
 .spin {
-    padding: 2%;
     height: 10vh;
-    width: 95vw;
+    width: 98vw;
 }
+/* ------------ Secondary Grid Setup ----------- */
 .bets-zeros {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 1fr;
