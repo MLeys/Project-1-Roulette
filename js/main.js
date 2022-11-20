@@ -158,7 +158,25 @@ function selectChip(e) {
 };
 
 function placeBet(e) {
-    e.target.classList.add('active');
+    let eTarget = e.target;
+    let eId =eTarget.id;
+    let eWager = eTarget.wager;
+    let eRate;
+    let eTotal; 
+
+    cTarget.classList.add('active');
+
+    let currentBetObject = {
+        id: cTarget['id'], 
+        wager: [], 
+        rate: currentPayoutRate, 
+        total: ((+currentWager)*(+currentPayoutRate))
+    };
+
+    let oID = currentBetObject['id'];
+    let oWager = currentBetObject['wager'];
+    let oRate = currentBetObject['rate'];
+
 
     let betId = e.target.id;
     let betObject ={id: betId, wager: pWager};
@@ -215,12 +233,6 @@ function findWinningBetTypes() {
     }
     render();
 };
-
-function pBetWins(id, wager) {
-    this.id = id;
-    this.wager = wager;
-};
-
 
 function addCreditWinnings() {
     pWinnings = +pWinnings + ((+currentPayoutRate) * (+currentWager));  // Apply to main totals if winner
