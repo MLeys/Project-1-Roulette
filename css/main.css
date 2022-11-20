@@ -28,15 +28,15 @@ html, body {
     font-size: 4vh;
     /* min-width: 320px;
     min-height: 663px; */
-    height: 98vh;
-    width: 98vw;
     max-height: 98vh;
-    max-width: 98vw;
+    width: 98vw;
+    /* max-height: 98vh;
+    max-width: 97vw;
     min-height: 98vh;
-    min-width: 98vw;
+    min-width: 97vw;
     margin: 1%;
     padding: 0 1% 0 0;
-    border: 0;
+    border: 0; */
     background-color: var(--casinoGreen);
     /* width: 390px;
     height: 844px; */
@@ -61,7 +61,7 @@ button {
 
 div {
     max-height: 100%;
-    max-width: 100%;
+    max-width: 98%;
 
     
     
@@ -82,7 +82,7 @@ div {
     display: grid;
     grid-template-columns: 1fr 2fr;
     height: 70vh;
-    margin-top: 1%;
+    margin-top: .5%;
 }
     .table {
         display: grid;
@@ -343,16 +343,19 @@ button:hover {
     display: none;
     background-color: var(--casinoWhite-half);
     position: fixed;
-    padding: -25%;
-    height: 100%;
-    width: 100%;
+    padding: 0;
+    width: 90%;
+    max-width: 90%;
+    min-width: 90%w;
+    height: auto;
     overflow: auto;
     position: center;
 }
 
+
 .spin-content{
     margin: 5% auto;
-    width: 25vh;
+    width: 40%;
     font-size: 18vh;
 }
 .close {
@@ -361,6 +364,9 @@ button:hover {
     font-size: 6vh;
     color: var(--casinoBlack)
 }
+/* #wheelSpinning {
+    
+} */
 .spinResult {
     font-size: 18vh;
     color: #0021f6;
