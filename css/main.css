@@ -63,14 +63,18 @@ body {
 
 .main {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     height: 70vh;
     margin: 0;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 .displays {
     display: grid;
     height: 19vh;
-    width: 98vw;
+    
     grid-template-columns: 1fr 1fr 1fr 4fr;
     grid-template-rows: 1fr 4fr 1fr;
     
@@ -78,7 +82,7 @@ body {
 }
 .spin {
     height: 10vh;
-    width: 98vw;
+    width: 100%;
 }
 /* ------------------------------------------- */
 
@@ -88,8 +92,14 @@ body {
 }
 
 
+.outsideBets {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 
 /* ------------ Inside table Grid Setup ----------- */
+
 .bets-zeros {
     display: grid;
     grid-template-columns: 1fr 2fr 2fr 1fr;
