@@ -79,7 +79,7 @@ let winningNum; // Random number generated to represent result of wheel spin
 let winningPayouts; // Array of all categoies to payout based on winning number spun.
 let betWager; // Amount player wagers on current bet ??? maybe redundant ^^check later^^
 let pTotalBet; // How much $ the player has accumulated based on pWager and pBets
-let pWinningBets = [];
+let pWinningBets = [];  // Array of objects of all the winning bets on current spin
 
 const tableAreaEl = document.querySelector('.main');
 const spinBtnEl = document.querySelector('#spin');
