@@ -34,6 +34,8 @@ html, body {
     height: 844px; */
     cursor: pointer;
 }
+
+/* -------------- Main elements ------------- */
 body {
     display: flex;
     flex-direction: column;
@@ -41,6 +43,19 @@ body {
     justify-content: flex-start;
     align-items: center;
 }
+
+button {
+    display: flex;
+    outline: white solid 1px;
+    background-color: var(--casinoGreen2);
+    align-content: center;
+}
+
+div {
+    margin: auto auto;
+}
+
+
 /* ------------------------------------------- */
 
 /* ------------- Main Grid Setup---------------- */
@@ -52,6 +67,7 @@ body {
     grid-template-columns: 8fr 2fr 2fr 6fr;
     grid-template-rows: 1fr 13fr 1fr;
     height: 70vh;
+    margin: 0;
 }
 .displays {
     display: grid;
@@ -101,21 +117,6 @@ body {
 }
 /* ------------------------------------------- */
 
-/* -------------- Main elements ------------- */
-
-button {
-    display: flex;
-    outline: white solid 1px;
-    background-color: var(--casinoGreen2);
-    align-content: center;
-}
-
-
-
-
-
-
-/* ------------------------------------------- */
 
 /* ------------ Inside of Table Grid ------------ */
 .game-name {
@@ -130,9 +131,9 @@ button {
 
 
 
-
 /* All divs in table */
 .tableDiv {
+    margin: 0;
     outline: white solid 1px;
     background-color: var(--casinoGreen2)
 }
@@ -140,7 +141,10 @@ button {
 /* sidebet divs - inside tabl cell button from walle*/
 .sideDiv {
     padding: 5%;
-    
+}
+
+.table.tableDiv {
+    align-content: center;
 }
 
 /* All numbers buttons (and col)*/
@@ -151,8 +155,7 @@ button {
 
     color: var(--casinoWhite);
     border-radius: 50%; 
-    opacity: 1;
-
+    opacity: 1
 }
 /* All sidebet buttons */
 .sidebet {
@@ -162,11 +165,11 @@ button {
     height: 100%;
     width: 100%;
     border-radius: 30%;
-    
-    
+
 }
 
-/* button colors class */
+
+/*  -- button colors class --*/
 .red, .black {
     color: var(--casinoWhite);
 }
@@ -221,7 +224,7 @@ span.total {
 /* ----------Chip selectors when active-------*/
 
 
-div.button button.active {
+div.tableDiv button.active {
     opacity: 1;
     font-size: 3vh;
 }
