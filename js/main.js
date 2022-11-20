@@ -109,10 +109,24 @@ spinBtnEl.addEventListener('click', spinWheel)
 chipBtn.addEventListener('click', selectChip)
 resetBtn.addEventListener('click', resetBets);
 
+spinBtn.addEventListener('click', function() {
+    spinModal.style.display = "block"; 
+});
+
+closeBtnSpin.addEventListener('click', function () {
+    spinModal.style.display = 'none';
+});
+
+tableAreaEl.addEventListener('click', function(e) {
+    e.target == spinBtnEl ? spinModal.style.display ="none" :null;
+});
+
 
 init();
 /*----- functions -----*/
 wheelSpinMessage.innerHTML = (`Num: ${winningNum} WIN:${pWinnings}`);
+
+
 
 function init() {
     clearTable();
@@ -121,7 +135,6 @@ function init() {
     pCredit = 100;
     pTotalBet = 0;
     winningNum = +'';  // TEMP VALUE FOR TESTING
-
     render();
 }
 
@@ -190,7 +203,7 @@ function clearTable() {
     render();
 }
 
-function findWinningBets() {
+function findWinningBetTypes() {
     for (let i = 0; i < WINNERS.length; i++) {
 
         WINNERS[i]['num'] === winningNum.toString()
@@ -200,14 +213,8 @@ function findWinningBets() {
     render();
 }
 
-function spinWheel() {
-    pWinnings = 0;
-    winningNum = NUMBERS[Math.floor(Math.random() * NUMBERS.length)]; // TEMP DISABLED
-    render();
-    console.log(winningNum, '<-- Winning Number!')
+function findWinningBets() {
     let currentPayout;
-
-    findWinningBets(winningNum);
     for (let i = 0; i < pBets.length; i++) { //loop through all players bets
         checkBet = pBets[i]['id'];
         
@@ -219,24 +226,27 @@ function spinWheel() {
                     currentPayout = PAYOUTS[j]['payout'];   // the payout rate
                 }
             }
-            pWinnings = +pWinnings + ((+currentPayout) * (+betWager));
+            pWinnings = +pWinnings + ((+currentPayout) * (+betWager));  // Apply to main totals if winner
             pCredit = +pCredit + ((+currentPayout) * (+betWager)) + +betWager;
         } 
     }
+    render();
+}
+
+function generateWinningNumber() {
+    return winningNum = NUMBERS[Math.floor(Math.random() * NUMBERS.length)];   
+}
+
+function spinWheel() {
+    pWinnings = 0;
+    generateWinningNumber();
+    
+    findWinningBetTypes(winningNum);
+    findWinningBets();
     clearTable();
     rmActiveClassAllBtns();
     render();
 };
-
-spinBtn.onclick = function() {
-    spinModal.style.display = "block";   
-}
-closeBtnSpin.onclick = function () {
-    spinModal.style.display = 'none';
-}
-tableAreaEl.onclick = function(e) {
-    e.target == spinBtnEl ? spinModal.style.display ="none" :null;
-}
 
 function render() {
     totalEl.innerHTML = (`$ ${pCredit}`);
