@@ -24,8 +24,8 @@ html, body {
     text-align: center;
     /* min-width: 320px;
     min-height: 663px; */
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     margin: 0;
     padding: 0;
     border: 0;
@@ -34,31 +34,33 @@ html, body {
     height: 844px; */
     cursor: pointer;
 }
+body {
+
+}
 
 .title {
-    font-size: 30px;
-    height: 5%;
-    
+    height: 5vh;
 }
 .table {
-    margin: 1% 5%;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 4fr;
     grid-template-rows: 1fr 12fr 1fr;
-    height: 70%;
+    height: 70vh;
+    width: 95vw;
     
 }
 .players-bets {
     display: grid;
-    height: 10%;
-    margin: 0% 5%;
+    height: 10vh;
+    width: 95vw;
     grid-template-columns: 1fr 1fr 1fr 4fr;
     align-items:center;
     
 }
 .spin {
     padding: 2%;
-    height: 10%;
+    height: 10vh;
+    width: 95vw;
 }
 .game-empty {
     border: 0;
