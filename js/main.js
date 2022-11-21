@@ -181,7 +181,7 @@ function placeBet(e) {
                 break;
             } else if (pBets[i]['id'] === eId ){
 
-                pBets[i]['wager'] = +eWager;
+                pBets[i]['wager'] = +eWager + +pBets[i]['wager'];
                 pBets[i]['total'] = +eRate * +pBets[i]['wager'];
                 break;
             } 
@@ -255,32 +255,28 @@ function findPayoutRate(id) {
 
 function findWinningBets() {
     for (let i = 0; i < pBets.length; i++) { //loop through all players bets
-        currentBet = pBets[i];
-        currentId = currentBet['id'];
+        betObject = pBets[i];
+        betId = betObject['id'];
         
-        if (winningPayouts.includes(currentId)){ // check if current bet in loop is a winner by matching win array
-            currentWager = pBets[i]['wager'];
-
-            findPayoutRate();
-            storeWinningBet();
-            addCreditWinnings();
+        if (winningPayouts.includes(betId)){ // check if current bet in loop is a winner by matching win array
+            pWinningBets.push(betObject);
         }
     }
+    
     render();
+    console.log(`Winning Bets ---> ${pWinningBets}`);
 };
 
-function generateWinningNumber() {
+function genWinNum() {
     return winningNum = NUMBERS[Math.floor(Math.random() * NUMBERS.length)];   
 };
 
 function spinWheel() {
     pWinnings = 0;
-    generateWinningNumber();
-    
-    findWinningBetTypes(winningNum);
+    findWinningBetTypes( genWinNum() );
+
     findWinningBets();
-    clearTable();
-    rmActiveClassAllBtns();
+
     render();
 };
 
