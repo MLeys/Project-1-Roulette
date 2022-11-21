@@ -181,30 +181,28 @@ function placeBet(e) {
 
     } else {                                            // Iterate through remaing
         console.log(pBets.length, 'length2')
-        for (let i = 0; i < pBets.length; i++) {
-            let oldWager = pBets[i]['wager'];
-            let newWager = +oldWager + eWager;
-            let newTotal = newWager * eWager
-            console.log(`
-            index: ${i}    
-            match: ${pBets[i]['id'] != eId}     
-            pBets[i]: ${pBets[i]['id']} 
-            eId: ${eId}`);
-
+        for (let i = 0; i <= pBets.length; i++) {
             if (i === pBets.length) {
                 console.log(`LAST INDEX: ${i}`)
                 pBets.push(eObject);
                 break;
             } else if (pBets[i]['id'] === eId ){
+                let oldWager = pBets[i]['wager'];
+                let newWager = +oldWager + eWager;
+                let newTotal = newWager * eWager
+                
                 pBets[i]['wager'] = newWager;
                 pBets[i]['total'] = newTotal;
-                break;
-            } else {
-                pBets.push(eObject);
-                console.log(`---- Not duplicate --- `)
-                break;
 
-            }
+                console.log(`
+                    index: ${i}    
+                    match: ${pBets[i]['id'] != eId}     
+                    pBets[i]: ${pBets[i]['id']} 
+                    eId: ${eId}
+                    `);
+
+                break;
+            } 
         } 
     }
     render();
