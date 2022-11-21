@@ -162,45 +162,41 @@ function ifBetValid() {
 }
 
 function placeBet(e) {
-    let eTarget = e.target;
-    let eId =eTarget.id;
+    
+    let eId =e.target.id;
     let eWager = pWager;
     let eRate = findPayoutRate(eId);
-    let eTotal = ((+eWager) * (+eRate)); 
+    
 
     let eObject = {
         id: eId, 
-        wager: eWager, 
+        wager: +eWager, 
         rate: findPayoutRate(eId), 
         total: ((+eWager)*(+eRate))
     };
+
+     
+
     
-    if (pBets.length === 0) {     
+    if (pBets.length === 0 && isValidBet(eId)) {     
         console.log(pBets.length, '<--length')                  // FIRST bet
         pBets.push(eObject);
 
-    } else {                                            // Iterate through remaing
+    } else if (isValidBet(eId)) {                                            // Iterate through remaing
         console.log(pBets.length, 'length2')
         for (let i = 0; i <= pBets.length; i++) {
-            if (i === pBets.length) {
+            if ((i === pBets.length) ) {
                 console.log(`LAST INDEX: ${i}`)
                 pBets.push(eObject);
                 break;
             } else if (pBets[i]['id'] === eId ){
                 let oldWager = pBets[i]['wager'];
-                let newWager = +oldWager + eWager;
-                let newTotal = newWager * eWager
-                
-                pBets[i]['wager'] = newWager;
-                pBets[i]['total'] = newTotal;
+                let newWager = +oldWager + +eWager;
+                console.log(`newWager: ${newWager}`)
 
-                console.log(`
-                    index: ${i}    
-                    match: ${pBets[i]['id'] != eId}     
-                    pBets[i]: ${pBets[i]['id']} 
-                    eId: ${eId}
-                    `);
 
+                pBets[i]['wager'] = +eWager;
+                pBets[i]['total'] = +eRate * +pBets[i]['wager'];
                 break;
             } 
         } 
@@ -208,16 +204,6 @@ function placeBet(e) {
     render();
     console.log(pBets);
 };
-
-
-
-// function findDuplicateBets(ary) {
-//     for (let i = 0; i < pBets.length; i++) {
-//         if (ary['id'] ) {
-
-//         }
-//     } // return index
-// }
 
 function rmClassActiveChips() {               // MAY HAVE ISSUE? buttons reset when not supposed to
     allChipButtons.forEach((element) => {
@@ -261,6 +247,11 @@ function findWinningBetTypes() {
     }
     render();
 };
+
+function isValidBet(id) {
+    console.log(`isValidBet: ${(NUMBERS.includes(id) || SIDEBETS.includes(id)) && (id != '')}`)
+    return (NUMBERS.includes(id) || SIDEBETS.includes(id))
+}
 
 function addCreditWinnings() {
     pWinnings = +pWinnings + ((+currentPayoutRate) * (+currentWager));  // Apply to main totals if winner
