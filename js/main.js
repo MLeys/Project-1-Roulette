@@ -161,33 +161,24 @@ function placeBet(e) {
     let eTarget = e.target;
     let eId =eTarget.id;
     let eWager = eTarget.wager;
-    let eRate;
-    let eTotal; 
+    let eRate = findPayoutRate(eId);
+    let eTotal = ((+eWager) * (+eRate)); 
 
-    cTarget.classList.add('active');
-
-    let currentBetObject = {
-        id: cTarget['id'], 
-        wager: [], 
-        rate: currentPayoutRate, 
-        total: ((+currentWager)*(+currentPayoutRate))
+    let eObject = {
+        id: eId, 
+        wager: [eWager], 
+        rate: findPayoutRate(), 
+        total: ((+eWager)*(+eRate))
     };
+    console.log(eObject);
+    console.log(findPayoutRate(eId));
+    
 
-    let oID = currentBetObject['id'];
-    let oWager = currentBetObject['wager'];
-    let oRate = currentBetObject['rate'];
+    // for (let i=0; i< PAYOUTS.length; i++) {
+    //     if (PAYOUTS[i]['betType'].includes(eId)) {
 
-
-    let betId = e.target.id;
-    let betObject ={id: betId, wager: pWager};
-    console.log(betObject);    
-
-    NUMBERS.includes(betId) || SIDEBETS.includes(betId)
-    ? (pBets.push(betObject)) 
-        && (pCredit -= betObject['wager'])
-        && addBetToTotal(pWager)      
-    : null;
-
+    //     } 
+    // };
     render();
 };
 
@@ -239,10 +230,10 @@ function addCreditWinnings() {
     pCredit = +pCredit + ((+currentPayoutRate) * (+currentWager)) + +currentWager;
 };
 
-function findPayoutRate() {
+function findPayoutRate(id) {
     for (let i = 0; i < PAYOUTS.length; i++) {  // find the payout category 35 to 1, 2 to 1, ect. 
-        if (PAYOUTS[i]['betType'].includes(currentId) ) { 
-            currentPayoutRate = PAYOUTS[i]['payout'];   // the payout rate
+        if (PAYOUTS[i]['betType'].includes(id) ) { 
+            return PAYOUTS[i]['payout'];   // the payout rate
         }
     }
 };
