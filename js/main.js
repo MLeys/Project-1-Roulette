@@ -157,27 +157,17 @@ function selectChip(e) {
     render();
 };
 
-function ifBetValid() {
-
-}
-
 function placeBet(e) {
     
     let eId =e.target.id;
     let eWager = pWager;
     let eRate = findPayoutRate(eId);
-    
-
     let eObject = {
         id: eId, 
         wager: +eWager, 
         rate: findPayoutRate(eId), 
         total: ((+eWager)*(+eRate))
     };
-
-     
-
-    
     if (pBets.length === 0 && isValidBet(eId)) {     
         console.log(pBets.length, '<--length')                  // FIRST bet
         pBets.push(eObject);
@@ -190,10 +180,6 @@ function placeBet(e) {
                 pBets.push(eObject);
                 break;
             } else if (pBets[i]['id'] === eId ){
-                let oldWager = pBets[i]['wager'];
-                let newWager = +oldWager + +eWager;
-                console.log(`newWager: ${newWager}`)
-
 
                 pBets[i]['wager'] = +eWager;
                 pBets[i]['total'] = +eRate * +pBets[i]['wager'];
@@ -266,35 +252,7 @@ function findPayoutRate(id) {
         }
     }
 };
-// function storeWinningBet() {
-//     let currentBetObject = {
-//         id: currentId, 
-//         wager: [currentWager], 
-//         rate: currentPayoutRate, 
-//         total: ((+currentWager)*(+currentPayoutRate))
-//     };
 
-
-//     let oID = currentBetObject['id'];
-//     let oWager = currentBetObject['wager'];
-//     let oRate = currentBetObject['rate'];
-
-//     if (pWinningBets.length === 0){
-//         pWinningBets.push(currentBetObject);
-//     } else  {
-        
-//         for (let i = 0; i < pWinningBets.length; i++) { 
-//             console.log(`pWinBet: ${pWinningBets[i]['id']} === oID: ${oID} .  ------------`);
-//             if (pWinningBets[i]['id'] === oID){
-//                 pWinningBets[i]['wager'].push(oWager);
-                
-   
-//            };  
-//         }
-//    };    
-//     render();
-
-// };
 function findWinningBets() {
     for (let i = 0; i < pBets.length; i++) { //loop through all players bets
         currentBet = pBets[i];
