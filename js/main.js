@@ -72,6 +72,7 @@ const WINNERS = [
 /*----- app's state (variables) -----*/
 let pBets; // Players bets - as an object with changing key:value pairs 
 let pCredit; // Players available credit for which to gamble or play the game
+let pCreditLast;
 let pWager = 1; // $ amount player wagering on current bet
 
 let pWinnings; // $ amount player wins or loses at conclusion of spin
@@ -121,21 +122,23 @@ spinBtn.addEventListener('click', function() {
 
 closeBtnSpin.addEventListener('click', function () {
     spinModal.style.display = 'none';
+    clearTable();
+    render();
+
 });
 
 
 init();
 /*----- functions -----*/
-wheelSpinMessage.innerHTML = (`Num: ${winningNum} WIN:${pWinnings}`);
-
 
 
 function init() {
     clearTable();
-    rmActiveClassAllBtns();
+    
     pWinningBets = [];
 
     pCredit = 100;
+    pCreditLast = pCredit;
     pTotalBet = 0;
     winningNum = +'';  // TEMP VALUE FOR TESTING
     render();
@@ -143,6 +146,7 @@ function init() {
 
 function resetBets(){
     pCredit += +pTotalBet;
+    pCreditLast = pCredit;
     clearTable();
 };
 
@@ -157,30 +161,33 @@ function selectChip(e) {
     render();
 };
 
-function placeBet(e) {
-    
+function placeBet(e) { 
     let eId =e.target.id;
     let eWager = pWager;
-    let eRate = findPayoutRate(eId);
+    let eRate = findPayout(eId);
     let eObject = {
         id: eId, 
         wager: +eWager, 
-        rate: findPayoutRate(eId), 
+        rate: findPayout(eId), 
         total: ((+eWager)*(+eRate))
     };
-    if (pBets.length === 0 && isValidBet(eId)) {     
-        console.log(pBets.length, '<--length')                  // FIRST bet
+
+    if (isValidBet(eId)) {
+        addCredit(eWager);
+        e.target.classList.add('active');
+    } else {
+        return 
+    };
+
+    if (pBets.length === 0 ) { // IF FIRST bet THIS ALL VERY UNCLEAN
         pBets.push(eObject);
 
-    } else if (isValidBet(eId)) {                                            // Iterate through remaing
-        console.log(pBets.length, 'length2')
+    } else  {                 // Iterate through remaing
         for (let i = 0; i <= pBets.length; i++) {
             if ((i === pBets.length) ) {
-                console.log(`LAST INDEX: ${i}`)
                 pBets.push(eObject);
                 break;
-            } else if (pBets[i]['id'] === eId ){
-
+            } else if (pBets[i]['id'] === eId ) {
                 pBets[i]['wager'] = +eWager + +pBets[i]['wager'];
                 pBets[i]['total'] = +eRate * +pBets[i]['wager'];
                 break;
@@ -188,10 +195,10 @@ function placeBet(e) {
         } 
     }
     render();
-    console.log(pBets);
+    
 };
 
-function rmClassActiveChips() {               // MAY HAVE ISSUE? buttons reset when not supposed to
+function rmClassActiveChips() {  // MAY HAVE ISSUE? buttons reset when not supposed to
     allChipButtons.forEach((element) => {
         element.classList.remove('active');
         
@@ -212,10 +219,14 @@ function rmActiveClassAllBtns () {
     render()
 };
 
-function addBetToTotal(e) {
-    pTotalBet = (+pTotalBet) + (+e);
-    render()
-};
+function addCredit(wager) {
+    pCredit -= wager;
+    //return pCredit;
+}
+function addWinnings(amount) {
+    pWinnings += amount;
+    //return pWinnings;
+}
 
 function clearTable() {
     pBets = [];
@@ -235,16 +246,11 @@ function findWinningBetTypes() {
 };
 
 function isValidBet(id) {
-    console.log(`isValidBet: ${(NUMBERS.includes(id) || SIDEBETS.includes(id)) && (id != '')}`)
     return (NUMBERS.includes(id) || SIDEBETS.includes(id))
 }
 
-function addCreditWinnings() {
-    pWinnings = +pWinnings + ((+currentPayoutRate) * (+currentWager));  // Apply to main totals if winner
-    pCredit = +pCredit + ((+currentPayoutRate) * (+currentWager)) + +currentWager;
-};
 
-function findPayoutRate(id) {
+function findPayout(id) {
     for (let i = 0; i < PAYOUTS.length; i++) {  // find the payout category 35 to 1, 2 to 1, ect. 
         if (PAYOUTS[i]['betType'].includes(id) ) { 
             //    console.log(`CHECKING# ${i} betType: ${PAYOUTS[i]['betType'].includes(id)} id: ${id} -rate: ${PAYOUTS[i]['payout']} <--`);
@@ -264,18 +270,45 @@ function findWinningBets() {
     }
     
     render();
-    console.log(`Winning Bets ---> ${pWinningBets}`);
+    // console.log(`Winning Bets ---> ${pWinningBets}`);
 };
 
 function genWinNum() {
     return winningNum = NUMBERS[Math.floor(Math.random() * NUMBERS.length)];   
 };
 
+function calcWinnings() {   
+    
+    let lossGain = 0;
+    let totalWinnings = 0;
+    let totalCredit = 0;
+    for (let i = 0; i < pWinningBets.length; i++) {
+        let eBet = pWinningBets[i];
+        totalWinnings += +eBet.total;
+        totalCredit += +eBet.wager;
+
+        render();
+        console.log(`Players wager of $${eBet.wager} on ${eBet.id} WINS $${eBet.total}`)
+        // console.log(`totalWinnings: ${totalWinnings}`);
+        // console.log(`totalCredit: ${totalCredit}`);    
+    }
+    pCredit += +totalWinnings + +totalCredit;
+    lossGain = pCredit - pCreditLast;
+    // console.log(`pCredit BEFORE: ${pCreditLast}`); 
+    // console.log(`pCredit AFTER: ${pCredit}`);  
+    console.log(`TOTAL Gain/Loss: ${lossGain}`); 
+    clearTable(); 
+    
+}
+
 function spinWheel() {
     pWinnings = 0;
     findWinningBetTypes( genWinNum() );
 
     findWinningBets();
+
+    calcWinnings();
+
 
     render();
 };
