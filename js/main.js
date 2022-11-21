@@ -157,30 +157,69 @@ function selectChip(e) {
     render();
 };
 
+function ifBetValid() {
+
+}
+
 function placeBet(e) {
     let eTarget = e.target;
     let eId =eTarget.id;
-    let eWager = eTarget.wager;
+    let eWager = pWager;
     let eRate = findPayoutRate(eId);
     let eTotal = ((+eWager) * (+eRate)); 
 
     let eObject = {
         id: eId, 
-        wager: [eWager], 
-        rate: findPayoutRate(), 
+        wager: eWager, 
+        rate: findPayoutRate(eId), 
         total: ((+eWager)*(+eRate))
     };
-    console.log(eObject);
-    console.log(findPayoutRate(eId));
     
+    if (pBets.length === 0) {     
+        console.log(pBets.length, '<--length')                  // FIRST bet
+        pBets.push(eObject);
 
-    // for (let i=0; i< PAYOUTS.length; i++) {
-    //     if (PAYOUTS[i]['betType'].includes(eId)) {
+    } else {                                            // Iterate through remaing
+        console.log(pBets.length, 'length2')
+        for (let i = 0; i < pBets.length; i++) {
+            let oldWager = pBets[i]['wager'];
+            let newWager = +oldWager + eWager;
+            let newTotal = newWager * eWager
+            console.log(`
+            index: ${i}    
+            match: ${pBets[i]['id'] != eId}     
+            pBets[i]: ${pBets[i]['id']} 
+            eId: ${eId}`);
 
-    //     } 
-    // };
+            if (i === pBets.length) {
+                console.log(`LAST INDEX: ${i}`)
+                pBets.push(eObject);
+                break;
+            } else if (pBets[i]['id'] === eId ){
+                pBets[i]['wager'] = newWager;
+                pBets[i]['total'] = newTotal;
+                break;
+            } else {
+                pBets.push(eObject);
+                console.log(`---- Not duplicate --- `)
+                break;
+
+            }
+        } 
+    }
     render();
+    console.log(pBets);
 };
+
+
+
+// function findDuplicateBets(ary) {
+//     for (let i = 0; i < pBets.length; i++) {
+//         if (ary['id'] ) {
+
+//         }
+//     } // return index
+// }
 
 function rmClassActiveChips() {               // MAY HAVE ISSUE? buttons reset when not supposed to
     allChipButtons.forEach((element) => {
@@ -233,39 +272,40 @@ function addCreditWinnings() {
 function findPayoutRate(id) {
     for (let i = 0; i < PAYOUTS.length; i++) {  // find the payout category 35 to 1, 2 to 1, ect. 
         if (PAYOUTS[i]['betType'].includes(id) ) { 
+            //    console.log(`CHECKING# ${i} betType: ${PAYOUTS[i]['betType'].includes(id)} id: ${id} -rate: ${PAYOUTS[i]['payout']} <--`);
             return PAYOUTS[i]['payout'];   // the payout rate
         }
     }
 };
-function storeWinningBet() {
-    let currentBetObject = {
-        id: currentId, 
-        wager: [currentWager], 
-        rate: currentPayoutRate, 
-        total: ((+currentWager)*(+currentPayoutRate))
-    };
+// function storeWinningBet() {
+//     let currentBetObject = {
+//         id: currentId, 
+//         wager: [currentWager], 
+//         rate: currentPayoutRate, 
+//         total: ((+currentWager)*(+currentPayoutRate))
+//     };
 
 
-    let oID = currentBetObject['id'];
-    let oWager = currentBetObject['wager'];
-    let oRate = currentBetObject['rate'];
+//     let oID = currentBetObject['id'];
+//     let oWager = currentBetObject['wager'];
+//     let oRate = currentBetObject['rate'];
 
-    if (pWinningBets.length === 0){
-        pWinningBets.push(currentBetObject);
-    } else  {
+//     if (pWinningBets.length === 0){
+//         pWinningBets.push(currentBetObject);
+//     } else  {
         
-        for (let i = 0; i < pWinningBets.length; i++) { 
-            console.log(`pWinBet: ${pWinningBets[i]['id']} === oID: ${oID} .  ------------`);
-            if (pWinningBets[i]['id'] === oID){
-                pWinningBets[i]['wager'].push(oWager);
+//         for (let i = 0; i < pWinningBets.length; i++) { 
+//             console.log(`pWinBet: ${pWinningBets[i]['id']} === oID: ${oID} .  ------------`);
+//             if (pWinningBets[i]['id'] === oID){
+//                 pWinningBets[i]['wager'].push(oWager);
                 
    
-           };  
-        }
-   };    
-    render();
+//            };  
+//         }
+//    };    
+//     render();
 
-};
+// };
 function findWinningBets() {
     for (let i = 0; i < pBets.length; i++) { //loop through all players bets
         currentBet = pBets[i];
